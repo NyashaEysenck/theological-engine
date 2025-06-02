@@ -2,10 +2,13 @@ import { motion } from 'framer-motion';
 import { Book, Search, Shield, ScrollText, ChevronRight, Users, Compass, BookOpen, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
+import LandingNav from '../components/landing/LandingNav';
 
 const LandingPage = () => {
   return (
     <div className="bg-neutral-50">
+      <LandingNav />
+
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/5989925/pexels-photo-5989925.jpeg')] opacity-10 bg-cover bg-center"></div>
