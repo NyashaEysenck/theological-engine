@@ -7,206 +7,242 @@ const LandingPage = () => {
   return (
     <div className="bg-neutral-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
         <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/5989925/pexels-photo-5989925.jpeg')] opacity-10 bg-cover bg-center"></div>
         <div className="relative max-w-7xl mx-auto px-4 py-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center max-w-4xl mx-auto"
+            className="grid lg:grid-cols-2 gap-12 items-center"
           >
-            <h1 className="text-5xl lg:text-6xl font-heading font-bold mb-6 leading-tight">
-              Micaiah's Stand: A Foundation in Truth
-            </h1>
-            <p className="text-xl text-primary-100 mb-8 leading-relaxed">
-              Inspired by the prophet who dared to speak God's unwelcome truth
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 1: The Enduring Word */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-12">
-              The Enduring Word
-            </h2>
-            <div className="space-y-8">
-              <blockquote className="text-xl text-neutral-700 italic">
-                "For the word of God is living and active, sharper than any two-edged sword, piercing to the division of soul and of spirit, of joints and of marrow, and discerning the thoughts and intentions of the heart."
-                <footer className="text-neutral-500 mt-2">— Hebrews 4:12 (ESV)</footer>
-              </blockquote>
-              <blockquote className="text-xl text-neutral-700 italic">
-                "All Scripture is breathed out by God and profitable for teaching, for reproof, for correction, and for training in righteousness, that the man of God may be competent, equipped for every good work."
-                <footer className="text-neutral-500 mt-2">— 2 Timothy 3:16-17 (ESV)</footer>
-              </blockquote>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 2: The Challenge of Clarity */}
-      <section className="py-24 bg-neutral-50">
-        <div className="max-w-4xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-12 text-center">
-              The Challenge of Clarity
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <blockquote className="text-lg text-neutral-700 italic">
-                  "But false prophets also arose among the people, just as there will be false teachers among you, who will secretly bring in destructive heresies..."
-                  <footer className="text-neutral-500 mt-2">— 2 Peter 2:1 (ESV)</footer>
-                </blockquote>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <blockquote className="text-lg text-neutral-700 italic">
-                  "The simple believes everything, but the prudent gives thought to his steps."
-                  <footer className="text-neutral-500 mt-2">— Proverbs 14:15 (ESV)</footer>
-                </blockquote>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <blockquote className="text-lg text-neutral-700 italic">
-                  "Answer not a fool according to his folly, lest you be like him yourself. Answer a fool according to his folly, lest he be wise in his own eyes."
-                  <footer className="text-neutral-500 mt-2">— Proverbs 26:4-5 (ESV)</footer>
-                </blockquote>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-sm">
-                <blockquote className="text-lg text-neutral-700 italic">
-                  "So that we may no longer be children, tossed to and fro by the waves and carried about by every wind of doctrine, by human cunning, by craftiness in deceitful schemes."
-                  <footer className="text-neutral-500 mt-2">— Ephesians 4:14 (ESV)</footer>
-                </blockquote>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Section 3: Our Invitation to All Seekers */}
-      <section className="py-24 bg-gradient-to-br from-primary-50 to-primary-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-12">
-              Our Invitation to All Seekers
-            </h2>
-            <div className="prose prose-lg mx-auto text-neutral-700">
-              <p className="text-xl mb-8">Welcome, seeker.</p>
-              <div className="space-y-4 mb-8">
-                <p>To the believer earnestly desiring deeper roots in truth.</p>
-                <p>To the curious mind, wrestling with doubt or misunderstanding.</p>
-                <p>To the skeptic, questioning assumptions and seeking answers.</p>
-                <p>To the non-believer, exploring the foundational claims of Christianity.</p>
-                <p>To the critic, ready to examine.</p>
-              </div>
-              <p className="text-lg mb-8">
-                Just as Micaiah stood firm to deliver God's true message amidst a chorus of deceptive voices, 
-                Micaiah's Stand equips you to discern and embrace the authentic Word.
+            <div className="text-center lg:text-left">
+              <h1 className="text-5xl lg:text-7xl font-heading font-bold mb-6 leading-tight">
+                Discover Biblical Truth
+              </h1>
+              <p className="text-xl text-primary-100 mb-8 leading-relaxed max-w-xl">
+                Journey through Scripture with modern tools for ancient wisdom. 
+                Uncover truth, dispel myths, and grow in understanding.
               </p>
-              <blockquote className="text-lg italic mb-8">
-                "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him."
-                <footer className="text-neutral-500 mt-2">— James 1:5 (ESV)</footer>
-              </blockquote>
-              <blockquote className="text-lg italic mb-8">
-                "You will know the truth, and the truth will set you free."
-                <footer className="text-neutral-500 mt-2">— John 8:32 (ESV)</footer>
-              </blockquote>
-              <p className="text-lg">
-                This journey is for all who hunger for the genuine, unvarnished Word of God.
-              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <Link to="/register">
+                  <Button 
+                    variant="secondary" 
+                    size="lg"
+                    className="group"
+                  >
+                    Begin Your Journey
+                    <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Link to="/doctrines">
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="bg-transparent text-white border-white hover:bg-white/10"
+                  >
+                    Explore Doctrines
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="relative hidden lg:block">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="grid grid-cols-2 gap-6"
+              >
+                <div className="space-y-6">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                    <BookOpen className="h-8 w-8 text-primary-200 mb-3" />
+                    <h3 className="font-heading text-lg font-semibold mb-2">Bible Reading</h3>
+                    <p className="text-sm text-primary-100">Track your journey through Scripture with our guided reading plans</p>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 translate-x-4">
+                    <Shield className="h-8 w-8 text-primary-200 mb-3" />
+                    <h3 className="font-heading text-lg font-semibold mb-2">Sound Doctrine</h3>
+                    <p className="text-sm text-primary-100">Explore core Christian beliefs with biblical support</p>
+                  </div>
+                </div>
+                <div className="space-y-6 translate-y-12">
+                  <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                    <Search className="h-8 w-8 text-primary-200 mb-3" />
+                    <h3 className="font-heading text-lg font-semibold mb-2">Truth Search</h3>
+                    <p className="text-sm text-primary-100">Find biblical answers to your theological questions</p>
+                  </div>
+                  <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/20 translate-x-4">
+                    <ScrollText className="h-8 w-8 text-primary-200 mb-3" />
+                    <h3 className="font-heading text-lg font-semibold mb-2">Myth Busting</h3>
+                    <p className="text-sm text-primary-100">Discover what the Bible really teaches about common beliefs</p>
+                  </div>
+                </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 4: Discover the Core Features */}
-      <section className="py-24 bg-white">
+      {/* Features Section */}
+      <section className="py-24">
         <div className="max-w-7xl mx-auto px-4">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-900 mb-4">
+                Your Path to Understanding
+              </h2>
+              <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
+                Discover our comprehensive tools designed to deepen your biblical knowledge 
+                and strengthen your theological foundation.
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-neutral-200/80"
+            >
+              <div className="bg-primary-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                <Book className="h-6 w-6 text-primary-600" />
+              </div>
+              <h3 className="font-heading text-2xl font-semibold text-neutral-900 mb-3">
+                Bible Reading Plans
+              </h3>
+              <p className="text-neutral-600 mb-6">
+                Follow structured reading plans with historical context and theological insights.
+              </p>
+              <Link 
+                to="/register" 
+                className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700"
+              >
+                Start Reading
+                <ChevronRight className="ml-1 h-5 w-5" />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-neutral-200/80"
+            >
+              <div className="bg-primary-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                <Shield className="h-6 w-6 text-primary-600" />
+              </div>
+              <h3 className="font-heading text-2xl font-semibold text-neutral-900 mb-3">
+                Doctrinal Clarity
+              </h3>
+              <p className="text-neutral-600 mb-6">
+                Understand core Christian beliefs with clear biblical support and explanation.
+              </p>
+              <Link 
+                to="/doctrines" 
+                className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700"
+              >
+                Explore Doctrines
+                <ChevronRight className="ml-1 h-5 w-5" />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow border border-neutral-200/80"
+            >
+              <div className="bg-primary-50 w-12 h-12 rounded-xl flex items-center justify-center mb-6">
+                <Search className="h-6 w-6 text-primary-600" />
+              </div>
+              <h3 className="font-heading text-2xl font-semibold text-neutral-900 mb-3">
+                Truth Discovery
+              </h3>
+              <p className="text-neutral-600 mb-6">
+                Search and explore biblical answers to your theological questions.
+              </p>
+              <Link 
+                to="/query" 
+                className="inline-flex items-center text-primary-600 font-medium hover:text-primary-700"
+              >
+                Start Searching
+                <ChevronRight className="ml-1 h-5 w-5" />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Scripture Focus Section */}
+      <section className="py-24 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://images.pexels.com/photos/5989934/pexels-photo-5989934.jpeg')] opacity-10 bg-cover bg-center"></div>
+        <div className="relative max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="grid lg:grid-cols-2 gap-12 items-center"
           >
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-12 text-center">
-              Discover the Core Features
-            </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-neutral-50 p-8 rounded-lg">
-                <Search className="h-8 w-8 text-primary-600 mb-4" />
-                <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
-                  Myth Deconstruction Modules
-                </h3>
-                <p className="text-neutral-700">
-                  Directly confront and dismantle common Christian myths, aligning them with scriptural truth.
-                </p>
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-heading font-bold mb-6">
+                Scripture as Our Foundation
+              </h2>
+              <p className="text-xl text-primary-100 mb-8">
+                Every feature and insight is grounded in careful biblical study and interpretation.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <Lock className="h-6 w-6 text-primary-200 mb-3" />
+                  <h3 className="font-heading text-lg font-semibold mb-2">Faithful to Scripture</h3>
+                  <p className="text-sm text-primary-100">Committed to accurate biblical interpretation</p>
+                </div>
+                <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <Users className="h-6 w-6 text-primary-200 mb-3" />
+                  <h3 className="font-heading text-lg font-semibold mb-2">Community Focus</h3>
+                  <p className="text-sm text-primary-100">Learn and grow with fellow believers</p>
+                </div>
               </div>
-              <div className="bg-neutral-50 p-8 rounded-lg">
-                <Compass className="h-8 w-8 text-primary-600 mb-4" />
-                <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
-                  Core Doctrine Navigator
-                </h3>
-                <p className="text-neutral-700">
-                  Explore the foundational doctrines of Christianity, rooted firmly in biblical understanding.
-                </p>
-              </div>
-              <div className="bg-neutral-50 p-8 rounded-lg">
-                <BookOpen className="h-8 w-8 text-primary-600 mb-4" />
-                <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
-                  Unlocking the Bible
-                </h3>
-                <p className="text-neutral-700">
-                  Engage in a gamified, sequential reading experience from Genesis to Revelation.
-                </p>
-              </div>
-              <div className="bg-neutral-50 p-8 rounded-lg">
-                <Users className="h-8 w-8 text-primary-600 mb-4" />
-                <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
-                  Community & Connection
-                </h3>
-                <p className="text-neutral-700">
-                  Engage in curated discussions, join study groups, and find accountability partners.
-                </p>
-              </div>
+            </div>
+            <div className="text-center lg:text-left">
+              <blockquote className="text-2xl font-heading italic mb-6">
+                "All Scripture is breathed out by God and profitable for teaching, for reproof, 
+                for correction, and for training in righteousness..."
+              </blockquote>
+              <p className="text-primary-200">2 Timothy 3:16 (ESV)</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Section 5: Begin Your Journey */}
-      <section className="py-24 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white">
+      {/* Call to Action */}
+      <section className="py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold mb-8">
-              Begin Your Journey
+            <h2 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-900 mb-6">
+              Begin Your Journey Today
             </h2>
-            <p className="text-xl text-primary-100 mb-12">
-              Discover Truth. Dispel Myth. Dive Deep.
+            <p className="text-xl text-neutral-600 mb-8 max-w-2xl mx-auto">
+              Join us in discovering the depths of biblical truth and growing in 
+              understanding of God's Word.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/register">
                 <Button 
-                  variant="secondary" 
+                  variant="primary" 
                   size="lg"
                   className="group"
                 >
-                  Start Your Journey
+                  Create Your Account
                   <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
@@ -214,7 +250,6 @@ const LandingPage = () => {
                 <Button 
                   variant="outline" 
                   size="lg"
-                  className="bg-transparent text-white border-white hover:bg-white/10"
                 >
                   Sign In
                 </Button>
@@ -223,21 +258,6 @@ const LandingPage = () => {
           </motion.div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="py-12 bg-neutral-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <blockquote className="text-lg italic mb-8">
-            "Your word is a lamp to my feet and a light to my path."
-            <footer className="text-neutral-400 mt-2">— Psalm 119:105 (ESV)</footer>
-          </blockquote>
-          <div className="text-sm text-neutral-400">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            {' • '}
-            <a href="#" className="hover:text-white">Terms of Service</a>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 };
