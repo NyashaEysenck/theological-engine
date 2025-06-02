@@ -14,7 +14,7 @@ const LoginPage = () => {
   const location = useLocation();
 
   // Get the location user was trying to access before being redirected
-  const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/dashboard';
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ const LoginPage = () => {
   const handleDemoLogin = async () => {
     const success = await login('demo@example.com', 'password123');
     if (success) {
-      navigate(from, { replace: true });
+      navigate('/dashboard', { replace: true });
     }
   };
 
