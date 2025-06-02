@@ -94,39 +94,92 @@ const LandingPage = () => {
 
       {/* Section 3: Our Invitation to All Seekers */}
       <section className="py-24 bg-gradient-to-br from-primary-50 to-primary-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-12">
+            <h2 className="text-3xl lg:text-4xl font-heading font-bold text-neutral-900 mb-12 text-center">
               Our Invitation to All Seekers
             </h2>
-            <div className="prose prose-lg mx-auto text-neutral-700">
-              <p className="text-xl mb-8">Welcome, seeker.</p>
-              <div className="space-y-4 mb-8">
-                <p>To the believer earnestly desiring deeper roots in truth.</p>
-                <p>To the curious mind, wrestling with doubt or misunderstanding.</p>
-                <p>To the skeptic, questioning assumptions and seeking answers.</p>
-                <p>To the non-believer, exploring the foundational claims of Christianity.</p>
-                <p>To the critic, ready to examine.</p>
+            
+            <div className="grid md:grid-cols-2 gap-12 mb-12">
+              <div className="space-y-6">
+                <div className="bg-white p-8 rounded-lg shadow-sm">
+                  <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-4">
+                    To the Believer
+                  </h3>
+                  <p className="text-neutral-700 mb-4">
+                    Seeking deeper roots in truth and a fuller understanding of God's Word. Let us journey together in strengthening your foundation.
+                  </p>
+                  <blockquote className="text-sm text-neutral-600 italic border-l-4 border-primary-200 pl-4">
+                    "But grow in the grace and knowledge of our Lord and Savior Jesus Christ."
+                    <footer className="mt-1">— 2 Peter 3:18 (ESV)</footer>
+                  </blockquote>
+                </div>
+
+                <div className="bg-white p-8 rounded-lg shadow-sm">
+                  <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-4">
+                    To the Seeker
+                  </h3>
+                  <p className="text-neutral-700 mb-4">
+                    Wrestling with questions and searching for truth. We welcome your curiosity and desire to understand.
+                  </p>
+                  <blockquote className="text-sm text-neutral-600 italic border-l-4 border-primary-200 pl-4">
+                    "You will seek me and find me, when you seek me with all your heart."
+                    <footer className="mt-1">— Jeremiah 29:13 (ESV)</footer>
+                  </blockquote>
+                </div>
               </div>
-              <p className="text-lg mb-8">
+
+              <div className="space-y-6">
+                <div className="bg-white p-8 rounded-lg shadow-sm">
+                  <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-4">
+                    To the Skeptic
+                  </h3>
+                  <p className="text-neutral-700 mb-4">
+                    Questioning assumptions and demanding evidence. Your critical thinking is valued here as we examine truth together.
+                  </p>
+                  <blockquote className="text-sm text-neutral-600 italic border-l-4 border-primary-200 pl-4">
+                    "Come now, let us reason together, says the LORD."
+                    <footer className="mt-1">— Isaiah 1:18 (ESV)</footer>
+                  </blockquote>
+                </div>
+
+                <div className="bg-white p-8 rounded-lg shadow-sm">
+                  <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-4">
+                    To the Critic
+                  </h3>
+                  <p className="text-neutral-700 mb-4">
+                    Challenging established interpretations and seeking authentic understanding. Your perspective enriches our pursuit of truth.
+                  </p>
+                  <blockquote className="text-sm text-neutral-600 italic border-l-4 border-primary-200 pl-4">
+                    "Test everything; hold fast what is good."
+                    <footer className="mt-1">— 1 Thessalonians 5:21 (ESV)</footer>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-sm text-center">
+              <h3 className="text-2xl font-heading font-semibold text-neutral-900 mb-4">
+                A Common Journey
+              </h3>
+              <p className="text-lg text-neutral-700 mb-6">
                 Just as Micaiah stood firm to deliver God's true message amidst a chorus of deceptive voices, 
-                Micaiah's Stand equips you to discern and embrace the authentic Word.
+                we invite you to join us in discovering and understanding the authentic Word of God.
               </p>
-              <blockquote className="text-lg italic mb-8">
-                "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him."
-                <footer className="text-neutral-500 mt-2">— James 1:5 (ESV)</footer>
-              </blockquote>
-              <blockquote className="text-lg italic mb-8">
-                "You will know the truth, and the truth will set you free."
-                <footer className="text-neutral-500 mt-2">— John 8:32 (ESV)</footer>
-              </blockquote>
-              <p className="text-lg">
-                This journey is for all who hunger for the genuine, unvarnished Word of God.
-              </p>
+              <div className="space-y-4">
+                <blockquote className="text-neutral-700 italic">
+                  "If any of you lacks wisdom, let him ask God, who gives generously to all without reproach, and it will be given him."
+                  <footer className="text-neutral-500 mt-2">— James 1:5 (ESV)</footer>
+                </blockquote>
+                <blockquote className="text-neutral-700 italic">
+                  "You will know the truth, and the truth will set you free."
+                  <footer className="text-neutral-500 mt-2">— John 8:32 (ESV)</footer>
+                </blockquote>
+              </div>
             </div>
           </motion.div>
         </div>
