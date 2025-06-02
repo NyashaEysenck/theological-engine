@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { Book, Menu, X, LogOut, User, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
@@ -14,6 +14,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isAuthenticated, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -24,8 +25,8 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
     closeMenu();
   };
 
-  // If it's a login/register page, use simplified header
-  if (isAuthPage) {
+  // If it's a login/register page or landing page, use simplified header
+  if (isAuthPage || location.pathname === '/') {
     return (
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-4'
@@ -35,6 +36,12 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <Book className="h-6 w-6 text-primary-600" />
             <span className="font-heading font-semibold text-xl text-primary-900">Micaiah's Stand</span>
           </Link>
+          {location.pathname === '/' && (
+            <div className="flex items-center space-x-4">
+              <Button variant="outline" size="sm" onClick={() => navigate('/login')}>Log In</Button>
+              <Button variant="primary" size="sm" onClick={() => navigate('/register')}>Sign Up</Button>
+            </div>
+          )}
         </div>
       </header>
     );
@@ -53,6 +60,18 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
+            {isAuthenticated && (
+              <NavLink 
+                to="/dashboard" 
+                className={({ isActive }) => 
+                  `text-sm font-medium transition-colors hover:text-primary-600 ${
+                    isActive ? 'text-primary-600' : 'text-neutral-700'
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
+            )}
             <NavLink 
               to="/myths" 
               className={({ isActive }) => 
@@ -158,6 +177,19 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-4">
+                {isAuthenticated && (
+                  <NavLink 
+                    to="/dashboard" 
+                    className={({ isActive }) => 
+                      `px-2 py-2 text-base font-medium ${
+                        isActive ? 'text-primary-600' : 'text-neutral-700'
+                      }`
+                    }
+                    onClick={closeMenu}
+                  >
+                    Dashboard
+                  </NavLink>
+                )}
                 <NavLink 
                   to="/myths" 
                   className={({ isActive }) => 
@@ -210,6 +242,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                         isActive ? 'text-primary-600' : 'text-neutral-700'
                       }`
                     }
+                
                     onClick={closeMenu}
                   >
                     Bible Reading

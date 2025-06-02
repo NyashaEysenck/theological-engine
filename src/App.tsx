@@ -6,7 +6,8 @@ import { AnimatePresence } from 'framer-motion';
 import MainLayout from './layouts/MainLayout';
 
 // Pages
-import HomePage from './pages/HomePage';
+import LandingPage from './pages/LandingPage';
+import DashboardPage from './pages/DashboardPage';
 import MythsPage from './pages/MythsPage';
 import MythDetailPage from './pages/MythDetailPage';
 import DoctrinesPage from './pages/DoctrinesPage';
@@ -33,17 +34,20 @@ function App() {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
+        {/* Landing Page */}
+        <Route index element={<LandingPage />} />
+
+        {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
-          {/* Public Routes */}
-          <Route index element={<HomePage />} />
-          <Route path="myths" element={<MythsPage />} />
-          <Route path="myths/:id" element={<MythDetailPage />} />
-          <Route path="doctrines" element={<DoctrinesPage />} />
-          <Route path="doctrines/:id" element={<DoctrineDetailPage />} />
-          <Route path="query" element={<QueryEnginePage />} />
-          <Route path="scripture-context" element={<ScriptureContextPage />} />
-          
           {/* Protected Routes */}
+          <Route 
+            path="dashboard" 
+            element={
+              <ProtectedRoute>
+                <DashboardPage />
+              </ProtectedRoute>
+            } 
+          />
           <Route 
             path="bible-reading" 
             element={
@@ -60,6 +64,14 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          
+          {/* Public Routes */}
+          <Route path="myths" element={<MythsPage />} />
+          <Route path="myths/:id" element={<MythDetailPage />} />
+          <Route path="doctrines" element={<DoctrinesPage />} />
+          <Route path="doctrines/:id" element={<DoctrineDetailPage />} />
+          <Route path="query" element={<QueryEnginePage />} />
+          <Route path="scripture-context" element={<ScriptureContextPage />} />
           
           {/* Auth Routes */}
           <Route path="login" element={<LoginPage />} />
