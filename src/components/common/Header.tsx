@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Book, Menu, X, LogOut, User } from 'lucide-react';
+import { Book, Menu, X, LogOut, User, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
 import Button from './Button';
@@ -25,8 +25,8 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
     closeMenu();
   };
 
-  // If it's a login/register page, use simplified header
-  if (isAuthPage) {
+  // If it's a login/register page or landing page, use simplified header
+  if (isAuthPage || location.pathname === '/') {
     return (
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-4'
@@ -36,50 +36,17 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <Book className="h-6 w-6 text-primary-600" />
             <span className="font-heading font-semibold text-xl text-primary-900">Micaiah's Stand</span>
           </Link>
+          {location.pathname === '/' && (
+            <div className="flex items-center space-x-4">
+              <Button variant="outline" size="sm" onClick={() => navigate('/login')}>Log In</Button>
+              <Button variant="primary" size="sm" onClick={() => navigate('/register')}>Sign Up</Button>
+            </div>
+          )}
         </div>
       </header>
     );
   }
 
-  // Landing page header
-  if (location.pathname === '/') {
-    return (
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-4'
-      }`}>
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <Book className="h-6 w-6 text-primary-600" />
-            <span className={`font-heading font-semibold text-xl ${
-              isScrolled ? 'text-primary-900' : 'text-white'
-            }`}>
-              Micaiah's Stand
-            </span>
-          </Link>
-          <div className="flex items-center space-x-4">
-            <Button 
-              variant={isScrolled ? "outline" : "ghost"} 
-              size="sm" 
-              onClick={() => navigate('/login')}
-              className={!isScrolled ? 'text-white hover:bg-white/10' : ''}
-            >
-              Log In
-            </Button>
-            <Button 
-              variant={isScrolled ? "primary" : "secondary"} 
-              size="sm" 
-              onClick={() => navigate('/register')}
-              className={!isScrolled ? 'bg-white text-primary-900 hover:bg-white/90' : ''}
-            >
-              Sign Up
-            </Button>
-          </div>
-        </div>
-      </header>
-    );
-  }
-
-  // Main app header
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-4'
@@ -275,6 +242,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                         isActive ? 'text-primary-600' : 'text-neutral-700'
                       }`
                     }
+                
                     onClick={closeMenu}
                   >
                     Bible Reading
