@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { Book, Menu, X, LogOut, User, Search } from 'lucide-react';
+import { Book, Menu, X, LogOut, User, Search, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../../contexts/AuthContext';
 import Button from './Button';
@@ -12,7 +12,7 @@ interface HeaderProps {
 
 const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -24,6 +24,9 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
     navigate('/');
     closeMenu();
   };
+
+  // Check if user is admin (in a real app, this would be based on user roles)
+  const isAdmin = user?.email === 'admin@example.com';
 
   // If it's a login/register page or landing page, use simplified header
   if (isAuthPage || location.pathname === '/') {
@@ -122,6 +125,19 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                 }
               >
                 Bible Reading
+              </NavLink>
+            )}
+            {isAdmin && (
+              <NavLink 
+                to="/admin" 
+                className={({ isActive }) => 
+                  `text-sm font-medium transition-colors hover:text-primary-600 ${
+                    isActive ? 'text-primary-600' : 'text-neutral-700'
+                  }`
+                }
+              >
+                <Shield className="h-4 w-4 inline-block mr-1" />
+                Admin
               </NavLink>
             )}
           </nav>
@@ -242,10 +258,23 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                         isActive ? 'text-primary-600' : 'text-neutral-700'
                       }`
                     }
-                
                     onClick={closeMenu}
                   >
                     Bible Reading
+                  </NavLink>
+                )}
+                {isAdmin && (
+                  <NavLink 
+                    to="/admin" 
+                    className={({ isActive }) => 
+                      `px-2 py-2 text-base font-medium ${
+                        isActive ? 'text-primary-600' : 'text-neutral-700'
+                      }`
+                    }
+                    onClick={closeMenu}
+                  >
+                    <Shield className="h-4 w-4 inline-block mr-1" />
+                    Admin
                   </NavLink>
                 )}
 

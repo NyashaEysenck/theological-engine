@@ -25,7 +25,6 @@ const LandingNav = () => {
               variant="secondary" 
               size="sm" 
               to="/register"
-              className="bg-white text-primary-600 hover:bg-white/90"
             >
               Get Started
             </Button>

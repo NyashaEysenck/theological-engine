@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Book, Search, Shield, ScrollText, ChevronRight, Users, Compass, BookOpen, Lock } from 'lucide-react';
+import { Book, Search, Shield, ScrollText, ChevronRight, Users, Compass, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 import LandingNav from '../components/landing/LandingNav';
@@ -281,16 +281,74 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-neutral-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <blockquote className="text-lg italic mb-8">
-            "Your word is a lamp to my feet and a light to my path."
-            <footer className="text-neutral-400 mt-2">— Psalm 119:105 (ESV)</footer>
-          </blockquote>
-          <div className="text-sm text-neutral-400">
-            <a href="#" className="hover:text-white">Privacy Policy</a>
-            {' • '}
-            <a href="#" className="hover:text-white">Terms of Service</a>
+      <footer className="bg-neutral-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div className="col-span-1 md:col-span-2">
+              <Link to="/" className="flex items-center space-x-2 mb-4">
+                <Book className="h-6 w-6 text-white" />
+                <span className="font-heading font-semibold text-xl">Micaiah's Stand</span>
+              </Link>
+              <p className="text-neutral-400 mb-4 max-w-md">
+                An interactive theological discernment engine designed to help Christians identify and correct common myths and misinterpretations through careful study of Scripture.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="font-heading font-medium text-sm uppercase mb-4">Features</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/myths" className="text-neutral-400 hover:text-white transition-colors">
+                    Myth Deconstruction
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/doctrines" className="text-neutral-400 hover:text-white transition-colors">
+                    Core Doctrines
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/query" className="text-neutral-400 hover:text-white transition-colors">
+                    Bible Query Engine
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/bible-reading" className="text-neutral-400 hover:text-white transition-colors">
+                    Bible Reading
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-heading font-medium text-sm uppercase mb-4">Account</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/register" className="text-neutral-400 hover:text-white transition-colors">
+                    Get Started
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="text-neutral-400 hover:text-white transition-colors">
+                    Sign In
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-sm text-neutral-500 mb-4 md:mb-0">
+              © {new Date().getFullYear()} Micaiah's Stand. All rights reserved.
+            </p>
+            <div className="flex space-x-6">
+              <Link to="#" className="text-sm text-neutral-500 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="#" className="text-sm text-neutral-500 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+            </div>
           </div>
         </div>
       </footer>

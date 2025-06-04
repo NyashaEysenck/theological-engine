@@ -19,6 +19,7 @@ import ProfilePage from './pages/ProfilePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
+import AdminPage from './pages/AdminPage';
 
 // Protected Routes
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -61,6 +62,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <ProfilePage />
+              </ProtectedRoute>
+            } 
+          />
+          <Route 
+            path="admin" 
+            element={
+              <ProtectedRoute>
+                <AdminPage />
               </ProtectedRoute>
             } 
           />
