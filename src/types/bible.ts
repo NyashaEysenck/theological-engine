@@ -43,3 +43,9 @@ export interface ReadingProgress {
   currentChapter: number;
   overallProgress: number;
 }
+
+export interface Verse {
+  number: number;
+  text: string;
+  explanation?: string;
+}
