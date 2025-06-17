@@ -29,17 +29,50 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
   if (isAuthPage || location.pathname === '/') {
     return (
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-4'
+        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft py-3' : 'bg-transparent py-4'
       }`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <Book className="h-6 w-6 text-primary-600" />
-            <span className="font-heading font-semibold text-xl text-primary-900">Micaiah's Stand</span>
+          <Link to="/" className="flex items-center space-x-3">
+            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+              isScrolled ? 'bg-primary-700' : 'bg-white/10 backdrop-blur-sm'
+            }`}>
+              <Book className={`h-5 w-5 ${isScrolled ? 'text-white' : 'text-white'}`} />
+            </div>
+            <div>
+              <span className={`font-heading font-bold text-xl transition-colors ${
+                isScrolled ? 'text-primary-800' : 'text-white'
+              }`}>
+                Scripture Threads
+              </span>
+              <div className={`text-xs transition-colors ${
+                isScrolled ? 'text-primary-600' : 'text-primary-200'
+              }`}>
+                Micaiah's Stand
+              </div>
+            </div>
           </Link>
           {location.pathname === '/' && (
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm" onClick={() => navigate('/login')}>Log In</Button>
-              <Button variant="primary" size="sm" onClick={() => navigate('/register')}>Sign Up</Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => navigate('/login')}
+                className={`transition-colors ${
+                  isScrolled 
+                    ? 'border-primary-300 text-primary-700 hover:bg-primary-50' 
+                    : 'border-white/30 text-white hover:bg-white/10 backdrop-blur-sm'
+                }`}
+              >
+                Sign In
+              </Button>
+              <Button 
+                variant="primary" 
+                size="sm" 
+                onClick={() => navigate('/register')}
+                className="bg-primary-700 hover:bg-primary-800 text-white shadow-soft"
+              >
+                Get Started
+              </Button>
             </div>
           )}
         </div>
@@ -49,13 +82,18 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-4'
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-soft py-3' : 'bg-transparent py-4'
     }`}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-2">
-            <Book className="h-6 w-6 text-primary-600" />
-            <span className="font-heading font-semibold text-xl text-primary-900">Micaiah's Stand</span>
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="w-10 h-10 bg-primary-700 rounded-xl flex items-center justify-center">
+              <Book className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <span className="font-heading font-bold text-xl text-primary-800">Scripture Threads</span>
+              <div className="text-xs text-primary-600">Micaiah's Stand</div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -64,8 +102,8 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
               <NavLink 
                 to="/dashboard" 
                 className={({ isActive }) => 
-                  `text-sm font-medium transition-colors hover:text-primary-600 ${
-                    isActive ? 'text-primary-600' : 'text-neutral-700'
+                  `text-sm font-medium transition-colors hover:text-primary-700 ${
+                    isActive ? 'text-primary-700' : 'text-neutral-700'
                   }`
                 }
               >
@@ -75,8 +113,8 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <NavLink 
               to="/myths" 
               className={({ isActive }) => 
-                `text-sm font-medium transition-colors hover:text-primary-600 ${
-                  isActive ? 'text-primary-600' : 'text-neutral-700'
+                `text-sm font-medium transition-colors hover:text-primary-700 ${
+                  isActive ? 'text-primary-700' : 'text-neutral-700'
                 }`
               }
             >
@@ -85,8 +123,8 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <NavLink 
               to="/doctrines" 
               className={({ isActive }) => 
-                `text-sm font-medium transition-colors hover:text-primary-600 ${
-                  isActive ? 'text-primary-600' : 'text-neutral-700'
+                `text-sm font-medium transition-colors hover:text-primary-700 ${
+                  isActive ? 'text-primary-700' : 'text-neutral-700'
                 }`
               }
             >
@@ -95,18 +133,18 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <NavLink 
               to="/query" 
               className={({ isActive }) => 
-                `text-sm font-medium transition-colors hover:text-primary-600 ${
-                  isActive ? 'text-primary-600' : 'text-neutral-700'
+                `text-sm font-medium transition-colors hover:text-primary-700 ${
+                  isActive ? 'text-primary-700' : 'text-neutral-700'
                 }`
               }
             >
-              Bible Query
+              AI Query
             </NavLink>
             <NavLink 
               to="/scripture-context" 
               className={({ isActive }) => 
-                `text-sm font-medium transition-colors hover:text-primary-600 ${
-                  isActive ? 'text-primary-600' : 'text-neutral-700'
+                `text-sm font-medium transition-colors hover:text-primary-700 ${
+                  isActive ? 'text-primary-700' : 'text-neutral-700'
                 }`
               }
             >
@@ -116,12 +154,12 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
               <NavLink 
                 to="/bible-reading" 
                 className={({ isActive }) => 
-                  `text-sm font-medium transition-colors hover:text-primary-600 ${
-                    isActive ? 'text-primary-600' : 'text-neutral-700'
+                  `text-sm font-medium transition-colors hover:text-primary-700 ${
+                    isActive ? 'text-primary-700' : 'text-neutral-700'
                   }`
                 }
               >
-                Bible Reading
+                Scripture Threads
               </NavLink>
             )}
           </nav>
@@ -134,7 +172,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                   to="/profile"
                   className={({ isActive }) => 
                     `flex items-center space-x-1 text-sm font-medium ${
-                      isActive ? 'text-primary-600' : 'text-neutral-700 hover:text-primary-600'
+                      isActive ? 'text-primary-700' : 'text-neutral-700 hover:text-primary-700'
                     }`
                   }
                 >
@@ -148,15 +186,15 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
               </div>
             ) : (
               <div className="flex items-center space-x-3">
-                <Button variant="outline" size="sm" onClick={() => navigate('/login')}>Log In</Button>
-                <Button variant="primary" size="sm" onClick={() => navigate('/register')}>Sign Up</Button>
+                <Button variant="outline" size="sm" onClick={() => navigate('/login')}>Sign In</Button>
+                <Button variant="primary" size="sm" onClick={() => navigate('/register')}>Get Started</Button>
               </div>
             )}
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-neutral-700 hover:text-primary-600"
+            className="md:hidden p-2 text-neutral-700 hover:text-primary-700"
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
@@ -173,7 +211,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white border-t border-neutral-200"
+            className="md:hidden bg-white/95 backdrop-blur-md border-t border-secondary-200"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-4">
@@ -182,7 +220,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                     to="/dashboard" 
                     className={({ isActive }) => 
                       `px-2 py-2 text-base font-medium ${
-                        isActive ? 'text-primary-600' : 'text-neutral-700'
+                        isActive ? 'text-primary-700' : 'text-neutral-700'
                       }`
                     }
                     onClick={closeMenu}
@@ -194,7 +232,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                   to="/myths" 
                   className={({ isActive }) => 
                     `px-2 py-2 text-base font-medium ${
-                      isActive ? 'text-primary-600' : 'text-neutral-700'
+                      isActive ? 'text-primary-700' : 'text-neutral-700'
                     }`
                   }
                   onClick={closeMenu}
@@ -205,7 +243,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                   to="/doctrines" 
                   className={({ isActive }) => 
                     `px-2 py-2 text-base font-medium ${
-                      isActive ? 'text-primary-600' : 'text-neutral-700'
+                      isActive ? 'text-primary-700' : 'text-neutral-700'
                     }`
                   }
                   onClick={closeMenu}
@@ -216,18 +254,18 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                   to="/query" 
                   className={({ isActive }) => 
                     `px-2 py-2 text-base font-medium ${
-                      isActive ? 'text-primary-600' : 'text-neutral-700'
+                      isActive ? 'text-primary-700' : 'text-neutral-700'
                     }`
                   }
                   onClick={closeMenu}
                 >
-                  Bible Query
+                  AI Query
                 </NavLink>
                 <NavLink 
                   to="/scripture-context" 
                   className={({ isActive }) => 
                     `px-2 py-2 text-base font-medium ${
-                      isActive ? 'text-primary-600' : 'text-neutral-700'
+                      isActive ? 'text-primary-700' : 'text-neutral-700'
                     }`
                   }
                   onClick={closeMenu}
@@ -239,24 +277,23 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                     to="/bible-reading" 
                     className={({ isActive }) => 
                       `px-2 py-2 text-base font-medium ${
-                        isActive ? 'text-primary-600' : 'text-neutral-700'
+                        isActive ? 'text-primary-700' : 'text-neutral-700'
                       }`
                     }
-                
                     onClick={closeMenu}
                   >
-                    Bible Reading
+                    Scripture Threads
                   </NavLink>
                 )}
 
-                <div className="pt-2 border-t border-neutral-200">
+                <div className="pt-2 border-t border-secondary-200">
                   {isAuthenticated ? (
                     <>
                       <NavLink 
                         to="/profile" 
                         className={({ isActive }) => 
                           `px-2 py-2 text-base font-medium flex items-center ${
-                            isActive ? 'text-primary-600' : 'text-neutral-700'
+                            isActive ? 'text-primary-700' : 'text-neutral-700'
                           }`
                         }
                         onClick={closeMenu}
@@ -282,7 +319,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                           closeMenu();
                         }}
                       >
-                        Log In
+                        Sign In
                       </Button>
                       <Button 
                         variant="primary" 
@@ -292,7 +329,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
                           closeMenu();
                         }}
                       >
-                        Sign Up
+                        Get Started
                       </Button>
                     </div>
                   )}

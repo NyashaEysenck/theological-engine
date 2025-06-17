@@ -49,7 +49,7 @@ const MainLayout = () => {
   const isAuthPage = pathname === '/login' || pathname === '/register';
 
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-50">
+    <div className="flex flex-col min-h-screen bg-secondary-100">
       <Header isScrolled={isScrolled} isAuthPage={isAuthPage} />
       
       <main className="flex-grow">
