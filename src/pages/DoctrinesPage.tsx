@@ -41,57 +41,59 @@ const DoctrinesPage = () => {
 
   return (
     <div className="mt-24">
-      <div className="max-w-4xl mx-auto px-4">
+      <div className="max-w-5xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl font-heading font-bold text-neutral-900 mb-4">
-            Core Christian Doctrines
-          </h1>
-          <p className="text-lg text-neutral-700 mb-8">
-            Explore foundational biblical teachings and understand their significance for faith and practice.
-          </p>
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-heading font-bold text-primary-900 mb-6">
+              Core Christian Doctrines
+            </h1>
+            <p className="text-xl text-neutral-700 leading-relaxed max-w-3xl mx-auto">
+              Explore foundational biblical teachings and understand their significance for faith and practice.
+            </p>
+          </div>
 
           {/* Search Bar */}
-          <div className="relative mb-8">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 h-5 w-5" />
+          <div className="relative mb-12">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 h-6 w-6" />
             <input
               type="text"
               placeholder="Search doctrines..."
               value={searchTerm}
               onChange={handleSearch}
-              className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              className="w-full pl-12 pr-6 py-4 border-2 border-neutral-300 rounded-xl focus:ring-2 focus:ring-primary-600 focus:border-primary-600 text-lg"
             />
           </div>
 
           {/* Doctrines List */}
           {isLoading ? (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {[1, 2, 3].map((n) => (
                 <div key={n} className="animate-pulse">
-                  <div className="h-40 bg-neutral-100 rounded-lg"></div>
+                  <div className="h-48 bg-neutral-100 rounded-2xl"></div>
                 </div>
               ))}
             </div>
           ) : (
-            <div className="space-y-6">
+            <div className="space-y-8">
               {doctrines.map((doctrine) => (
                 <motion.div
                   key={doctrine.id}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="bg-white p-6 rounded-lg shadow-sm border border-neutral-200"
+                  className="bg-white p-8 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 border border-neutral-200"
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <h2 className="text-xl font-heading font-semibold text-neutral-900">
+                  <div className="flex justify-between items-start mb-6">
+                    <h2 className="text-2xl font-heading font-semibold text-primary-900 leading-tight">
                       {doctrine.title}
                     </h2>
                     {isAuthenticated && (
                       <button
                         onClick={() => handleToggleFavorite(doctrine.id)}
-                        className="text-primary-600 hover:text-primary-700"
+                        className="text-primary-900 hover:text-primary-700 transition-colors"
                       >
                         <Heart 
                           className={`h-6 w-6 ${
@@ -102,18 +104,18 @@ const DoctrinesPage = () => {
                     )}
                   </div>
                   
-                  <p className="text-neutral-700 mb-4">
+                  <p className="text-neutral-700 mb-6 leading-relaxed text-lg">
                     {doctrine.summary}
                   </p>
                   
-                  <div className="mb-4">
-                    <span className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full">
+                  <div className="mb-6">
+                    <span className="px-4 py-2 bg-primary-50 text-primary-900 text-sm rounded-full border border-primary-200">
                       {doctrine.category}
                     </span>
                   </div>
                   
                   <Link to={`/doctrines/${doctrine.id}`}>
-                    <Button variant="outline" size="sm">
+                    <Button variant="outline" size="md">
                       Explore Doctrine
                     </Button>
                   </Link>
@@ -123,8 +125,8 @@ const DoctrinesPage = () => {
           )}
 
           {!isLoading && doctrines.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-neutral-600">No doctrines found matching your search.</p>
+            <div className="text-center py-16">
+              <p className="text-neutral-600 text-lg">No doctrines found matching your search.</p>
             </div>
           )}
         </motion.div>

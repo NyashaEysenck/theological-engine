@@ -57,18 +57,18 @@ const BibleReadingPage = () => {
           transition={{ duration: 0.5 }}
         >
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl font-heading font-bold text-neutral-900 mb-4">
+          <div className="text-center mb-12">
+            <h1 className="text-5xl font-heading font-bold text-primary-900 mb-6">
               Bible Reading
             </h1>
-            <p className="text-lg text-neutral-700">
+            <p className="text-xl text-neutral-700 leading-relaxed max-w-3xl mx-auto">
               Read Scripture chapter by chapter with verse-by-verse explanations and community insights.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
             {/* Left Sidebar - Book and Chapter Selection */}
-            <div className="lg:col-span-1 space-y-6">
+            <div className="lg:col-span-1 space-y-8">
               <BookSelector
                 books={bibleBooks}
                 selectedBook={selectedBook}
@@ -86,17 +86,17 @@ const BibleReadingPage = () => {
               )}
 
               {/* Reading Controls */}
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-neutral-200">
-                <h3 className="font-medium text-neutral-900 mb-3">Reading Options</h3>
-                <div className="space-y-2">
+              <div className="bg-white p-6 rounded-2xl shadow-card border border-neutral-200">
+                <h3 className="font-medium text-primary-900 mb-4 uppercase tracking-wider text-sm">Reading Options</h3>
+                <div className="space-y-3">
                   <label className="flex items-center">
                     <input
                       type="checkbox"
                       checked={showVerseNumbers}
                       onChange={(e) => setShowVerseNumbers(e.target.checked)}
-                      className="rounded border-neutral-300 text-primary-600 focus:ring-primary-500"
+                      className="rounded border-neutral-300 text-primary-900 focus:ring-primary-500"
                     />
-                    <span className="ml-2 text-sm text-neutral-700">Show verse numbers</span>
+                    <span className="ml-3 text-sm text-neutral-700">Show verse numbers</span>
                   </label>
                 </div>
               </div>
@@ -106,10 +106,10 @@ const BibleReadingPage = () => {
             <div className="lg:col-span-2">
               {selectedBook && selectedChapter ? (
                 isLoading ? (
-                  <div className="bg-white p-8 rounded-lg shadow-sm border border-neutral-200">
-                    <div className="animate-pulse space-y-4">
-                      <div className="h-8 bg-neutral-200 rounded w-3/4"></div>
-                      <div className="space-y-3">
+                  <div className="bg-white p-10 rounded-2xl shadow-card border border-neutral-200">
+                    <div className="animate-pulse space-y-6">
+                      <div className="h-10 bg-neutral-200 rounded w-3/4"></div>
+                      <div className="space-y-4">
                         <div className="h-4 bg-neutral-200 rounded"></div>
                         <div className="h-4 bg-neutral-200 rounded w-5/6"></div>
                         <div className="h-4 bg-neutral-200 rounded w-4/6"></div>
@@ -126,11 +126,11 @@ const BibleReadingPage = () => {
                   />
                 )
               ) : (
-                <div className="bg-white p-8 rounded-lg shadow-sm border border-neutral-200 text-center">
-                  <h2 className="text-xl font-heading font-semibold text-neutral-900 mb-4">
+                <div className="bg-white p-10 rounded-2xl shadow-card border border-neutral-200 text-center">
+                  <h2 className="text-2xl font-heading font-semibold text-primary-900 mb-6">
                     Select a Book and Chapter
                   </h2>
-                  <p className="text-neutral-600 mb-6">
+                  <p className="text-neutral-600 mb-8 leading-relaxed">
                     Choose a book from the sidebar to begin reading Scripture with detailed explanations.
                   </p>
                   <Button

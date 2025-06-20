@@ -24,20 +24,20 @@ const BookSelector = ({ books, selectedBook, onBookSelect, readingProgress }: Bo
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-neutral-200">
-      <h2 className="text-xl font-heading font-semibold text-neutral-900 mb-4 flex items-center">
-        <Book className="h-5 w-5 text-primary-600 mr-2" />
+    <div className="bg-white p-8 rounded-2xl shadow-card border border-neutral-200">
+      <h2 className="text-xl font-heading font-semibold text-primary-900 mb-6 flex items-center uppercase tracking-wider">
+        <Book className="h-5 w-5 text-primary-900 mr-3" />
         Select a Book
       </h2>
       
-      <div className="space-y-3">
+      <div className="space-y-4">
         {Object.entries(books).map(([genre, genreBooks]) => (
-          <div key={genre} className="border border-neutral-200 rounded-lg overflow-hidden">
+          <div key={genre} className="border border-neutral-200 rounded-xl overflow-hidden">
             <button
               onClick={() => toggleGenre(genre)}
-              className="w-full px-4 py-3 bg-neutral-50 hover:bg-neutral-100 flex justify-between items-center transition-colors"
+              className="w-full px-6 py-4 bg-neutral-50 hover:bg-neutral-100 flex justify-between items-center transition-colors"
             >
-              <span className="font-medium text-neutral-900 capitalize">{genre}</span>
+              <span className="font-medium text-primary-900 capitalize tracking-wide">{genre}</span>
               {expandedGenre === genre ? (
                 <ChevronUp className="h-4 w-4 text-neutral-600" />
               ) : (
@@ -53,7 +53,7 @@ const BookSelector = ({ books, selectedBook, onBookSelect, readingProgress }: Bo
                 transition={{ duration: 0.3 }}
                 className="border-t border-neutral-200"
               >
-                <div className="p-2 space-y-1">
+                <div className="p-3 space-y-2">
                   {genreBooks.map((book) => {
                     const progress = getBookProgress(book.id, book.chapters);
                     const isSelected = selectedBook?.id === book.id;
@@ -62,10 +62,10 @@ const BookSelector = ({ books, selectedBook, onBookSelect, readingProgress }: Bo
                       <button
                         key={book.id}
                         onClick={() => onBookSelect(book)}
-                        className={`w-full text-left px-3 py-2 rounded transition-colors ${
+                        className={`w-full text-left px-4 py-3 rounded-lg transition-colors ${
                           isSelected
-                            ? 'bg-primary-100 text-primary-900 border border-primary-200'
-                            : 'hover:bg-neutral-50'
+                            ? 'bg-primary-100 text-primary-900 border-2 border-primary-300'
+                            : 'hover:bg-neutral-50 border-2 border-transparent'
                         }`}
                       >
                         <div className="flex justify-between items-center">
@@ -75,9 +75,9 @@ const BookSelector = ({ books, selectedBook, onBookSelect, readingProgress }: Bo
                           </span>
                         </div>
                         {progress > 0 && (
-                          <div className="mt-1 h-1 bg-neutral-200 rounded-full overflow-hidden">
+                          <div className="mt-2 h-1 bg-neutral-200 rounded-full overflow-hidden">
                             <div 
-                              className="h-full bg-primary-500 rounded-full transition-all"
+                              className="h-full bg-primary-600 rounded-full transition-all"
                               style={{ width: `${(progress / book.chapters) * 100}%` }}
                             />
                           </div>

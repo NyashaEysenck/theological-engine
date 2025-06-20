@@ -58,7 +58,7 @@ const MainLayout = () => {
           initial="initial"
           animate="animate"
           exit="exit"
-          className="container mx-auto px-4 py-6 md:py-8"
+          className="container mx-auto px-4 py-8 md:py-12"
         >
           <Outlet />
         </motion.div>
