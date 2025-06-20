@@ -35,49 +35,49 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
   const selectedVerseData = verses.find(v => v.number === selectedVerse);
 
   return (
-    <div className="bg-white rounded-2xl shadow-card border border-neutral-200 overflow-hidden">
-      <div className="p-8 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-primary-100">
+    <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
+      <div className="p-6 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-primary-100">
         <div className="flex justify-between items-center">
-          <h1 className="text-3xl font-heading font-bold text-primary-900">
+          <h1 className="text-2xl font-heading font-bold text-primary-900">
             {book.name} Chapter {chapter}
           </h1>
-          <Button onClick={onMarkAsRead} variant="primary" size="md">
+          <Button onClick={onMarkAsRead} variant="primary" size="sm">
             Mark as Read
           </Button>
         </div>
       </div>
 
-      <div className="p-8">
+      <div className="p-6">
         <div className="prose prose-lg max-w-none">
           {verses.map((verse) => (
             <motion.p
               key={verse.number}
-              className="mb-6 leading-relaxed cursor-pointer hover:bg-neutral-50 p-3 rounded-lg transition-colors"
+              className="mb-4 leading-relaxed cursor-pointer hover:bg-neutral-50 p-2 rounded transition-colors"
               onClick={() => handleVerseClick(verse.number)}
               whileHover={{ scale: 1.01 }}
             >
               {showVerseNumbers && (
-                <span className="inline-block w-10 text-sm font-medium text-primary-900 mr-3">
+                <span className="inline-block w-8 text-sm font-medium text-primary-600 mr-2">
                   {verse.number}
                 </span>
               )}
-              <span className="text-neutral-800 text-lg leading-relaxed">{verse.text}</span>
+              <span className="text-neutral-800">{verse.text}</span>
             </motion.p>
           ))}
         </div>
 
-        <div className="mt-10 pt-8 border-t border-neutral-200">
+        <div className="mt-8 pt-6 border-t border-neutral-200">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-6">
-              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-900 transition-colors">
+            <div className="flex items-center space-x-4">
+              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors">
                 <Heart className="h-5 w-5" />
                 <span>Save Chapter</span>
               </button>
-              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-900 transition-colors">
+              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors">
                 <Share2 className="h-5 w-5" />
                 <span>Share</span>
               </button>
-              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-900 transition-colors">
+              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors">
                 <MessageCircle className="h-5 w-5" />
                 <span>Discuss</span>
               </button>
@@ -103,12 +103,12 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto shadow-card-hover"
+              className="bg-white rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="p-8">
-                <div className="flex justify-between items-start mb-6">
-                  <h3 className="text-2xl font-heading font-semibold text-primary-900">
+              <div className="p-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-heading font-semibold text-neutral-900">
                     {book.name} {chapter}:{selectedVerse}
                   </h3>
                   <button
@@ -119,21 +119,21 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
                   </button>
                 </div>
                 
-                <div className="mb-8 p-6 bg-primary-50 rounded-xl border border-primary-200">
-                  <p className="text-neutral-800 italic text-lg leading-relaxed">"{selectedVerseData.text}"</p>
+                <div className="mb-6 p-4 bg-primary-50 rounded-lg">
+                  <p className="text-neutral-800 italic">"{selectedVerseData.text}"</p>
                 </div>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   <div>
-                    <h4 className="font-semibold text-primary-900 mb-3 uppercase tracking-wider text-sm">Explanation</h4>
-                    <p className="text-neutral-700 leading-relaxed">
+                    <h4 className="font-semibold text-neutral-900 mb-2">Explanation</h4>
+                    <p className="text-neutral-700">
                       {selectedVerseData.explanation || 
                         "This verse speaks to the heart of God's relationship with His people. The original Hebrew/Greek context reveals deeper meanings about God's character and His covenant faithfulness. Understanding the historical and cultural background helps us apply this truth to our lives today."}
                     </p>
                   </div>
                   
                   <div>
-                    <h4 className="font-semibold text-primary-900 mb-3 uppercase tracking-wider text-sm">Cross References</h4>
+                    <h4 className="font-semibold text-neutral-900 mb-2">Cross References</h4>
                     <div className="space-y-2">
                       <p className="text-sm text-neutral-600">• Romans 8:28 - God works all things for good</p>
                       <p className="text-sm text-neutral-600">• Jeremiah 29:11 - God's plans for His people</p>
@@ -142,15 +142,15 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-primary-900 mb-3 uppercase tracking-wider text-sm">Application</h4>
-                    <p className="text-neutral-700 leading-relaxed">
+                    <h4 className="font-semibold text-neutral-900 mb-2">Application</h4>
+                    <p className="text-neutral-700">
                       Consider how this verse applies to your current circumstances. What is God teaching you through this passage? How can you live out this truth in practical ways?
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-neutral-200">
-                  <div className="flex space-x-4">
+                <div className="mt-6 pt-4 border-t border-neutral-200">
+                  <div className="flex space-x-3">
                     <Button variant="outline" size="sm">
                       <MessageCircle className="h-4 w-4 mr-2" />
                       Discuss
