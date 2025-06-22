@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Heart, Filter, BookOpen } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Search, Filter } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useUserProgress } from '../contexts/UserProgressContext';
 import { contentService } from '../services/contentService';
 import { Myth } from '../types/content';
+import InteractiveMythCard from '../components/myths/InteractiveMythCard';
 import Button from '../components/common/Button';
 
 const MythsPage = () => {
@@ -57,11 +57,6 @@ const MythsPage = () => {
     setSearchTerm(e.target.value);
   };
 
-  const handleToggleFavorite = async (mythId: string) => {
-    if (!isAuthenticated) return;
-    await toggleFavoriteMyth(mythId);
-  };
-
   return (
     <div className="mt-24 min-h-screen bg-parchment-50">
       <div className="max-w-6xl mx-auto px-6">
@@ -78,10 +73,11 @@ const MythsPage = () => {
               </div>
             </div>
             <h1 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-900 mb-6">
-              Common Christian Myths
+              Interactive Myth Deconstruction
             </h1>
             <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Explore and understand common misconceptions about Christianity and discover their biblical corrections through careful scriptural analysis.
+              Explore common misconceptions about Christianity through interactive revelation of biblical truth. 
+              Click to uncover scriptural corrections and dive deep into supporting passages.
             </p>
           </div>
 
@@ -105,90 +101,33 @@ const MythsPage = () => {
             </div>
           </div>
 
-          {/* Myths Grid */}
+          {/* Interactive Myths Grid */}
           {isLoading ? (
             <motion.div 
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+              className="grid grid-cols-1 gap-8"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {[1, 2, 3, 4].map((n) => (
+              {[1, 2, 3].map((n) => (
                 <motion.div key={n} variants={itemVariants} className="animate-pulse">
-                  <div className="h-64 bg-neutral-200 rounded-xl"></div>
+                  <div className="h-96 bg-neutral-200 rounded-xl"></div>
                 </motion.div>
               ))}
             </motion.div>
           ) : (
             <motion.div 
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+              className="grid grid-cols-1 gap-8"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
-              {myths.map((myth, index) => (
+              {myths.map((myth) => (
                 <motion.div
                   key={myth.id}
                   variants={itemVariants}
-                  className="group bg-white p-8 rounded-xl shadow-soft border border-neutral-200 hover:shadow-medium transition-all duration-300"
                 >
-                  <div className="flex justify-between items-start mb-6">
-                    <div className="flex-1">
-                      <div className="flex items-center mb-4">
-                        <div className="p-2 bg-primary-100 rounded-lg mr-3">
-                          <BookOpen className="h-5 w-5 text-primary-600" />
-                        </div>
-                        <span className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full font-medium">
-                          {myth.category}
-                        </span>
-                      </div>
-                      <h2 className="text-xl lg:text-2xl font-heading font-semibold text-neutral-900 mb-4 leading-tight">
-                        {myth.title}
-                      </h2>
-                    </div>
-                    {isAuthenticated && (
-                      <button
-                        onClick={() => handleToggleFavorite(myth.id)}
-                        className="p-2 text-neutral-400 hover:text-primary-600 transition-colors"
-                      >
-                        <Heart 
-                          className={`h-6 w-6 ${
-                            favoriteMyths.includes(myth.id) ? 'fill-current text-primary-600' : ''
-                          }`}
-                        />
-                      </button>
-                    )}
-                  </div>
-                  
-                  <div className="mb-6">
-                    <h3 className="font-heading font-medium text-neutral-800 mb-3">Popular Perception:</h3>
-                    <p className="text-neutral-700 leading-relaxed">
-                      {myth.popularPerception}
-                    </p>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {myth.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-sage-50 text-sage-700 text-sm rounded-full border border-sage-200"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                    {myth.tags.length > 3 && (
-                      <span className="px-3 py-1 bg-neutral-100 text-neutral-600 text-sm rounded-full">
-                        +{myth.tags.length - 3} more
-                      </span>
-                    )}
-                  </div>
-                  
-                  <Link to={`/myths/${myth.id}`}>
-                    <Button variant="primary" size="sm" className="group/btn w-full">
-                      Discover Biblical Truth
-                      <BookOpen className="ml-2 h-4 w-4 transition-transform group-hover/btn:scale-110" />
-                    </Button>
-                  </Link>
+                  <InteractiveMythCard myth={myth} />
                 </motion.div>
               ))}
             </motion.div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Search, BookOpen } from 'lucide-react';
 import { contentService } from '../services/contentService';
 import { BibleConcept } from '../types/content';
+import ConceptNavigator from '../components/query/ConceptNavigator';
 import Button from '../components/common/Button';
 
 const QueryEnginePage = () => {
@@ -10,6 +11,29 @@ const QueryEnginePage = () => {
   const [results, setResults] = useState<BibleConcept[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
 
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,104 +53,112 @@ const QueryEnginePage = () => {
   };
 
   return (
-    <div className="mt-24">
-      <div className="max-w-4xl mx-auto px-4">
+    <div className="mt-24 min-h-screen bg-parchment-50">
+      <div className="max-w-6xl mx-auto px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.8 }}
         >
-          <h1 className="text-4xl font-heading font-bold text-neutral-900 mb-4">
-            What Does the Bible Really Say About...?
-          </h1>
-          <p className="text-lg text-neutral-700 mb-8">
-            Search biblical concepts to discover balanced, scripture-based perspectives on various topics.
-          </p>
+          {/* Header Section */}
+          <div className="text-center mb-12">
+            <div className="flex justify-center mb-8">
+              <div className="p-4 bg-sage-100 rounded-2xl">
+                <Search className="h-10 w-10 text-sage-600" />
+              </div>
+            </div>
+            <h1 className="text-4xl lg:text-5xl font-heading font-bold text-neutral-900 mb-6">
+              What Does the Bible Really Say About...?
+            </h1>
+            <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+              Navigate theological concepts through interactive biblical exploration. 
+              Search topics to discover related books, explore key passages, and understand balanced perspectives.
+            </p>
+          </div>
 
           {/* Search Form */}
-          <form onSubmit={handleSearch} className="mb-12">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 h-6 w-6" />
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search a topic (e.g., faith healing, tithing, spiritual warfare)..."
-                className="w-full pl-12 pr-4 py-4 text-lg border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
-              />
-              <Button
-                type="submit"
-                variant="primary"
-                className="absolute right-2 top-1/2 transform -translate-y-1/2"
-              >
-                Search
-              </Button>
-            </div>
-          </form>
+          <div className="bg-white p-6 lg:p-8 rounded-xl shadow-soft border border-neutral-200 mb-12">
+            <form onSubmit={handleSearch}>
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 h-6 w-6" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search a topic (e.g., faith healing, tithing, spiritual warfare)..."
+                  className="w-full pl-12 pr-32 py-4 text-lg border border-neutral-300 rounded-xl focus:ring-2 focus:ring-sage-500 focus:border-sage-500"
+                />
+                <Button
+                  type="submit"
+                  variant="primary"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2"
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Searching...' : 'Search'}
+                </Button>
+              </div>
+            </form>
+          </div>
 
           {/* Results */}
           {isLoading ? (
-            <div className="space-y-6">
+            <motion.div 
+              className="grid grid-cols-1 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               {[1, 2].map((n) => (
-                <div key={n} className="animate-pulse">
-                  <div className="h-48 bg-neutral-100 rounded-lg"></div>
-                </div>
+                <motion.div key={n} variants={itemVariants} className="animate-pulse">
+                  <div className="h-96 bg-neutral-200 rounded-xl"></div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           ) : (
-            <div className="space-y-8">
+            <motion.div 
+              className="grid grid-cols-1 gap-8"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
               {results.map((concept) => (
                 <motion.div
                   key={concept.id}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className="bg-white p-6 rounded-lg shadow-sm border border-neutral-200"
+                  variants={itemVariants}
                 >
-                  <h2 className="text-2xl font-heading font-semibold text-neutral-900 mb-4">
-                    {concept.title}
-                  </h2>
-                  
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-800 mb-2">Biblical Nuance</h3>
-                      <p className="text-neutral-700">{concept.biblicalNuance}</p>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-800 mb-2">Common Abuses</h3>
-                      <ul className="list-disc list-inside space-y-2 text-neutral-700">
-                        {concept.commonAbuses.map((abuse, index) => (
-                          <li key={index}>{abuse}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-800 mb-2">Balanced Perspective</h3>
-                      <p className="text-neutral-700">{concept.balancedPerspective}</p>
-                    </div>
-                    
-                    <div>
-                      <h3 className="text-lg font-semibold text-neutral-800 mb-2">Relevant Scriptures</h3>
-                      <ul className="list-disc list-inside space-y-2 text-neutral-700">
-                        {concept.relevantScriptures.map((scripture, index) => (
-                          <li key={index}>{scripture}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
+                  <ConceptNavigator concept={concept} />
                 </motion.div>
               ))}
+            </motion.div>
+          )}
 
-              {hasSearched && results.length === 0 && (
-                <div className="text-center py-12">
-                  <BookOpen className="h-16 w-16 text-neutral-300 mx-auto mb-4" />
-                  <p className="text-neutral-600">
-                    No results found for "{query}". Try another search term or browse our existing topics.
-                  </p>
-                </div>
-              )}
-            </div>
+          {hasSearched && !isLoading && results.length === 0 && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-16"
+            >
+              <div className="p-4 bg-neutral-100 rounded-2xl w-fit mx-auto mb-6">
+                <BookOpen className="h-12 w-12 text-neutral-400" />
+              </div>
+              <h3 className="text-2xl font-heading font-semibold text-neutral-900 mb-4">
+                No results found
+              </h3>
+              <p className="text-neutral-600 mb-8">
+                No results found for "{query}". Try another search term or browse our existing topics.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {['faith healing', 'tithing', 'spiritual warfare', 'predestination', 'prosperity gospel'].map((suggestion) => (
+                  <button
+                    key={suggestion}
+                    onClick={() => setQuery(suggestion)}
+                    className="px-4 py-2 bg-sage-50 text-sage-700 rounded-full border border-sage-200 hover:bg-sage-100 transition-colors text-sm"
+                  >
+                    {suggestion}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
           )}
         </motion.div>
       </div>
