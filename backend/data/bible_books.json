@@ -1,0 +1,230 @@
+{
+  "law": [
+    {
+      "id": "genesis",
+      "name": "Genesis",
+      "chapters": 50,
+      "genre": "Law",
+      "period": "Creation to Patriarchs",
+      "author": "Moses"
+    },
+    {
+      "id": "exodus",
+      "name": "Exodus",
+      "chapters": 40,
+      "genre": "Law",
+      "period": "Egyptian Bondage to Sinai",
+      "author": "Moses"
+    },
+    {
+      "id": "leviticus",
+      "name": "Leviticus",
+      "chapters": 27,
+      "genre": "Law",
+      "period": "Sinai",
+      "author": "Moses"
+    },
+    {
+      "id": "numbers",
+      "name": "Numbers",
+      "chapters": 36,
+      "genre": "Law",
+      "period": "Wilderness Wandering",
+      "author": "Moses"
+    },
+    {
+      "id": "deuteronomy",
+      "name": "Deuteronomy",
+      "chapters": 34,
+      "genre": "Law",
+      "period": "End of Wilderness",
+      "author": "Moses"
+    }
+  ],
+  "history": [
+    {
+      "id": "joshua",
+      "name": "Joshua",
+      "chapters": 24,
+      "genre": "History",
+      "period": "Conquest of Canaan",
+      "author": "Joshua/Samuel"
+    },
+    {
+      "id": "judges",
+      "name": "Judges",
+      "chapters": 21,
+      "genre": "History",
+      "period": "Period of Judges",
+      "author": "Samuel"
+    },
+    {
+      "id": "ruth",
+      "name": "Ruth",
+      "chapters": 4,
+      "genre": "History",
+      "period": "Period of Judges",
+      "author": "Samuel"
+    },
+    {
+      "id": "1samuel",
+      "name": "1 Samuel",
+      "chapters": 31,
+      "genre": "History",
+      "period": "United Kingdom",
+      "author": "Samuel/Nathan/Gad"
+    },
+    {
+      "id": "2samuel",
+      "name": "2 Samuel",
+      "chapters": 24,
+      "genre": "History",
+      "period": "David's Reign",
+      "author": "Nathan/Gad"
+    }
+  ],
+  "wisdom": [
+    {
+      "id": "job",
+      "name": "Job",
+      "chapters": 42,
+      "genre": "Wisdom",
+      "period": "Patriarchal",
+      "author": "Unknown"
+    },
+    {
+      "id": "psalms",
+      "name": "Psalms",
+      "chapters": 150,
+      "genre": "Wisdom",
+      "period": "Various",
+      "author": "David and others"
+    },
+    {
+      "id": "proverbs",
+      "name": "Proverbs",
+      "chapters": 31,
+      "genre": "Wisdom",
+      "period": "Solomon's Reign",
+      "author": "Solomon and others"
+    },
+    {
+      "id": "ecclesiastes",
+      "name": "Ecclesiastes",
+      "chapters": 12,
+      "genre": "Wisdom",
+      "period": "Solomon's Reign",
+      "author": "Solomon"
+    },
+    {
+      "id": "songofsolomon",
+      "name": "Song of Solomon",
+      "chapters": 8,
+      "genre": "Wisdom",
+      "period": "Solomon's Reign",
+      "author": "Solomon"
+    }
+  ],
+  "prophets": [
+    {
+      "id": "isaiah",
+      "name": "Isaiah",
+      "chapters": 66,
+      "genre": "Prophets",
+      "period": "8th-6th Century BC",
+      "author": "Isaiah"
+    },
+    {
+      "id": "jeremiah",
+      "name": "Jeremiah",
+      "chapters": 52,
+      "genre": "Prophets",
+      "period": "7th-6th Century BC",
+      "author": "Jeremiah"
+    },
+    {
+      "id": "ezekiel",
+      "name": "Ezekiel",
+      "chapters": 48,
+      "genre": "Prophets",
+      "period": "6th Century BC",
+      "author": "Ezekiel"
+    },
+    {
+      "id": "daniel",
+      "name": "Daniel",
+      "chapters": 12,
+      "genre": "Prophets",
+      "period": "6th Century BC",
+      "author": "Daniel"
+    }
+  ],
+  "gospels": [
+    {
+      "id": "matthew",
+      "name": "Matthew",
+      "chapters": 28,
+      "genre": "Gospels",
+      "period": "1st Century AD",
+      "author": "Matthew"
+    },
+    {
+      "id": "mark",
+      "name": "Mark",
+      "chapters": 16,
+      "genre": "Gospels",
+      "period": "1st Century AD",
+      "author": "Mark"
+    },
+    {
+      "id": "luke",
+      "name": "Luke",
+      "chapters": 24,
+      "genre": "Gospels",
+      "period": "1st Century AD",
+      "author": "Luke"
+    },
+    {
+      "id": "john",
+      "name": "John",
+      "chapters": 21,
+      "genre": "Gospels",
+      "period": "1st Century AD",
+      "author": "John"
+    }
+  ],
+  "letters": [
+    {
+      "id": "romans",
+      "name": "Romans",
+      "chapters": 16,
+      "genre": "Letters",
+      "period": "1st Century AD",
+      "author": "Paul"
+    },
+    {
+      "id": "1corinthians",
+      "name": "1 Corinthians",
+      "chapters": 16,
+      "genre": "Letters",
+      "period": "1st Century AD",
+      "author": "Paul"
+    },
+    {
+      "id": "2corinthians",
+      "name": "2 Corinthians",
+      "chapters": 13,
+      "genre": "Letters",
+      "period": "1st Century AD",
+      "author": "Paul"
+    },
+    {
+      "id": "galatians",
+      "name": "Galatians",
+      "chapters": 6,
+      "genre": "Letters",
+      "period": "1st Century AD",
+      "author": "Paul"
+    }
+  ]
+}

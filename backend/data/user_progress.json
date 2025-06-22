@@ -1,0 +1,52 @@
+{
+  "user_1": {
+    "user_id": "user_1",
+    "bible_reading_progress": [
+      {
+        "book_id": "genesis",
+        "chapters_read": ["1", "2", "3", "4", "5"]
+      },
+      {
+        "book_id": "exodus",
+        "chapters_read": ["1", "2"]
+      }
+    ],
+    "favorite_myths": ["myth_1", "myth_3"],
+    "favorite_doctrine": ["doctrine_1"],
+    "experience": 150,
+    "reading_streak": 7,
+    "badges": [
+      {
+        "id": "first_chapter",
+        "name": "First Steps",
+        "description": "Read your first chapter",
+        "awarded_at": "2023-01-16T09:00:00Z"
+      }
+    ],
+    "last_read_date": "2024-01-15",
+    "unlocked_features": ["basic_commentary"]
+  },
+  "demo123": {
+    "user_id": "demo123",
+    "bible_reading_progress": [
+      {
+        "book_id": "genesis",
+        "chapters_read": ["1", "2", "3"]
+      }
+    ],
+    "favorite_myths": ["myth_2"],
+    "favorite_doctrine": ["doctrine_2", "doctrine_3"],
+    "experience": 80,
+    "reading_streak": 3,
+    "badges": [
+      {
+        "id": "first_chapter",
+        "name": "First Steps",
+        "description": "Read your first chapter",
+        "awarded_at": "2024-01-01T12:00:00Z"
+      }
+    ],
+    "last_read_date": "2024-01-03",
+    "unlocked_features": ["basic_commentary"]
+  }
+}
