@@ -35,8 +35,6 @@ class BibleService:
     
     async def get_historical_context(self, book_id: str, chapter: int) -> HistoricalContext:
         """Get historical context for a specific chapter"""
-        # This would typically be more sophisticated, pulling from a database
-        # For now, we'll return sample data based on Genesis
         if book_id == "genesis":
             if chapter == 1:
                 return HistoricalContext(
@@ -58,6 +56,28 @@ class BibleService:
                         "First human civilization being established",
                         "Naming of animals",
                         "Institution of marriage"
+                    ]
+                )
+            elif chapter == 3:
+                return HistoricalContext(
+                    period="Early Earth",
+                    date="Shortly after Creation",
+                    background="The fall of humanity through disobedience and its consequences",
+                    concurrent=[
+                        "First sin enters the world",
+                        "Curse pronounced on creation",
+                        "Promise of redemption given"
+                    ]
+                )
+            else:
+                return HistoricalContext(
+                    period="Early Earth",
+                    date="Pre-Flood Era",
+                    background="The early history of human civilization",
+                    concurrent=[
+                        "Development of early human society",
+                        "Growth of human population",
+                        "Increase of wickedness on earth"
                     ]
                 )
         
@@ -101,6 +121,35 @@ class BibleService:
                         "Animal migration patterns"
                     ]
                 )
+            elif chapter == 3:
+                return GeographicContext(
+                    main_location="Garden of Eden and its surroundings",
+                    related_sites=[
+                        "East of Eden",
+                        "Garden entrance",
+                        "Location of Cherubim guards",
+                        "New dwelling place of Adam and Eve"
+                    ],
+                    routes=[
+                        "Path of expulsion from Eden",
+                        "New territories for human habitation",
+                        "Blocked route back to Tree of Life"
+                    ]
+                )
+            else:
+                return GeographicContext(
+                    main_location="Ancient Near East",
+                    related_sites=[
+                        "Early human settlements",
+                        "Agricultural regions",
+                        "First cities"
+                    ],
+                    routes=[
+                        "Early trade routes",
+                        "Migration patterns",
+                        "River systems"
+                    ]
+                )
         
         return GeographicContext(
             main_location="Location unknown",
@@ -110,30 +159,91 @@ class BibleService:
     
     async def get_chapter_introduction(self, book_id: str, chapter: int) -> ChapterIntroduction:
         """Get chapter introduction with themes and structure"""
-        if book_id == "genesis" and chapter == 1:
-            return ChapterIntroduction(
-                summary="God creates the universe, earth, and all life in six days",
-                themes=[
-                    "God's creative power",
-                    "Order from chaos",
-                    "The goodness of creation",
-                    "Human dignity and purpose"
-                ],
-                characters=[
-                    {"name": "God", "role": "Creator of all things"},
-                    {"name": "Spirit of God", "role": "Hovering over the waters"},
-                    {"name": "Humanity", "role": "Created in God's image"}
-                ],
-                structure=[
-                    "Initial creation (1-2)",
-                    "First day: Light (3-5)",
-                    "Second day: Sky and waters (6-8)",
-                    "Third day: Land and vegetation (9-13)",
-                    "Fourth day: Sun, moon, and stars (14-19)",
-                    "Fifth day: Sea creatures and birds (20-23)",
-                    "Sixth day: Land animals and humans (24-31)"
-                ]
-            )
+        if book_id == "genesis":
+            if chapter == 1:
+                return ChapterIntroduction(
+                    summary="God creates the universe, earth, and all life in six days",
+                    themes=[
+                        "God's creative power",
+                        "Order from chaos",
+                        "The goodness of creation",
+                        "Human dignity and purpose"
+                    ],
+                    characters=[
+                        {"name": "God", "role": "Creator of all things"},
+                        {"name": "Spirit of God", "role": "Hovering over the waters"},
+                        {"name": "Humanity", "role": "Created in God's image"}
+                    ],
+                    structure=[
+                        "Initial creation (1-2)",
+                        "First day: Light (3-5)",
+                        "Second day: Sky and waters (6-8)",
+                        "Third day: Land and vegetation (9-13)",
+                        "Fourth day: Sun, moon, and stars (14-19)",
+                        "Fifth day: Sea creatures and birds (20-23)",
+                        "Sixth day: Land animals and humans (24-31)"
+                    ]
+                )
+            elif chapter == 2:
+                return ChapterIntroduction(
+                    summary="Detailed account of humanity's creation and life in Eden",
+                    themes=[
+                        "Human purpose and work",
+                        "Marriage institution",
+                        "Relationship with God",
+                        "Stewardship of creation"
+                    ],
+                    characters=[
+                        {"name": "God", "role": "Creator and provider"},
+                        {"name": "Adam", "role": "First man, garden keeper"},
+                        {"name": "Eve", "role": "First woman, helper suitable for Adam"}
+                    ],
+                    structure=[
+                        "Seventh day rest (1-3)",
+                        "Creation of man (4-7)",
+                        "Planting of Eden (8-14)",
+                        "Man's role and the first command (15-17)",
+                        "Creation of woman (18-25)"
+                    ]
+                )
+            elif chapter == 3:
+                return ChapterIntroduction(
+                    summary="The fall of humanity through disobedience and its consequences",
+                    themes=[
+                        "Temptation and sin",
+                        "Consequences of disobedience",
+                        "God's judgment and mercy",
+                        "Promise of redemption"
+                    ],
+                    characters=[
+                        {"name": "Serpent", "role": "Tempter"},
+                        {"name": "Eve", "role": "First to be tempted and sin"},
+                        {"name": "Adam", "role": "Participates in sin"},
+                        {"name": "God", "role": "Judge and provider of hope"}
+                    ],
+                    structure=[
+                        "The temptation (1-5)",
+                        "The sin (6-7)",
+                        "The confrontation (8-13)",
+                        "The curses (14-19)",
+                        "The provision and expulsion (20-24)"
+                    ]
+                )
+            else:
+                return ChapterIntroduction(
+                    summary="Early history continues",
+                    themes=[
+                        "Human development",
+                        "Sin's effects",
+                        "God's sovereignty"
+                    ],
+                    characters=[
+                        {"name": "Various individuals", "role": "Early human history participants"}
+                    ],
+                    structure=[
+                        "Chapter events and developments"
+                    ]
+                )
         
         return ChapterIntroduction(
             summary="Chapter introduction not available",
@@ -151,7 +261,7 @@ class BibleService:
             data = await self._load_json_file(verse_file)
             return [Verse(**verse) for verse in data]
         
-        # Return sample verses for Genesis 1
+        # Return sample verses for Genesis 1 if file doesn't exist
         if book_id == "genesis" and chapter == 1:
             return [
                 Verse(

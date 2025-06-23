@@ -4,49 +4,159 @@
     "bible_reading_progress": [
       {
         "book_id": "genesis",
-        "chapters_read": ["1", "2", "3", "4", "5"]
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
       },
       {
         "book_id": "exodus",
-        "chapters_read": ["1", "2"]
+        "chapters_read": ["1", "2", "3"]
+      },
+      {
+        "book_id": "matthew",
+        "chapters_read": ["1", "2", "3", "4", "5"]
       }
     ],
-    "favorite_myths": ["myth_1", "myth_3"],
-    "favorite_doctrine": ["doctrine_1"],
-    "experience": 150,
-    "reading_streak": 7,
+    "favorite_myths": ["myth_1", "myth_3", "myth_5"],
+    "favorite_doctrine": ["doctrine_1", "doctrine_2"],
+    "experience": 450,
+    "reading_streak": 12,
     "badges": [
       {
         "id": "first_chapter",
         "name": "First Steps",
         "description": "Read your first chapter",
         "awarded_at": "2023-01-16T09:00:00Z"
+      },
+      {
+        "id": "week_streak",
+        "name": "Consistent Reader",
+        "description": "Maintained a 7-day reading streak",
+        "awarded_at": "2023-01-23T09:00:00Z"
       }
     ],
     "last_read_date": "2024-01-15",
-    "unlocked_features": ["basic_commentary"]
+    "unlocked_features": ["basic_commentary", "historical_context"]
   },
   "demo123": {
     "user_id": "demo123",
     "bible_reading_progress": [
       {
         "book_id": "genesis",
-        "chapters_read": ["1", "2", "3"]
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50"]
+      },
+      {
+        "book_id": "exodus",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40"]
+      },
+      {
+        "book_id": "leviticus",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27"]
+      },
+      {
+        "book_id": "numbers",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36"]
+      },
+      {
+        "book_id": "deuteronomy",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34"]
+      },
+      {
+        "book_id": "matthew",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28"]
+      },
+      {
+        "book_id": "mark",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
+      },
+      {
+        "book_id": "luke",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"]
+      },
+      {
+        "book_id": "john",
+        "chapters_read": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21"]
+      },
+      {
+        "book_id": "romans",
+        "chapters_read": ["1", "2", "3", "4", "5"]
       }
     ],
-    "favorite_myths": ["myth_2"],
-    "favorite_doctrine": ["doctrine_2", "doctrine_3"],
-    "experience": 80,
-    "reading_streak": 3,
+    "favorite_myths": ["myth_2", "myth_4"],
+    "favorite_doctrine": ["doctrine_2", "doctrine_3", "doctrine_5"],
+    "experience": 2850,
+    "reading_streak": 45,
     "badges": [
       {
         "id": "first_chapter",
         "name": "First Steps",
         "description": "Read your first chapter",
         "awarded_at": "2024-01-01T12:00:00Z"
+      },
+      {
+        "id": "genesis_scholar",
+        "name": "Genesis Scholar",
+        "description": "Completed reading the book of Genesis",
+        "awarded_at": "2024-01-15T14:30:00Z"
+      },
+      {
+        "id": "exodus_explorer",
+        "name": "Exodus Explorer",
+        "description": "Completed reading the book of Exodus",
+        "awarded_at": "2024-01-28T16:45:00Z"
+      },
+      {
+        "id": "torah_scholar",
+        "name": "Torah Scholar",
+        "description": "Completed reading the Torah (Pentateuch)",
+        "awarded_at": "2024-02-20T10:15:00Z"
+      },
+      {
+        "id": "gospel_witness",
+        "name": "Gospel Witness",
+        "description": "Completed reading all four Gospels",
+        "awarded_at": "2024-03-15T18:20:00Z"
+      },
+      {
+        "id": "month_streak",
+        "name": "Dedicated Reader",
+        "description": "Maintained a 30-day reading streak",
+        "awarded_at": "2024-02-01T09:00:00Z"
       }
     ],
     "last_read_date": "2024-01-03",
+    "unlocked_features": [
+      "basic_commentary", 
+      "historical_context", 
+      "law_vs_grace_pathway", 
+      "cultural_analysis", 
+      "kingdom_of_god", 
+      "predestination_toolkit"
+    ]
+  },
+  "user_3": {
+    "user_id": "user_3",
+    "bible_reading_progress": [
+      {
+        "book_id": "matthew",
+        "chapters_read": ["1", "2", "3"]
+      },
+      {
+        "book_id": "psalms",
+        "chapters_read": ["1", "23", "91", "119"]
+      }
+    ],
+    "favorite_myths": ["myth_1"],
+    "favorite_doctrine": ["doctrine_1", "doctrine_4"],
+    "experience": 180,
+    "reading_streak": 5,
+    "badges": [
+      {
+        "id": "first_chapter",
+        "name": "First Steps",
+        "description": "Read your first chapter",
+        "awarded_at": "2024-01-10T11:30:00Z"
+      }
+    ],
+    "last_read_date": "2024-01-12",
     "unlocked_features": ["basic_commentary"]
   }
 }

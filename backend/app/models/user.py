@@ -1,8 +1,10 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import datetime
 
 class UserBase(BaseModel):
+    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    
     username: str
     email: EmailStr
 
@@ -14,6 +16,8 @@ class UserLogin(BaseModel):
     password: str
 
 class User(UserBase):
+    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    
     id: str
     created_at: datetime
     
