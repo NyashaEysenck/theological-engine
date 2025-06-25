@@ -3,6 +3,7 @@ import { Book, Search, Shield, ScrollText, ChevronRight, Users, Compass, BookOpe
 import { Link } from 'react-router-dom';
 import Button from '../components/common/Button';
 import LandingNav from '../components/landing/LandingNav';
+import BoltBadge from '../components/common/BoltBadge';
 
 const LandingPage = () => {
   const containerVariants = {
@@ -31,6 +32,7 @@ const LandingPage = () => {
   return (
     <div className="bg-parchment-50">
       <LandingNav />
+      <BoltBadge />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-900 via-primary-800 to-accent-900 text-white">

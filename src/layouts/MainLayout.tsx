@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
+import BoltBadge from '../components/common/BoltBadge';
 import { useAuth } from '../contexts/AuthContext';
 
 const MainLayout = () => {
@@ -51,6 +52,7 @@ const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-neutral-50">
       <Header isScrolled={isScrolled} isAuthPage={isAuthPage} />
+      <BoltBadge />
       
       <main className="flex-grow">
         <motion.div
