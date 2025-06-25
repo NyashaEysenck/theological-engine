@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import BoltBadge from '../components/common/BoltBadge';
+import ConnectionStatus from '../components/common/ConnectionStatus';
 import { useAuth } from '../contexts/AuthContext';
 
 const MainLayout = () => {
@@ -52,6 +53,7 @@ const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen bg-neutral-50">
       <Header isScrolled={isScrolled} isAuthPage={isAuthPage} />
+      <ConnectionStatus />
       <BoltBadge />
       
       <main className="flex-grow">

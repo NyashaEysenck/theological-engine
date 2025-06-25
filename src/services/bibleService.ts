@@ -2,21 +2,134 @@ import { BibleBook, HistoricalContext, GeographicContext, ChapterIntroduction, R
 import { bibleBooks, getAllBooks, getBooksByGenre } from '../data/bibleData';
 import { ChapterProgress } from '../types/progress';
 import { simulateNetworkDelay } from '../utils/helpers';
+import { apiClient, ApiError } from '../utils/apiClient';
+import { API_ENDPOINTS } from '../config/api';
 
 class BibleService {
   async getAllBooks(): Promise<BibleBook[]> {
-    await simulateNetworkDelay();
-    return getAllBooks();
+    try {
+      // Try backend first
+      const response = await apiClient.get<BibleBook[]>(API_ENDPOINTS.BIBLE.BOOKS);
+      return response;
+    } catch (error) {
+      console.warn('Backend books request failed, falling back to mock data:', error);
+      
+      // Fallback to mock data
+      await simulateNetworkDelay();
+      return getAllBooks();
+    }
   }
 
   async getBooksByGenre(): Promise<Record<string, BibleBook[]>> {
-    await simulateNetworkDelay();
-    return getBooksByGenre();
+    try {
+      // Try backend first
+      const response = await apiClient.get<Record<string, BibleBook[]>>(API_ENDPOINTS.BIBLE.BOOKS_BY_GENRE);
+      return response;
+    } catch (error) {
+      console.warn('Backend books by genre request failed, falling back to mock data:', error);
+      
+      // Fallback to mock data
+      await simulateNetworkDelay();
+      return getBooksByGenre();
+    }
   }
 
   async getHistoricalContext(bookId: string, chapter: number): Promise<HistoricalContext> {
-    await simulateNetworkDelay();
+    try {
+      // Try backend first
+      const response = await apiClient.get<HistoricalContext>(
+        API_ENDPOINTS.BIBLE.HISTORICAL_CONTEXT(bookId, chapter)
+      );
+      return response;
+    } catch (error) {
+      console.warn('Backend historical context request failed, falling back to mock data:', error);
+      
+      // Fallback to mock data
+      await simulateNetworkDelay();
+      return this.getMockHistoricalContext(bookId, chapter);
+    }
+  }
 
+  async getGeographicContext(bookId: string, chapter: number): Promise<GeographicContext> {
+    try {
+      // Try backend first
+      const response = await apiClient.get<GeographicContext>(
+        API_ENDPOINTS.BIBLE.GEOGRAPHIC_CONTEXT(bookId, chapter)
+      );
+      return response;
+    } catch (error) {
+      console.warn('Backend geographic context request failed, falling back to mock data:', error);
+      
+      // Fallback to mock data
+      await simulateNetworkDelay();
+      return this.getMockGeographicContext(bookId, chapter);
+    }
+  }
+
+  async getChapterIntroduction(bookId: string, chapter: number): Promise<ChapterIntroduction> {
+    try {
+      // Try backend first
+      const response = await apiClient.get<ChapterIntroduction>(
+        API_ENDPOINTS.BIBLE.CHAPTER_INTRO(bookId, chapter)
+      );
+      return response;
+    } catch (error) {
+      console.warn('Backend chapter introduction request failed, falling back to mock data:', error);
+      
+      // Fallback to mock data
+      await simulateNetworkDelay();
+      return this.getMockChapterIntroduction(bookId, chapter);
+    }
+  }
+
+  async getCurrentReadingPosition(readingProgress: ChapterProgress[]): Promise<ReadingProgress> {
+    try {
+      // For reading position, we'll use the local calculation since it depends on user progress
+      const allBooks = await this.getAllBooks();
+      let currentBook = allBooks[0];
+      let currentChapter = 1;
+
+      for (const book of allBooks) {
+        const bookProgress = readingProgress.find(bp => bp.bookId === book.id);
+        if (!bookProgress || bookProgress.chaptersRead.length < book.chapters) {
+          currentBook = book;
+          currentChapter = (bookProgress?.chaptersRead.length || 0) + 1;
+          break;
+        }
+      }
+
+      const overallProgress = await this.calculateProgress(readingProgress);
+
+      return {
+        currentBook,
+        currentChapter,
+        overallProgress
+      };
+    } catch (error) {
+      console.warn('Error calculating reading position:', error);
+      
+      // Fallback
+      const allBooks = getAllBooks();
+      return {
+        currentBook: allBooks[0],
+        currentChapter: 1,
+        overallProgress: 0
+      };
+    }
+  }
+
+  async calculateProgress(readingProgress: ChapterProgress[]): Promise<number> {
+    const allBooks = await this.getAllBooks();
+    const totalChapters = allBooks.reduce((sum, book) => sum + book.chapters, 0);
+    const completedChapters = readingProgress.reduce(
+      (sum, book) => sum + book.chaptersRead.length,
+      0
+    );
+    return Math.round((completedChapters / totalChapters) * 100);
+  }
+
+  // Mock data methods (fallback implementations)
+  private getMockHistoricalContext(bookId: string, chapter: number): HistoricalContext {
     if (bookId === 'genesis') {
       switch (chapter) {
         case 1:
@@ -74,9 +187,7 @@ class BibleService {
     };
   }
 
-  async getGeographicContext(bookId: string, chapter: number): Promise<GeographicContext> {
-    await simulateNetworkDelay();
-
+  private getMockGeographicContext(bookId: string, chapter: number): GeographicContext {
     if (bookId === 'genesis') {
       switch (chapter) {
         case 1:
@@ -148,9 +259,7 @@ class BibleService {
     };
   }
 
-  async getChapterIntroduction(bookId: string, chapter: number): Promise<ChapterIntroduction> {
-    await simulateNetworkDelay();
-
+  private getMockChapterIntroduction(bookId: string, chapter: number): ChapterIntroduction {
     if (bookId === 'genesis') {
       switch (chapter) {
         case 1:
@@ -246,39 +355,6 @@ class BibleService {
       characters: [],
       structure: []
     };
-  }
-
-  async getCurrentReadingPosition(readingProgress: ChapterProgress[]): Promise<ReadingProgress> {
-    const allBooks = await this.getAllBooks();
-    let currentBook = allBooks[0];
-    let currentChapter = 1;
-
-    for (const book of allBooks) {
-      const bookProgress = readingProgress.find(bp => bp.bookId === book.id);
-      if (!bookProgress || bookProgress.chaptersRead.length < book.chapters) {
-        currentBook = book;
-        currentChapter = (bookProgress?.chaptersRead.length || 0) + 1;
-        break;
-      }
-    }
-
-    const overallProgress = await this.calculateProgress(readingProgress);
-
-    return {
-      currentBook,
-      currentChapter,
-      overallProgress
-    };
-  }
-
-  async calculateProgress(readingProgress: ChapterProgress[]): Promise<number> {
-    const allBooks = await this.getAllBooks();
-    const totalChapters = allBooks.reduce((sum, book) => sum + book.chapters, 0);
-    const completedChapters = readingProgress.reduce(
-      (sum, book) => sum + book.chaptersRead.length,
-      0
-    );
-    return Math.round((completedChapters / totalChapters) * 100);
   }
 }
 

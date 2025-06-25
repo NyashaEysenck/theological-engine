@@ -1,4 +1,6 @@
 import { simulateNetworkDelay } from '../utils/helpers';
+import { apiClient, ApiError } from '../utils/apiClient';
+import { API_ENDPOINTS } from '../config/api';
 
 interface Verse {
   number: number;
@@ -8,8 +10,22 @@ interface Verse {
 
 class VerseService {
   async getChapterVerses(bookId: string, chapter: number): Promise<Verse[]> {
-    await simulateNetworkDelay();
+    try {
+      // Try backend first
+      const response = await apiClient.get<Verse[]>(
+        API_ENDPOINTS.BIBLE.CHAPTER_VERSES(bookId, chapter)
+      );
+      return response;
+    } catch (error) {
+      console.warn('Backend verses request failed, falling back to mock data:', error);
+      
+      // Fallback to mock data
+      await simulateNetworkDelay();
+      return this.getMockVerses(bookId, chapter);
+    }
+  }
 
+  private getMockVerses(bookId: string, chapter: number): Verse[] {
     // Sample verses for Genesis 1 (in a real app, this would come from a Bible API)
     if (bookId === 'genesis' && chapter === 1) {
       return [
