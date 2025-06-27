@@ -1,8 +1,13 @@
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
+from ..utils.serializers import to_camel_case
 
 class BiblicalCounterArgument(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     scriptural_refutation: str
     contextual_explanation: str
@@ -10,7 +15,11 @@ class BiblicalCounterArgument(BaseModel):
     supporting_scriptures: List[str]
 
 class Myth(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     title: str
@@ -20,7 +29,11 @@ class Myth(BaseModel):
     tags: List[str]
 
 class Doctrine(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     title: str
@@ -31,7 +44,11 @@ class Doctrine(BaseModel):
     category: str
 
 class BibleConcept(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     title: str
@@ -42,7 +59,11 @@ class BibleConcept(BaseModel):
     relevant_scriptures: List[str]
 
 class ScriptureVerse(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     reference: str

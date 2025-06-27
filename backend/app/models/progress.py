@@ -1,14 +1,23 @@
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
+from ..utils.serializers import to_camel_case
 
 class ChapterProgress(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     book_id: str
     chapters_read: List[str]
 
 class Badge(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     name: str
@@ -16,7 +25,11 @@ class Badge(BaseModel):
     awarded_at: str
 
 class UserProgress(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     user_id: str
     bible_reading_progress: List[ChapterProgress]

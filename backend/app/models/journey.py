@@ -1,14 +1,23 @@
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
+from ..utils.serializers import to_camel_case
 
 class Coordinates(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     lat: float
     lng: float
 
 class BiblicalLocation(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     name: str
@@ -20,13 +29,21 @@ class BiblicalLocation(BaseModel):
     significance: str
 
 class RelatedChapter(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     book_id: str
     chapters: List[int]
 
 class JourneyRoute(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(
+        from_attributes=True,
+        alias_generator=to_camel_case,
+        populate_by_name=True
+    )
     
     id: str
     name: str
