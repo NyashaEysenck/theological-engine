@@ -203,10 +203,15 @@ const BibleReadingPage = () => {
 
             {activeTab === 'community' && (
               <div className="max-w-4xl mx-auto">
-                <CommunityPanel
-                  currentBook={selectedBook?.name}
-                  currentChapter={selectedChapter || undefined}
-                />
+                <div className="relative">
+                  <CommunityPanel
+                    currentBook={selectedBook?.name}
+                    currentChapter={selectedChapter || undefined}
+                  />
+                  <div className="absolute inset-0 bg-neutral-800/70 text-white text-2xl font-bold flex items-center justify-center rounded-xl z-10 opacity-100 pointer-events-none">
+                    Coming Soon
+                  </div>
+                </div>
               </div>
             )}
           </div>

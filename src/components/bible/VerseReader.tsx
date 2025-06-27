@@ -36,6 +36,7 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-neutral-200 overflow-hidden">
+      {/* Header */}
       <div className="p-6 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-primary-100">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-heading font-bold text-primary-900">
@@ -69,18 +70,47 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
         <div className="mt-8 pt-6 border-t border-neutral-200">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors">
-                <Heart className="h-5 w-5" />
-                <span>Save Chapter</span>
-              </button>
-              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors">
-                <Share2 className="h-5 w-5" />
-                <span>Share</span>
-              </button>
-              <button className="flex items-center space-x-2 text-neutral-600 hover:text-primary-600 transition-colors">
-                <MessageCircle className="h-5 w-5" />
-                <span>Discuss</span>
-              </button>
+              {/* Save Chapter - Coming Soon */}
+              <div className="relative group">
+                <button 
+                  disabled
+                  className="flex items-center space-x-2 text-neutral-400 cursor-not-allowed transition-colors"
+                >
+                  <Heart className="h-5 w-5" />
+                  <span>Save Chapter</span>
+                </button>
+                <div className="absolute inset-0 bg-neutral-800/70 text-white text-xs font-bold flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Coming Soon
+                </div>
+              </div>
+
+              {/* Share - Coming Soon */}
+              <div className="relative group">
+                <button 
+                  disabled
+                  className="flex items-center space-x-2 text-neutral-400 cursor-not-allowed transition-colors"
+                >
+                  <Share2 className="h-5 w-5" />
+                  <span>Share</span>
+                </button>
+                <div className="absolute inset-0 bg-neutral-800/70 text-white text-xs font-bold flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Coming Soon
+                </div>
+              </div>
+
+              {/* Discuss - Coming Soon */}
+              <div className="relative group">
+                <button 
+                  disabled
+                  className="flex items-center space-x-2 text-neutral-400 cursor-not-allowed transition-colors"
+                >
+                  <MessageCircle className="h-5 w-5" />
+                  <span>Discuss</span>
+                </button>
+                <div className="absolute inset-0 bg-neutral-800/70 text-white text-xs font-bold flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Coming Soon
+                </div>
+              </div>
             </div>
             <div className="text-sm text-neutral-500">
               {verses.length} verses
@@ -151,18 +181,38 @@ const VerseReader = ({ book, chapter, verses, onMarkAsRead, showVerseNumbers }: 
 
                 <div className="mt-6 pt-4 border-t border-neutral-200">
                   <div className="flex space-x-3">
-                    <Button variant="outline" size="sm">
-                      <MessageCircle className="h-4 w-4 mr-2" />
-                      Discuss
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Heart className="h-4 w-4 mr-2" />
-                      Save Note
-                    </Button>
-                    <Button variant="outline" size="sm">
-                      <Share2 className="h-4 w-4 mr-2" />
-                      Share
-                    </Button>
+                    {/* Discuss - Coming Soon */}
+                    <div className="relative group">
+                      <Button variant="outline" size="sm" disabled>
+                        <MessageCircle className="h-4 w-4 mr-2" />
+                        Discuss
+                      </Button>
+                      <div className="absolute inset-0 bg-neutral-800/70 text-white text-xs font-bold flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Coming Soon
+                      </div>
+                    </div>
+
+                    {/* Save Note - Coming Soon */}
+                    <div className="relative group">
+                      <Button variant="outline" size="sm" disabled>
+                        <Heart className="h-4 w-4 mr-2" />
+                        Save Note
+                      </Button>
+                      <div className="absolute inset-0 bg-neutral-800/70 text-white text-xs font-bold flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Coming Soon
+                      </div>
+                    </div>
+
+                    {/* Share - Coming Soon */}
+                    <div className="relative group">
+                      <Button variant="outline" size="sm" disabled>
+                        <Share2 className="h-4 w-4 mr-2" />
+                        Share
+                      </Button>
+                      <div className="absolute inset-0 bg-neutral-800/70 text-white text-xs font-bold flex items-center justify-center rounded-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+                        Coming Soon
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
