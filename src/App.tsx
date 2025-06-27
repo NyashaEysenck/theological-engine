@@ -22,6 +22,7 @@ import NotFoundPage from './pages/NotFoundPage';
 
 // Protected Routes
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import PublicRoute from './components/auth/PublicRoute';
 
 function App() {
   const location = useLocation();
@@ -34,12 +35,12 @@ function App() {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <Routes location={location} key={location.pathname}>
-        {/* Landing Page */}
+        {/* Landing Page - Public */}
         <Route index element={<LandingPage />} />
 
         {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
-          {/* Protected Routes */}
+          {/* Protected Routes - Require Authentication */}
           <Route 
             path="dashboard" 
             element={
@@ -65,7 +66,7 @@ function App() {
             } 
           />
           
-          {/* Public Routes */}
+          {/* Public Routes - Available to all users */}
           <Route path="myths" element={<MythsPage />} />
           <Route path="myths/:id" element={<MythDetailPage />} />
           <Route path="doctrines" element={<DoctrinesPage />} />
@@ -73,9 +74,23 @@ function App() {
           <Route path="query" element={<QueryEnginePage />} />
           <Route path="scripture-context" element={<ScriptureContextPage />} />
           
-          {/* Auth Routes */}
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
+          {/* Auth Routes - Redirect if already authenticated */}
+          <Route 
+            path="login" 
+            element={
+              <PublicRoute>
+                <LoginPage />
+              </PublicRoute>
+            } 
+          />
+          <Route 
+            path="register" 
+            element={
+              <PublicRoute>
+                <RegisterPage />
+              </PublicRoute>
+            } 
+          />
           
           {/* 404 Route */}
           <Route path="*" element={<NotFoundPage />} />

@@ -5,6 +5,7 @@ import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import BoltBadge from '../components/common/BoltBadge';
 import ConnectionStatus from '../components/common/ConnectionStatus';
+import RouteGuard from '../components/auth/RouteGuard';
 import { useAuth } from '../contexts/AuthContext';
 
 const MainLayout = () => {
@@ -51,25 +52,27 @@ const MainLayout = () => {
   const isAuthPage = pathname === '/login' || pathname === '/register';
 
   return (
-    <div className="flex flex-col min-h-screen bg-neutral-50">
-      <Header isScrolled={isScrolled} isAuthPage={isAuthPage} />
-      <ConnectionStatus />
-      <BoltBadge />
-      
-      <main className="flex-grow">
-        <motion.div
-          variants={pageVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          className="container mx-auto px-4 py-6 md:py-8"
-        >
-          <Outlet />
-        </motion.div>
-      </main>
-      
-      <Footer />
-    </div>
+    <RouteGuard>
+      <div className="flex flex-col min-h-screen bg-neutral-50">
+        <Header isScrolled={isScrolled} isAuthPage={isAuthPage} />
+        <ConnectionStatus />
+        <BoltBadge />
+        
+        <main className="flex-grow">
+          <motion.div
+            variants={pageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="container mx-auto px-4 py-6 md:py-8"
+          >
+            <Outlet />
+          </motion.div>
+        </main>
+        
+        <Footer />
+      </div>
+    </RouteGuard>
   );
 };
 

@@ -2,13 +2,13 @@ from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
 
 class Coordinates(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     lat: float
     lng: float
 
 class BiblicalLocation(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     name: str
@@ -20,13 +20,13 @@ class BiblicalLocation(BaseModel):
     significance: str
 
 class RelatedChapter(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     book_id: str
     chapters: List[int]
 
 class JourneyRoute(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     name: str

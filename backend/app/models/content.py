@@ -2,7 +2,7 @@ from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
 
 class BiblicalCounterArgument(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     scriptural_refutation: str
     contextual_explanation: str
@@ -10,7 +10,7 @@ class BiblicalCounterArgument(BaseModel):
     supporting_scriptures: List[str]
 
 class Myth(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     title: str
@@ -20,7 +20,7 @@ class Myth(BaseModel):
     tags: List[str]
 
 class Doctrine(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     title: str
@@ -31,7 +31,7 @@ class Doctrine(BaseModel):
     category: str
 
 class BibleConcept(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     title: str
@@ -42,7 +42,7 @@ class BibleConcept(BaseModel):
     relevant_scriptures: List[str]
 
 class ScriptureVerse(BaseModel):
-    model_config = ConfigDict(populate_by_name=True, from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     reference: str
