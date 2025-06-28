@@ -88,5 +88,95 @@
     },
     "category": "Afterlife",
     "tags": ["death", "angels", "heaven", "resurrection"]
+  },
+  {
+    "id": "myth_6",
+    "title": "All good people go to heaven",
+    "popularPerception": "If a person lives a generally good life, is kind to others, and doesn't commit major sins, they will go to heaven when they die.",
+    "biblicalCounterArgument": {
+      "scripturalRefutation": "The Bible teaches that salvation is by grace through faith in Jesus Christ alone, not by human goodness or works. All humanity is fallen and sinful, incapable of earning salvation.",
+      "contextualExplanation": "This misconception stems from a human-centered view of morality rather than God's perfect standard of righteousness. It ignores the biblical teaching on original sin and the necessity of divine intervention for salvation.",
+      "soundDoctrine": "No one is 'good enough' to earn heaven on their own. All have sinned and fall short of God's glory (Romans 3:23). Salvation is a gift of God, not a result of works, so that no one may boast (Ephesians 2:8-9). Entry into heaven requires the perfect righteousness of Christ, imputed to believers through faith.",
+      "supportingScriptures": [
+        "Romans 3:10-12 - \"None is righteous, no, not one; no one understands; no one seeks for God. All have turned aside; together they have become worthless; no one does good, not even one.\"",
+        "Ephesians 2:8-9 - \"For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.\"",
+        "Titus 3:5 - \"He saved us, not because of works done by us in righteousness, but according to his own mercy.\"",
+        "John 14:6 - \"Jesus said to him, 'I am the way, and the truth, and the life. No one comes to the Father except through me.'\""
+      ]
+    },
+    "category": "Salvation",
+    "tags": ["salvation", "works", "grace", "heaven", "sin"]
+  },
+  {
+    "id": "myth_7",
+    "title": "God accepts all religions as paths to Him",
+    "popularPerception": "All religions are essentially different paths up the same mountain, leading to the same God. As long as you are sincere, God will accept your worship regardless of your faith tradition.",
+    "biblicalCounterArgument": {
+      "scripturalRefutation": "The Bible presents Jesus Christ as the exclusive way to God. It does not teach religious pluralism but rather the unique and singular truth of the Gospel.",
+      "contextualExplanation": "This idea is a product of modern relativism and a desire for inclusivity, but it directly contradicts the exclusive claims of Christ and the apostles. The Bible consistently warns against false gods and false teachings.",
+      "soundDoctrine": "While God is loving and desires all to come to repentance, He has revealed Himself definitively in Jesus Christ. Jesus Himself declared, 'I am the way, the truth, and the life; no one comes to the Father except through Me' (John 14:6). Any other path is a false path, and sincerity in a false religion does not make it true or acceptable to God.",
+      "supportingScriptures": [
+        "John 14:6 - \"Jesus said to him, 'I am the way, and the truth, and the life. No one comes to the Father except through me.'\"",
+        "Acts 4:12 - \"And there is salvation in no one else, for there is no other name under heaven given among men by which we must be saved.\"",
+        "1 Timothy 2:5 - \"For there is one God, and there is one mediator between God and men, the man Christ Jesus.\"",
+        "Galatians 1:8-9 - \"But even if we or an angel from heaven should preach to you a gospel contrary to the one we preached to you, let him be accursed.\""
+      ]
+    },
+    "category": "Theology Proper",
+    "tags": ["pluralism", "exclusivity", "truth", "Jesus", "gospel"]
+  },
+  {
+    "id": "myth_8",
+    "title": "The Holy Spirit is primarily for emotional experiences and signs",
+    "popularPerception": "The primary evidence of the Holy Spirit's presence in a believer's life is speaking in tongues, miraculous healings, or intense emotional experiences.",
+    "biblicalCounterArgument": {
+      "scripturalRefutation": "The Bible teaches that the Holy Spirit's primary work is to convict of sin, regenerate, indwell, sanctify, and empower believers for obedience and witness, producing the fruit of the Spirit.",
+      "contextualExplanation": "This misconception often arises from a misreading of Acts and 1 Corinthians, focusing on extraordinary gifts while neglecting the Spirit's more fundamental and universal work in the life of every believer. It can lead to a pursuit of experiences over genuine spiritual transformation.",
+      "soundDoctrine": "While the Holy Spirit can manifest in various ways, including some miraculous gifts, His essential work is to glorify Christ, apply salvation, and transform believers into Christ's likeness. The fruit of the Spirit (love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control) is the true and consistent evidence of His indwelling presence, not necessarily ecstatic experiences.",
+      "supportingScriptures": [
+        "Galatians 5:22-23 - \"But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, self-control; against such things there is no law.\"",
+        "John 16:8 - \"And when he comes, he will convict the world concerning sin and righteousness and judgment.\"",
+        "Romans 8:9 - \"You, however, are not in the flesh but in the Spirit, if in fact the Spirit of God dwells in you. Anyone who does not have the Spirit of Christ does not belong to him.\"",
+        "Acts 1:8 - \"But you will receive power when the Holy Spirit has come upon you, and you will be my witnesses in Jerusalem and in all Judea and Samaria, and to the end of the earth.\""
+      ]
+    },
+    "category": "Holy Spirit",
+    "tags": ["Holy Spirit", "spiritual gifts", "emotions", "fruit of the Spirit", "charismatic"]
+  },
+  {
+    "id": "myth_9",
+    "title": "Once saved, always saved, regardless of how one lives",
+    "popularPerception": "Once a person genuinely accepts Christ, their salvation is eternally secure, and their subsequent behavior or lack of faith does not affect their eternal destiny.",
+    "biblicalCounterArgument": {
+      "scripturalRefutation": "While true believers are eternally secure in Christ, genuine saving faith is always accompanied by a transformed life and perseverance in obedience. A life characterized by unrepentant sin indicates a lack of true saving faith.",
+      "contextualExplanation": "This misconception, often called 'easy-believism' or 'carnal Christianity,' divorces faith from repentance and obedience. It misinterprets biblical assurance as a license for sin, ignoring numerous warnings in Scripture about the necessity of perseverance and the evidence of true conversion.",
+      "soundDoctrine": "True salvation is a work of God that guarantees perseverance. Those genuinely saved will persevere in faith and obedience, though they may stumble. The evidence of salvation is not merely a past decision but an ongoing transformed life that demonstrates a new nature and a desire to follow Christ. A person who claims to be saved but lives in continuous, unrepentant sin gives no biblical evidence of regeneration.",
+      "supportingScriptures": [
+        "Matthew 7:21 - \"Not everyone who says to me, 'Lord, Lord,' will enter the kingdom of heaven, but the one who does the will of my Father who is in heaven.\"",
+        "James 2:17 - \"So also faith by itself, if it does not have works, is dead.\"",
+        "1 John 2:3-4 - \"And by this we know that we have come to know him, if we keep his commandments. Whoever says 'I know him' but does not keep his commandments is a liar, and the truth is not in him.\"",
+        "Philippians 2:12-13 - \"Therefore, my beloved, as you have always obeyed, so now, not only as in my presence but much more in my absence, work out your own salvation with fear and trembling, for it is God who works in you, both to will and to work for his good pleasure.\""
+      ]
+    },
+    "category": "Salvation",
+    "tags": ["eternal security", "perseverance", "easy-believism", "Lordship salvation", "obedience"]
+  },
+  {
+    "id": "myth_10",
+    "title": "God is too loving to send anyone to hell",
+    "popularPerception": "A loving God would never condemn anyone to eternal punishment in hell. Eventually, everyone will be reconciled to God (universalism), or hell is not a literal place of eternal torment.",
+    "biblicalCounterArgument": {
+      "scripturalRefutation": "The Bible clearly teaches the reality of hell as a literal, eternal place of conscious punishment for those who reject God and His Son, Jesus Christ. God's love is balanced by His perfect justice and holiness.",
+      "contextualExplanation": "This misconception often arises from a sentimentalized view of God's love that divorces it from His other attributes, particularly His holiness and justice. It ignores the severity of sin and the biblical warnings about judgment.",
+      "soundDoctrine": "God is infinitely loving, but He is also perfectly holy and just. His justice demands punishment for sin. Hell is the just consequence for rebellion against a holy God. Jesus spoke more about hell than heaven, warning of its reality. Universalism (the belief that all will be saved) contradicts clear biblical teaching on judgment and the necessity of faith in Christ for salvation.",
+      "supportingScriptures": [
+        "Matthew 25:46 - \"And these will go away into eternal punishment, but the righteous into eternal life.\"",
+        "Revelation 20:10 - \"and the devil who had deceived them was thrown into the lake of fire and sulfur where the beast and the false prophet were, and they will be tormented day and night forever and ever.\"",
+        "2 Thessalonians 1:8-9 - \"...inflicting vengeance on those who do not know God and on those who do not obey the gospel of our Lord Jesus. They will suffer the punishment of eternal destruction, away from the presence of the Lord and from the glory of his might.\"",
+        "John 3:18 - \"Whoever believes in him is not condemned, but whoever does not believe is condemned already, because he has not believed in the name of the only Son of God.\""
+      ]
+    },
+    "category": "Afterlife",
+    "tags": ["hell", "universalism", "justice", "love of God", "judgment"]
   }
 ]
