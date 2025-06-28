@@ -1,59 +1,42 @@
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
-from ..utils.serializers import to_camel_case
 
 class Coordinates(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
     lat: float
     lng: float
 
 class BiblicalLocation(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     name: str
-    modern_name: Optional[str] = None
+    modernName: Optional[str] = None
     coordinates: Coordinates
     description: str
-    biblical_references: List[str]
-    historical_period: str
+    biblicalReferences: List[str]
+    historicalPeriod: str
     significance: str
 
 class RelatedChapter(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
-    book_id: str
+    bookId: str
     chapters: List[int]
 
 class JourneyRoute(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     name: str
     description: str
     type: str
     character: str
-    biblical_period: str
-    related_books: List[str]
-    related_chapters: List[RelatedChapter]
+    biblicalPeriod: str
+    relatedBooks: List[str]
+    relatedChapters: List[RelatedChapter]
     waypoints: List[BiblicalLocation]
-    route_color: str
-    estimated_duration: Optional[str] = None
-    historical_context: str
+    routeColor: str
+    estimatedDuration: Optional[str] = None
+    historicalContext: str

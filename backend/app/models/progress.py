@@ -1,42 +1,29 @@
 from pydantic import BaseModel, ConfigDict
 from typing import List, Optional
-from ..utils.serializers import to_camel_case
 
 class ChapterProgress(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
-    book_id: str
-    chapters_read: List[str]
+    bookId: str
+    chaptersRead: List[str]
 
 class Badge(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
     name: str
     description: str
-    awarded_at: str
+    awardedAt: str
 
 class UserProgress(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
-    user_id: str
-    bible_reading_progress: List[ChapterProgress]
-    favorite_myths: List[str]
-    favorite_doctrine: List[str]
+    userId: str
+    bibleReadingProgress: List[ChapterProgress]
+    favoriteMyths: List[str]
+    favoriteDoctrine: List[str]
     experience: int
-    reading_streak: int
+    readingStreak: int
     badges: List[Badge]
-    last_read_date: Optional[str] = None
-    unlocked_features: List[str]
+    lastReadDate: Optional[str] = None
+    unlockedFeatures: List[str]

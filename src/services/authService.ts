@@ -19,13 +19,13 @@ class AuthService {
   async login(email: string, password: string): Promise<User> {
     try {
       // Try backend first
-      const response = await apiClient.post<{ access_token: string; token_type: string }>(
+      const response = await apiClient.post<{ accessToken: string; tokenType: string }>(
         API_ENDPOINTS.AUTH.LOGIN,
         { email, password }
       );
 
       // Store token
-      localStorage.setItem(this.tokenKey, response.access_token);
+      localStorage.setItem(this.tokenKey, response.accessToken);
 
       // Get user info
       const user = await this.getCurrentUser();

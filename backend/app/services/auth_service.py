@@ -53,23 +53,23 @@ class AuthService:
             "id": user_id,
             "username": user_data.username,
             "email": user_data.email,
-            "hashed_password": get_password_hash(user_data.password),
-            "created_at": datetime.utcnow().isoformat()
+            "hashedPassword": get_password_hash(user_data.password),
+            "createdAt": datetime.utcnow().isoformat()
         }
         
         users.append(new_user)
         await self._save_users(users)
         
-        return User(**{k: v for k, v in new_user.items() if k != 'hashed_password'})
+        return User(**{k: v for k, v in new_user.items() if k != 'hashedPassword'})
     
     async def authenticate_user(self, email: str, password: str) -> Optional[User]:
         """Authenticate user with email and password"""
         user = await self.get_user_by_email(email)
         if not user:
             return None
-        if not verify_password(password, user.hashed_password):
+        if not verify_password(password, user.hashedPassword):
             return None
-        return User(**{k: v for k, v in user.dict().items() if k != 'hashed_password'})
+        return User(**{k: v for k, v in user.dict().items() if k != 'hashedPassword'})
     
     def create_access_token(self, subject: str, expires_delta=None):
         """Create access token for user"""

@@ -1,14 +1,9 @@
 from pydantic import BaseModel, EmailStr, ConfigDict
 from typing import Optional
 from datetime import datetime
-from ..utils.serializers import to_camel_case
 
 class UserBase(BaseModel):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
     username: str
     email: EmailStr
@@ -17,40 +12,27 @@ class UserCreate(UserBase):
     password: str
 
 class UserLogin(BaseModel):
-    model_config = ConfigDict(
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict()
     
     email: EmailStr
     password: str
 
 class User(UserBase):
-    model_config = ConfigDict(
-        from_attributes=True,
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict(from_attributes=True)
     
     id: str
-    created_at: datetime
+    createdAt: datetime
 
 class UserInDB(User):
-    hashed_password: str
+    hashedPassword: str
 
 class Token(BaseModel):
-    model_config = ConfigDict(
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict()
     
-    access_token: str
-    token_type: str
+    accessToken: str
+    tokenType: str
 
 class TokenData(BaseModel):
-    model_config = ConfigDict(
-        alias_generator=to_camel_case,
-        populate_by_name=True
-    )
+    model_config = ConfigDict()
     
     username: Optional[str] = None

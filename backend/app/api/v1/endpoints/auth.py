@@ -38,7 +38,7 @@ async def login(user_credentials: UserLogin):
         subject=user.email, expires_delta=access_token_expires
     )
     
-    return {"access_token": access_token, "token_type": "bearer"}
+    return {"accessToken": access_token, "tokenType": "bearer"}
 
 @router.get("/me", response_model=User)
 async def read_users_me(current_user: User = None):

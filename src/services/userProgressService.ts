@@ -184,25 +184,25 @@ class UserProgressService {
   private checkForUnlocks(progress: UserProgress, bookId: string, chapterId: string): void {
     // Check if user has unlocked all chapters in a book to award badges
     if (bookId === 'genesis' && this.hasCompletedBook(progress, 'genesis')) {
-      this.awardBadge(progress, 'genesis_scholar', 'Genesis Scholar', 'Completed reading the book of Genesis');
+      this.awardBadge(progress, 'genesisScholar', 'Genesis Scholar', 'Completed reading the book of Genesis');
     }
     
     if (bookId === 'exodus' && this.hasCompletedBook(progress, 'exodus')) {
-      this.awardBadge(progress, 'exodus_explorer', 'Exodus Explorer', 'Completed reading the book of Exodus');
+      this.awardBadge(progress, 'exodusExplorer', 'Exodus Explorer', 'Completed reading the book of Exodus');
     }
     
     // Check for unlockable features based on specific readings
     if (bookId === 'romans') {
       // Unlock "Predestination Toolkit" after reading Romans
-      if (!progress.unlockedFeatures.includes('predestination_toolkit')) {
-        progress.unlockedFeatures.push('predestination_toolkit');
+      if (!progress.unlockedFeatures.includes('predestinationToolkit')) {
+        progress.unlockedFeatures.push('predestinationToolkit');
       }
     }
     
     if (bookId === 'leviticus' && this.hasCompletedBook(progress, 'leviticus')) {
       // Unlock "Law vs. Grace" pathway after completing Leviticus
-      if (!progress.unlockedFeatures.includes('law_vs_grace_pathway')) {
-        progress.unlockedFeatures.push('law_vs_grace_pathway');
+      if (!progress.unlockedFeatures.includes('lawVsGracePathway')) {
+        progress.unlockedFeatures.push('lawVsGracePathway');
       }
     }
     
@@ -210,17 +210,17 @@ class UserProgressService {
     const torahBooks = ['genesis', 'exodus', 'leviticus', 'numbers', 'deuteronomy'];
     const hasCompletedTorah = torahBooks.every(book => this.hasCompletedBook(progress, book));
     
-    if (hasCompletedTorah && !progress.badges.some(b => b.id === 'torah_scholar')) {
+    if (hasCompletedTorah && !progress.badges.some(b => b.id === 'torahScholar')) {
       this.awardBadge(
         progress, 
-        'torah_scholar', 
+        'torahScholar', 
         'Torah Scholar', 
         'Completed reading the Torah (Pentateuch)'
       );
       
       // Unlock advanced feature
-      if (!progress.unlockedFeatures.includes('cultural_analysis')) {
-        progress.unlockedFeatures.push('cultural_analysis');
+      if (!progress.unlockedFeatures.includes('culturalAnalysis')) {
+        progress.unlockedFeatures.push('culturalAnalysis');
       }
     }
     
@@ -228,17 +228,17 @@ class UserProgressService {
     const gospelBooks = ['matthew', 'mark', 'luke', 'john'];
     const hasCompletedGospels = gospelBooks.every(book => this.hasCompletedBook(progress, book));
     
-    if (hasCompletedGospels && !progress.badges.some(b => b.id === 'gospel_witness')) {
+    if (hasCompletedGospels && !progress.badges.some(b => b.id === 'gospelWitness')) {
       this.awardBadge(
         progress,
-        'gospel_witness',
+        'gospelWitness',
         'Gospel Witness',
         'Completed reading all four Gospels'
       );
       
       // Unlock "Kingdom of God" feature
-      if (!progress.unlockedFeatures.includes('kingdom_of_god')) {
-        progress.unlockedFeatures.push('kingdom_of_god');
+      if (!progress.unlockedFeatures.includes('kingdomOfGod')) {
+        progress.unlockedFeatures.push('kingdomOfGod');
       }
     }
   }

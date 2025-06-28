@@ -39,15 +39,15 @@ class ProgressService:
         
         # Create default progress for new user
         new_progress = UserProgress(
-            user_id=user_id,
-            bible_reading_progress=[],
-            favorite_myths=[],
-            favorite_doctrine=[],
+            userId=user_id,
+            bibleReadingProgress=[],
+            favoriteMyths=[],
+            favoriteDoctrine=[],
             experience=0,
-            reading_streak=0,
+            readingStreak=0,
             badges=[],
-            last_read_date=None,
-            unlocked_features=[]
+            lastReadDate=None,
+            unlockedFeatures=[]
         )
         
         data[user_id] = new_progress.model_dump()
@@ -61,28 +61,28 @@ class ProgressService:
         
         # Find or create book progress
         book_progress = None
-        for bp in progress.bible_reading_progress:
-            if bp.book_id == book_id:
+        for bp in progress.bibleReadingProgress:
+            if bp.bookId == book_id:
                 book_progress = bp
                 break
         
         if not book_progress:
-            book_progress = ChapterProgress(book_id=book_id, chapters_read=[])
-            progress.bible_reading_progress.append(book_progress)
+            book_progress = ChapterProgress(bookId=book_id, chaptersRead=[])
+            progress.bibleReadingProgress.append(book_progress)
         
         # Add chapter if not already read
-        if chapter_id not in book_progress.chapters_read:
-            book_progress.chapters_read.append(chapter_id)
+        if chapter_id not in book_progress.chaptersRead:
+            book_progress.chaptersRead.append(chapter_id)
             progress.experience += 10
             
             # Update reading streak
             today = datetime.utcnow().date().isoformat()
-            if progress.last_read_date != today:
-                progress.last_read_date = today
-                progress.reading_streak += 1
+            if progress.lastReadDate != today:
+                progress.lastReadDate = today
+                progress.readingStreak += 1
                 
                 # Award streak bonus
-                if progress.reading_streak % 7 == 0:
+                if progress.readingStreak % 7 == 0:
                     progress.experience += 50
             
             # Check for unlocks
@@ -99,10 +99,10 @@ class ProgressService:
         """Toggle a myth as favorite for a user"""
         progress = await self.get_user_progress(user_id)
         
-        if myth_id in progress.favorite_myths:
-            progress.favorite_myths.remove(myth_id)
+        if myth_id in progress.favoriteMyths:
+            progress.favoriteMyths.remove(myth_id)
         else:
-            progress.favorite_myths.append(myth_id)
+            progress.favoriteMyths.append(myth_id)
         
         # Save updated progress
         data = await self._load_progress_data()
@@ -115,10 +115,10 @@ class ProgressService:
         """Toggle a doctrine as favorite for a user"""
         progress = await self.get_user_progress(user_id)
         
-        if doctrine_id in progress.favorite_doctrine:
-            progress.favorite_doctrine.remove(doctrine_id)
+        if doctrine_id in progress.favoriteDoctrine:
+            progress.favoriteDoctrine.remove(doctrine_id)
         else:
-            progress.favorite_doctrine.append(doctrine_id)
+            progress.favoriteDoctrine.append(doctrine_id)
         
         # Save updated progress
         data = await self._load_progress_data()
@@ -131,57 +131,57 @@ class ProgressService:
         """Check for unlockable features and badges"""
         # Check if user has completed specific books to award badges
         if book_id == 'genesis' and self._has_completed_book(progress, 'genesis'):
-            self._award_badge(progress, 'genesis_scholar', 'Genesis Scholar', 'Completed reading the book of Genesis')
+            self._award_badge(progress, 'genesisScholar', 'Genesis Scholar', 'Completed reading the book of Genesis')
         
         if book_id == 'exodus' and self._has_completed_book(progress, 'exodus'):
-            self._award_badge(progress, 'exodus_explorer', 'Exodus Explorer', 'Completed reading the book of Exodus')
+            self._award_badge(progress, 'exodusExplorer', 'Exodus Explorer', 'Completed reading the book of Exodus')
         
         # Check for unlockable features based on specific readings
         if book_id == 'romans':
             # Unlock "Predestination Toolkit" after reading Romans
-            if 'predestination_toolkit' not in progress.unlocked_features:
-                progress.unlocked_features.append('predestination_toolkit')
+            if 'predestinationToolkit' not in progress.unlockedFeatures:
+                progress.unlockedFeatures.append('predestinationToolkit')
         
         if book_id == 'leviticus' and self._has_completed_book(progress, 'leviticus'):
             # Unlock "Law vs. Grace" pathway after completing Leviticus
-            if 'law_vs_grace_pathway' not in progress.unlocked_features:
-                progress.unlocked_features.append('law_vs_grace_pathway')
+            if 'lawVsGracePathway' not in progress.unlockedFeatures:
+                progress.unlockedFeatures.append('lawVsGracePathway')
         
         # Check if all Torah books are complete
         torah_books = ['genesis', 'exodus', 'leviticus', 'numbers', 'deuteronomy']
         has_completed_torah = all(self._has_completed_book(progress, book) for book in torah_books)
         
-        if has_completed_torah and not any(b.id == 'torah_scholar' for b in progress.badges):
+        if has_completed_torah and not any(b.id == 'torahScholar' for b in progress.badges):
             self._award_badge(
                 progress, 
-                'torah_scholar', 
+                'torahScholar', 
                 'Torah Scholar', 
                 'Completed reading the Torah (Pentateuch)'
             )
             
             # Unlock advanced feature
-            if 'cultural_analysis' not in progress.unlocked_features:
-                progress.unlocked_features.append('cultural_analysis')
+            if 'culturalAnalysis' not in progress.unlockedFeatures:
+                progress.unlockedFeatures.append('culturalAnalysis')
         
         # Check if all Gospels are complete
         gospel_books = ['matthew', 'mark', 'luke', 'john']
         has_completed_gospels = all(self._has_completed_book(progress, book) for book in gospel_books)
         
-        if has_completed_gospels and not any(b.id == 'gospel_witness' for b in progress.badges):
+        if has_completed_gospels and not any(b.id == 'gospelWitness' for b in progress.badges):
             self._award_badge(
                 progress,
-                'gospel_witness',
+                'gospelWitness',
                 'Gospel Witness',
                 'Completed reading all four Gospels'
             )
             
             # Unlock "Kingdom of God" feature
-            if 'kingdom_of_god' not in progress.unlocked_features:
-                progress.unlocked_features.append('kingdom_of_god')
+            if 'kingdomOfGod' not in progress.unlockedFeatures:
+                progress.unlockedFeatures.append('kingdomOfGod')
     
     def _has_completed_book(self, progress: UserProgress, book_id: str) -> bool:
         """Check if a book has been completed"""
-        book_progress = next((bp for bp in progress.bible_reading_progress if bp.book_id == book_id), None)
+        book_progress = next((bp for bp in progress.bibleReadingProgress if bp.bookId == book_id), None)
         
         if not book_progress:
             return False
@@ -217,7 +217,7 @@ class ProgressService:
             'galatians': 6
         }
         
-        return len(book_progress.chapters_read) >= chapter_counts.get(book_id, 0)
+        return len(book_progress.chaptersRead) >= chapter_counts.get(book_id, 0)
     
     def _award_badge(self, progress: UserProgress, badge_id: str, name: str, description: str):
         """Award a badge to the user"""
@@ -227,7 +227,7 @@ class ProgressService:
                 id=badge_id,
                 name=name,
                 description=description,
-                awarded_at=datetime.utcnow().isoformat()
+                awardedAt=datetime.utcnow().isoformat()
             )
             progress.badges.append(new_badge)
             
