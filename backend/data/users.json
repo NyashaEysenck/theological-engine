@@ -3,21 +3,21 @@
     "id": "user_1",
     "username": "JohnDoe",
     "email": "john@example.com",
-    "hashed_password": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/A5/jF/XZm",
-    "created_at": "2023-01-15T08:30:00Z"
+    "hashedPassword": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/A5/jF/XZm",
+    "createdAt": "2023-01-15T08:30:00Z"
   },
   {
     "id": "user_2",
     "username": "JaneSmith",
     "email": "jane@example.com",
-    "hashed_password": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/A5/jF/XZm",
-    "created_at": "2023-02-20T14:45:00Z"
+    "hashedPassword": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/A5/jF/XZm",
+    "createdAt": "2023-02-20T14:45:00Z"
   },
   {
     "id": "demo123",
     "username": "DemoUser",
     "email": "demo@example.com",
-    "hashed_password": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/A5/jF/XZm",
-    "created_at": "2024-01-01T00:00:00Z"
+    "hashedPassword": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/A5/jF/XZm",
+    "createdAt": "2024-01-01T00:00:00Z"
   }
 ]

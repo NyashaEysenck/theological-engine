@@ -2,196 +2,196 @@
   {
     "id": "egypt_goshen",
     "name": "Goshen",
-    "modern_name": "Nile Delta, Egypt",
+    "modernName": "Nile Delta, Egypt",
     "coordinates": {
       "lat": 30.8,
       "lng": 31.3
     },
     "description": "The land where the Israelites lived in Egypt before the Exodus",
-    "biblical_references": ["Genesis 45:10", "Genesis 47:1-6", "Exodus 8:22"],
-    "historical_period": "Patriarchal/Exodus Period",
+    "biblicalReferences": ["Genesis 45:10", "Genesis 47:1-6", "Exodus 8:22"],
+    "historicalPeriod": "Patriarchal/Exodus Period",
     "significance": "Starting point of the Exodus journey; place of both blessing and bondage"
   },
   {
     "id": "red_sea",
     "name": "Red Sea Crossing",
-    "modern_name": "Gulf of Suez/Aqaba",
+    "modernName": "Gulf of Suez/Aqaba",
     "coordinates": {
       "lat": 29.5,
       "lng": 32.8
     },
     "description": "The miraculous crossing point where God parted the waters",
-    "biblical_references": ["Exodus 14:21-31", "Psalm 106:9-12"],
-    "historical_period": "Exodus Period",
+    "biblicalReferences": ["Exodus 14:21-31", "Psalm 106:9-12"],
+    "historicalPeriod": "Exodus Period",
     "significance": "Site of God's great deliverance and Pharaoh's defeat"
   },
   {
     "id": "mount_sinai",
     "name": "Mount Sinai",
-    "modern_name": "Jebel Musa, Egypt",
+    "modernName": "Jebel Musa, Egypt",
     "coordinates": {
       "lat": 28.5,
       "lng": 33.9
     },
     "description": "The mountain where Moses received the Ten Commandments",
-    "biblical_references": ["Exodus 19-20", "Exodus 24:12-18", "Deuteronomy 4:10-15"],
-    "historical_period": "Exodus Period",
+    "biblicalReferences": ["Exodus 19-20", "Exodus 24:12-18", "Deuteronomy 4:10-15"],
+    "historicalPeriod": "Exodus Period",
     "significance": "Place of covenant-making and law-giving"
   },
   {
     "id": "kadesh_barnea",
     "name": "Kadesh Barnea",
-    "modern_name": "Ein el-Qudeirat, Israel",
+    "modernName": "Ein el-Qudeirat, Israel",
     "coordinates": {
       "lat": 30.7,
       "lng": 34.4
     },
     "description": "Oasis where Israel spent much of their wilderness wandering",
-    "biblical_references": ["Numbers 13:26", "Numbers 20:1", "Deuteronomy 1:46"],
-    "historical_period": "Wilderness Period",
+    "biblicalReferences": ["Numbers 13:26", "Numbers 20:1", "Deuteronomy 1:46"],
+    "historicalPeriod": "Wilderness Period",
     "significance": "Place of rebellion and judgment; turning point in wilderness journey"
   },
   {
     "id": "jericho",
     "name": "Jericho",
-    "modern_name": "Tell es-Sultan, Palestine",
+    "modernName": "Tell es-Sultan, Palestine",
     "coordinates": {
       "lat": 31.9,
       "lng": 35.4
     },
     "description": "First city conquered in the Promised Land",
-    "biblical_references": ["Joshua 6:1-27", "Joshua 2:1-24"],
-    "historical_period": "Conquest Period",
+    "biblicalReferences": ["Joshua 6:1-27", "Joshua 2:1-24"],
+    "historicalPeriod": "Conquest Period",
     "significance": "Symbol of God's power and faithfulness in conquest"
   },
   {
     "id": "antioch_syria",
     "name": "Antioch",
-    "modern_name": "Antakya, Turkey",
+    "modernName": "Antakya, Turkey",
     "coordinates": {
       "lat": 36.2,
       "lng": 36.2
     },
     "description": "Base of operations for Paul's missionary journeys",
-    "biblical_references": ["Acts 11:19-26", "Acts 13:1-3", "Acts 14:26-28"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 11:19-26", "Acts 13:1-3", "Acts 14:26-28"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "First place believers were called Christians; missionary sending center"
   },
   {
     "id": "cyprus_salamis",
     "name": "Salamis, Cyprus",
-    "modern_name": "Near Famagusta, Cyprus",
+    "modernName": "Near Famagusta, Cyprus",
     "coordinates": {
       "lat": 35.2,
       "lng": 33.9
     },
     "description": "First stop on Paul's first missionary journey",
-    "biblical_references": ["Acts 13:4-5"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 13:4-5"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "Beginning of systematic Gentile evangelization"
   },
   {
     "id": "lystra",
     "name": "Lystra",
-    "modern_name": "Hatunsaray, Turkey",
+    "modernName": "Hatunsaray, Turkey",
     "coordinates": {
       "lat": 37.6,
       "lng": 32.5
     },
     "description": "City where Paul was stoned and left for dead",
-    "biblical_references": ["Acts 14:6-20", "Acts 16:1-3"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 14:6-20", "Acts 16:1-3"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "Place of suffering and Timothy's hometown"
   },
   {
     "id": "philippi",
     "name": "Philippi",
-    "modern_name": "Filippoi, Greece",
+    "modernName": "Filippoi, Greece",
     "coordinates": {
       "lat": 41.0,
       "lng": 24.3
     },
     "description": "First European city evangelized by Paul",
-    "biblical_references": ["Acts 16:11-40", "Philippians 1:1"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 16:11-40", "Philippians 1:1"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "Gateway to Europe; Lydia's conversion; Paul and Silas imprisoned"
   },
   {
     "id": "athens",
     "name": "Athens",
-    "modern_name": "Athens, Greece",
+    "modernName": "Athens, Greece",
     "coordinates": {
       "lat": 37.9,
       "lng": 23.7
     },
     "description": "Intellectual center where Paul preached at the Areopagus",
-    "biblical_references": ["Acts 17:16-34"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 17:16-34"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "Philosophical engagement with Greek culture"
   },
   {
     "id": "corinth",
     "name": "Corinth",
-    "modern_name": "Korinthos, Greece",
+    "modernName": "Korinthos, Greece",
     "coordinates": {
       "lat": 37.9,
       "lng": 22.9
     },
     "description": "Major commercial city where Paul spent 18 months",
-    "biblical_references": ["Acts 18:1-18", "1 Corinthians 1:2", "2 Corinthians 1:1"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 18:1-18", "1 Corinthians 1:2", "2 Corinthians 1:1"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "Strategic ministry center; recipient of two major epistles"
   },
   {
     "id": "ephesus",
     "name": "Ephesus",
-    "modern_name": "Selçuk, Turkey",
+    "modernName": "Selçuk, Turkey",
     "coordinates": {
       "lat": 37.9,
       "lng": 27.3
     },
     "description": "Major city where Paul ministered for three years",
-    "biblical_references": ["Acts 19:1-41", "Ephesians 1:1", "Revelation 2:1-7"],
-    "historical_period": "Apostolic Period",
+    "biblicalReferences": ["Acts 19:1-41", "Ephesians 1:1", "Revelation 2:1-7"],
+    "historicalPeriod": "Apostolic Period",
     "significance": "Center of Asian ministry; site of great revival and opposition"
   },
   {
     "id": "nazareth",
     "name": "Nazareth",
-    "modern_name": "Nazareth, Israel",
+    "modernName": "Nazareth, Israel",
     "coordinates": {
       "lat": 32.7,
       "lng": 35.3
     },
     "description": "Jesus's hometown where He grew up",
-    "biblical_references": ["Luke 1:26-38", "Luke 4:16-30", "Matthew 2:23"],
-    "historical_period": "Gospel Period",
+    "biblicalReferences": ["Luke 1:26-38", "Luke 4:16-30", "Matthew 2:23"],
+    "historicalPeriod": "Gospel Period",
     "significance": "Place of Jesus's upbringing and early rejection"
   },
   {
     "id": "capernaum",
     "name": "Capernaum",
-    "modern_name": "Kfar Nahum, Israel",
+    "modernName": "Kfar Nahum, Israel",
     "coordinates": {
       "lat": 32.9,
       "lng": 35.6
     },
     "description": "Jesus's ministry headquarters by the Sea of Galilee",
-    "biblical_references": ["Matthew 4:13", "Mark 2:1", "Luke 4:31"],
-    "historical_period": "Gospel Period",
+    "biblicalReferences": ["Matthew 4:13", "Mark 2:1", "Luke 4:31"],
+    "historicalPeriod": "Gospel Period",
     "significance": "Center of Galilean ministry; many miracles performed here"
   },
   {
     "id": "jerusalem",
     "name": "Jerusalem",
-    "modern_name": "Jerusalem, Israel",
+    "modernName": "Jerusalem, Israel",
     "coordinates": {
       "lat": 31.8,
       "lng": 35.2
     },
     "description": "Holy city; site of Jesus's crucifixion and resurrection",
-    "biblical_references": ["Luke 2:22-38", "John 2:13-25", "Luke 23-24"],
-    "historical_period": "All Periods",
+    "biblicalReferences": ["Luke 2:22-38", "John 2:13-25", "Luke 23-24"],
+    "historicalPeriod": "All Periods",
     "significance": "Center of Jewish worship; site of salvation accomplished"
   }
 ]
