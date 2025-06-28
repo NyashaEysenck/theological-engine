@@ -20,12 +20,12 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-// Protected Routes
-import ProtectedRoute from './components/auth/ProtectedRoute';
-import PublicRoute from './components/auth/PublicRoute';
+// Auth Components
+import { useAuth } from './contexts/AuthContext';
 
 function App() {
   const location = useLocation();
+  const { isAuthenticated } = useAuth();
 
   // Scroll to top on route change
   useEffect(() => {
@@ -41,30 +41,13 @@ function App() {
         {/* Main App Routes */}
         <Route path="/" element={<MainLayout />}>
           {/* Protected Routes - Require Authentication */}
-          <Route 
-            path="dashboard" 
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="bible-reading" 
-            element={
-              <ProtectedRoute>
-                <BibleReadingPage />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="profile" 
-            element={
-              <ProtectedRoute>
-                <ProfilePage />
-              </ProtectedRoute>
-            } 
-          />
+          {isAuthenticated && (
+            <>
+              <Route path="dashboard" element={<DashboardPage />} />
+              <Route path="bible-reading" element={<BibleReadingPage />} />
+              <Route path="profile" element={<ProfilePage />} />
+            </>
+          )}
           
           {/* Public Routes - Available to all users */}
           <Route path="myths" element={<MythsPage />} />
@@ -74,23 +57,13 @@ function App() {
           <Route path="query" element={<QueryEnginePage />} />
           <Route path="scripture-context" element={<ScriptureContextPage />} />
           
-          {/* Auth Routes - Redirect if already authenticated */}
-          <Route 
-            path="login" 
-            element={
-              <PublicRoute>
-                <LoginPage />
-              </PublicRoute>
-            } 
-          />
-          <Route 
-            path="register" 
-            element={
-              <PublicRoute>
-                <RegisterPage />
-              </PublicRoute>
-            } 
-          />
+          {/* Auth Routes - Only show if not authenticated */}
+          {!isAuthenticated && (
+            <>
+              <Route path="login" element={<LoginPage />} />
+              <Route path="register" element={<RegisterPage />} />
+            </>
+          )}
           
           {/* 404 Route */}
           <Route path="*" element={<NotFoundPage />} />

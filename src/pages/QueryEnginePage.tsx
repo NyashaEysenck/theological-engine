@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Search, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, BookOpen, ChevronRight, ChevronDown } from 'lucide-react';
 import { contentService } from '../services/contentService';
 import { BibleConcept } from '../types/content';
 import ConceptNavigator from '../components/query/ConceptNavigator';
@@ -11,6 +11,7 @@ const QueryEnginePage = () => {
   const [results, setResults] = useState<BibleConcept[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [expandedConcept, setExpandedConcept] = useState<string | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -41,6 +42,7 @@ const QueryEnginePage = () => {
 
     setIsLoading(true);
     setHasSearched(true);
+    setExpandedConcept(null);
 
     try {
       const concepts = await contentService.searchBibleConcepts(query);
@@ -50,6 +52,10 @@ const QueryEnginePage = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleConceptClick = (conceptId: string) => {
+    setExpandedConcept(expandedConcept === conceptId ? null : conceptId);
   };
 
   return (
@@ -71,8 +77,7 @@ const QueryEnginePage = () => {
               What Does the Bible Really Say About...?
             </h1>
             <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Navigate theological concepts through interactive biblical exploration. 
-              Search topics to discover related books, explore key passages, and understand balanced perspectives.
+              Navigate theological concepts through interactive biblical exploration. Search topics to discover related books, explore key passages, and understand balanced perspectives.
             </p>
           </div>
 
@@ -103,20 +108,20 @@ const QueryEnginePage = () => {
           {/* Results */}
           {isLoading ? (
             <motion.div 
-              className="grid grid-cols-1 gap-8"
+              className="space-y-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               {[1, 2].map((n) => (
                 <motion.div key={n} variants={itemVariants} className="animate-pulse">
-                  <div className="h-96 bg-neutral-200 rounded-xl"></div>
+                  <div className="h-20 bg-neutral-200 rounded-xl"></div>
                 </motion.div>
               ))}
             </motion.div>
-          ) : (
+          ) : hasSearched && results.length > 0 ? (
             <motion.div 
-              className="grid grid-cols-1 gap-8"
+              className="space-y-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -126,11 +131,52 @@ const QueryEnginePage = () => {
                   key={concept.id}
                   variants={itemVariants}
                 >
-                  <ConceptNavigator concept={concept} />
+                  {/* Concept List Item */}
+                  <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
+                    <button
+                      onClick={() => handleConceptClick(concept.id)}
+                      className="w-full p-6 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
+                            {concept.title}
+                          </h3>
+                          <p className="text-neutral-600 line-clamp-2">
+                            {concept.description}
+                          </p>
+                        </div>
+                        <div className="ml-6">
+                          {expandedConcept === concept.id ? (
+                            <ChevronDown className="h-6 w-6 text-neutral-400" />
+                          ) : (
+                            <ChevronRight className="h-6 w-6 text-neutral-400" />
+                          )}
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Expanded Content */}
+                    <AnimatePresence>
+                      {expandedConcept === concept.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="border-t border-neutral-200"
+                        >
+                          <div className="p-6">
+                            <ConceptNavigator concept={concept} />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
-          )}
+          ) : null}
 
           {hasSearched && !isLoading && results.length === 0 && (
             <motion.div 

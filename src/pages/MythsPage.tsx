@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Search, Filter } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Search, Filter, ChevronRight, ChevronDown } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useUserProgress } from '../contexts/UserProgressContext';
 import { contentService } from '../services/contentService';
@@ -12,6 +12,7 @@ const MythsPage = () => {
   const [myths, setMyths] = useState<Myth[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [expandedMyth, setExpandedMyth] = useState<string | null>(null);
   const { isAuthenticated } = useAuth();
   const { favoriteMyths, toggleFavoriteMyth } = useUserProgress();
 
@@ -57,6 +58,10 @@ const MythsPage = () => {
     setSearchTerm(e.target.value);
   };
 
+  const handleMythClick = (mythId: string) => {
+    setExpandedMyth(expandedMyth === mythId ? null : mythId);
+  };
+
   return (
     <div className="mt-24 min-h-screen bg-parchment-50">
       <div className="max-w-6xl mx-auto px-6">
@@ -76,8 +81,7 @@ const MythsPage = () => {
               Interactive Myth Deconstruction
             </h1>
             <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Explore common misconceptions about Christianity through interactive revelation of biblical truth. 
-              Click to uncover scriptural corrections and dive deep into supporting passages.
+              Explore common misconceptions about Christianity. Click on any myth to reveal biblical truth through interactive scripture exploration.
             </p>
           </div>
 
@@ -101,23 +105,23 @@ const MythsPage = () => {
             </div>
           </div>
 
-          {/* Interactive Myths Grid */}
+          {/* Myths List */}
           {isLoading ? (
             <motion.div 
-              className="grid grid-cols-1 gap-8"
+              className="space-y-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               {[1, 2, 3].map((n) => (
                 <motion.div key={n} variants={itemVariants} className="animate-pulse">
-                  <div className="h-96 bg-neutral-200 rounded-xl"></div>
+                  <div className="h-20 bg-neutral-200 rounded-xl"></div>
                 </motion.div>
               ))}
             </motion.div>
           ) : (
             <motion.div 
-              className="grid grid-cols-1 gap-8"
+              className="space-y-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -127,7 +131,63 @@ const MythsPage = () => {
                   key={myth.id}
                   variants={itemVariants}
                 >
-                  <InteractiveMythCard myth={myth} />
+                  {/* Myth List Item */}
+                  <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
+                    <button
+                      onClick={() => handleMythClick(myth.id)}
+                      className="w-full p-6 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center mb-2">
+                            <span className="px-3 py-1 bg-primary-50 text-primary-700 text-sm rounded-full font-medium mr-4">
+                              {myth.category}
+                            </span>
+                            <div className="flex flex-wrap gap-2">
+                              {myth.tags.slice(0, 3).map((tag) => (
+                                <span
+                                  key={tag}
+                                  className="px-2 py-1 bg-neutral-100 text-neutral-600 text-xs rounded-full"
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                          <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
+                            {myth.title}
+                          </h3>
+                          <p className="text-neutral-600 line-clamp-2">
+                            {myth.popularPerception}
+                          </p>
+                        </div>
+                        <div className="ml-6">
+                          {expandedMyth === myth.id ? (
+                            <ChevronDown className="h-6 w-6 text-neutral-400" />
+                          ) : (
+                            <ChevronRight className="h-6 w-6 text-neutral-400" />
+                          )}
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Expanded Content */}
+                    <AnimatePresence>
+                      {expandedMyth === myth.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="border-t border-neutral-200"
+                        >
+                          <div className="p-6">
+                            <InteractiveMythCard myth={myth} />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>

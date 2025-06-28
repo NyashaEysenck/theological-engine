@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Layers } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Layers, ChevronRight, ChevronDown } from 'lucide-react';
 import { contentService } from '../services/contentService';
 import { ScriptureVerse } from '../types/content';
 import ContextualLayers from '../components/scripture/ContextualLayers';
@@ -8,6 +8,7 @@ import ContextualLayers from '../components/scripture/ContextualLayers';
 const ScriptureContextPage = () => {
   const [verses, setVerses] = useState<ScriptureVerse[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [expandedVerse, setExpandedVerse] = useState<string | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -47,6 +48,10 @@ const ScriptureContextPage = () => {
     loadVerses();
   }, []);
 
+  const handleVerseClick = (verseId: string) => {
+    setExpandedVerse(expandedVerse === verseId ? null : verseId);
+  };
+
   return (
     <div className="mt-24 min-h-screen bg-parchment-50">
       <div className="max-w-6xl mx-auto px-6">
@@ -66,28 +71,27 @@ const ScriptureContextPage = () => {
               Scripture in Context
             </h1>
             <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Build proper understanding through contextual layers. Explore commonly misused verses 
-              by progressively revealing their paragraph, chapter, book, and interpretive context.
+              Build proper understanding through contextual layers. Click on any verse to explore commonly misused passages by progressively revealing their context.
             </p>
           </div>
 
-          {/* Interactive Verses */}
+          {/* Verses List */}
           {isLoading ? (
             <motion.div 
-              className="grid grid-cols-1 gap-8"
+              className="space-y-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
             >
               {[1, 2, 3].map((n) => (
                 <motion.div key={n} variants={itemVariants} className="animate-pulse">
-                  <div className="h-96 bg-neutral-200 rounded-xl"></div>
+                  <div className="h-20 bg-neutral-200 rounded-xl"></div>
                 </motion.div>
               ))}
             </motion.div>
           ) : (
             <motion.div 
-              className="grid grid-cols-1 gap-8"
+              className="space-y-4"
               variants={containerVariants}
               initial="hidden"
               animate="visible"
@@ -97,7 +101,51 @@ const ScriptureContextPage = () => {
                   key={verse.id}
                   variants={itemVariants}
                 >
-                  <ContextualLayers verse={verse} />
+                  {/* Verse List Item */}
+                  <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
+                    <button
+                      onClick={() => handleVerseClick(verse.id)}
+                      className="w-full p-6 text-left hover:bg-neutral-50 transition-colors"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex-1">
+                          <h3 className="text-xl font-heading font-semibold text-neutral-900 mb-2">
+                            {verse.reference}
+                          </h3>
+                          <blockquote className="text-lg text-neutral-700 italic mb-3">
+                            {verse.verse}
+                          </blockquote>
+                          <p className="text-sm text-red-600 font-medium">
+                            Common Misuse: {verse.commonMisuse.substring(0, 100)}...
+                          </p>
+                        </div>
+                        <div className="ml-6">
+                          {expandedVerse === verse.id ? (
+                            <ChevronDown className="h-6 w-6 text-neutral-400" />
+                          ) : (
+                            <ChevronRight className="h-6 w-6 text-neutral-400" />
+                          )}
+                        </div>
+                      </div>
+                    </button>
+
+                    {/* Expanded Content */}
+                    <AnimatePresence>
+                      {expandedVerse === verse.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="border-t border-neutral-200"
+                        >
+                          <div className="p-6">
+                            <ContextualLayers verse={verse} />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
