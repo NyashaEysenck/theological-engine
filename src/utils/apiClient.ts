@@ -35,6 +35,11 @@ class ApiClient {
     const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
     try {
+      console.log(`Making API request to: ${url}`, {
+        method: options.method || 'GET',
+        headers: options.headers
+      });
+
       const response = await fetch(url, {
         ...options,
         signal: controller.signal,
@@ -46,6 +51,8 @@ class ApiClient {
 
       clearTimeout(timeoutId);
 
+      console.log(`Response status: ${response.status}`);
+
       if (!response.ok) {
         throw new ApiError(
           `HTTP error! status: ${response.status}`,
@@ -54,6 +61,7 @@ class ApiClient {
       }
 
       const data = await response.json();
+      console.log("Response data:", data);
       return data;
     } catch (error) {
       clearTimeout(timeoutId);
@@ -63,6 +71,7 @@ class ApiClient {
       }
       
       if (error instanceof Error) {
+        console.error("API request error:", error);
         if (error.name === 'AbortError') {
           throw new ApiError('Request timeout', 408, 'TIMEOUT');
         }
@@ -77,14 +86,21 @@ class ApiClient {
     const url = new URL(buildApiUrl(endpoint));
     if (params) {
       Object.entries(params).forEach(([key, value]) => {
-        url.searchParams.append(key, value);
+        if (value !== undefined) {
+          url.searchParams.append(key, value);
+        }
       });
     }
     
-    return this.request<T>(endpoint + (params ? `?${url.searchParams}` : ''));
+    const queryString = url.searchParams.toString();
+    const fullEndpoint = endpoint + (queryString ? `?${queryString}` : '');
+    console.log(`GET request to: ${fullEndpoint}`);
+    
+    return this.request<T>(fullEndpoint);
   }
 
   async post<T>(endpoint: string, data?: any): Promise<T> {
+    console.log(`POST request to: ${endpoint}`, data);
     return this.request<T>(endpoint, {
       method: 'POST',
       body: data ? JSON.stringify(data) : undefined,
@@ -92,6 +108,7 @@ class ApiClient {
   }
 
   async put<T>(endpoint: string, data?: any): Promise<T> {
+    console.log(`PUT request to: ${endpoint}`, data);
     return this.request<T>(endpoint, {
       method: 'PUT',
       body: data ? JSON.stringify(data) : undefined,
@@ -99,6 +116,7 @@ class ApiClient {
   }
 
   async delete<T>(endpoint: string): Promise<T> {
+    console.log(`DELETE request to: ${endpoint}`);
     return this.request<T>(endpoint, {
       method: 'DELETE',
     });
@@ -107,7 +125,9 @@ class ApiClient {
   // Check if backend is available
   async healthCheck(): Promise<boolean> {
     try {
+      console.log("Performing health check");
       await this.get('/health');
+      console.log("Health check successful");
       return true;
     } catch (error) {
       console.warn('Backend health check failed:', error);

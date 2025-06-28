@@ -9,12 +9,20 @@ content_service = ContentService()
 @router.get("/myths", response_model=List[Myth])
 async def get_myths(search: Optional[str] = Query(None, description="Search term for myths")):
     """Get all myths or search myths by term"""
-    return await content_service.get_myths(search)
+    myths = await content_service.get_myths(search)
+    print(f"[DEBUG] Returning {len(myths)} myths with search term: {search}")
+    print(f"[DEBUG] First myth sample: {myths[0].dict() if myths else 'No myths found'}")
+    return myths
 
 @router.get("/myths/{myth_id}", response_model=Myth)
 async def get_myth_by_id(myth_id: str):
     """Get a specific myth by ID"""
     myth = await content_service.get_myth_by_id(myth_id)
+    print(f"[DEBUG] Fetching myth with ID: {myth_id}")
+    print(f"[DEBUG] Myth found: {myth is not None}")
+    if myth:
+        print(f"[DEBUG] Myth data: {myth.dict()}")
+    
     if not myth:
         raise HTTPException(status_code=404, detail="Myth not found")
     return myth

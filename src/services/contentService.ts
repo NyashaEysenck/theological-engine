@@ -13,13 +13,16 @@ class ContentService {
     try {
       // Try backend first
       const params = searchTerm ? { search: searchTerm } : undefined;
+      console.log("Fetching myths from backend with params:", params);
       const response = await apiClient.get<Myth[]>(API_ENDPOINTS.CONTENT.MYTHS, params);
+      console.log("Backend response for myths:", response);
       return response;
     } catch (error) {
       console.warn('Backend myths request failed, falling back to mock data:', error);
       
       // Fallback to mock data
       await simulateNetworkDelay();
+      console.log("Using mock data for myths");
       
       if (!searchTerm) {
         return myths;
@@ -36,14 +39,19 @@ class ContentService {
   async getMythById(id: string): Promise<Myth | null> {
     try {
       // Try backend first
+      console.log(`Fetching myth with ID ${id} from backend`);
       const response = await apiClient.get<Myth>(API_ENDPOINTS.CONTENT.MYTH_BY_ID(id));
+      console.log("Backend response for myth by ID:", response);
       return response;
     } catch (error) {
       console.warn('Backend myth by ID request failed, falling back to mock data:', error);
       
       // Fallback to mock data
       await simulateNetworkDelay();
-      return myths.find(myth => myth.id === id) || null;
+      console.log(`Using mock data for myth with ID ${id}`);
+      const myth = myths.find(myth => myth.id === id) || null;
+      console.log("Found myth in mock data:", myth);
+      return myth;
     }
   }
   

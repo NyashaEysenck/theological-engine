@@ -21,6 +21,8 @@ const InteractiveMythCard = ({ myth }: InteractiveMythCardProps) => {
   const [verseDetails, setVerseDetails] = useState<VerseDetails | null>(null);
   const [isLoadingVerse, setIsLoadingVerse] = useState(false);
 
+  console.log("Rendering InteractiveMythCard with myth:", myth);
+
   const handleRevealTruth = () => {
     setIsRevealed(!isRevealed);
   };
