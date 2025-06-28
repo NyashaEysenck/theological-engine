@@ -5,16 +5,23 @@ from app.models.bible import BibleBook, HistoricalContext, GeographicContext, Ch
 
 class BibleService:
     def __init__(self):
-        self.data_dir = "backend/data"
+        # Get the absolute path to the data directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        backend_dir = os.path.dirname(os.path.dirname(current_dir))
+        self.data_dir = os.path.join(backend_dir, "data")
         self.bible_books_file = os.path.join(self.data_dir, "bible_books.json")
         self.verses_dir = os.path.join(self.data_dir, "verses")
     
     async def _load_json_file(self, file_path: str) -> dict:
         """Load data from JSON file"""
         try:
+            print(f"[DEBUG] Attempting to load file: {file_path}")
             with open(file_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+                data = json.load(f)
+            print(f"[DEBUG] Successfully loaded {file_path}")
+            return data
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"[DEBUG] Error loading {file_path}: {str(e)}")
             return {}
     
     async def get_all_books(self) -> List[BibleBook]:
@@ -93,8 +100,8 @@ class BibleService:
         if book_id == "genesis":
             if chapter == 1:
                 return GeographicContext(
-                    main_location="The Universe/Earth",
-                    related_sites=[
+                    mainLocation="The Universe/Earth",
+                    relatedSites=[
                         "The heavens",
                         "The earth",
                         "The seas",
@@ -108,8 +115,8 @@ class BibleService:
                 )
             elif chapter == 2:
                 return GeographicContext(
-                    main_location="Garden of Eden",
-                    related_sites=[
+                    mainLocation="Garden of Eden",
+                    relatedSites=[
                         "Four rivers (Pishon, Gihon, Tigris, Euphrates)",
                         "Land of Havilah",
                         "Tree of Life",
@@ -123,8 +130,8 @@ class BibleService:
                 )
             elif chapter == 3:
                 return GeographicContext(
-                    main_location="Garden of Eden and its surroundings",
-                    related_sites=[
+                    mainLocation="Garden of Eden and its surroundings",
+                    relatedSites=[
                         "East of Eden",
                         "Garden entrance",
                         "Location of Cherubim guards",
@@ -138,8 +145,8 @@ class BibleService:
                 )
             else:
                 return GeographicContext(
-                    main_location="Ancient Near East",
-                    related_sites=[
+                    mainLocation="Ancient Near East",
+                    relatedSites=[
                         "Early human settlements",
                         "Agricultural regions",
                         "First cities"
@@ -152,8 +159,8 @@ class BibleService:
                 )
         
         return GeographicContext(
-            main_location="Location unknown",
-            related_sites=[],
+            mainLocation="Location unknown",
+            relatedSites=[],
             routes=[]
         )
     
@@ -298,14 +305,14 @@ class BibleService:
         
         if current_book:
             return ReadingProgress(
-                current_book=current_book,
-                current_chapter=current_chapter,
-                overall_progress=overall_progress
+                currentBook=current_book,
+                currentChapter=current_chapter,
+                overallProgress=overall_progress
             )
         
         # Fallback
         return ReadingProgress(
-            current_book=BibleBook(id="genesis", name="Genesis", chapters=50, genre="Law"),
-            current_chapter=1,
-            overall_progress=0
+            currentBook=BibleBook(id="genesis", name="Genesis", chapters=50, genre="Law"),
+            currentChapter=1,
+            overallProgress=0
         )

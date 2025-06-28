@@ -6,7 +6,10 @@ from app.models.progress import UserProgress, ChapterProgress, Badge
 
 class ProgressService:
     def __init__(self):
-        self.data_dir = "backend/data"
+        # Get the absolute path to the data directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        backend_dir = os.path.dirname(os.path.dirname(current_dir))
+        self.data_dir = os.path.join(backend_dir, "data")
         self.progress_file = os.path.join(self.data_dir, "user_progress.json")
         self._ensure_data_file()
     
@@ -20,9 +23,13 @@ class ProgressService:
     async def _load_progress_data(self) -> dict:
         """Load progress data from JSON file"""
         try:
+            print(f"[DEBUG] Attempting to load progress file: {self.progress_file}")
             with open(self.progress_file, 'r') as f:
-                return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+                data = json.load(f)
+            print(f"[DEBUG] Successfully loaded progress data")
+            return data
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"[DEBUG] Error loading progress file: {str(e)}")
             return {}
     
     async def _save_progress_data(self, data: dict):

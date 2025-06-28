@@ -5,16 +5,23 @@ from app.models.journey import JourneyRoute, BiblicalLocation
 
 class JourneyService:
     def __init__(self):
-        self.data_dir = "backend/data"
+        # Get the absolute path to the data directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        backend_dir = os.path.dirname(os.path.dirname(current_dir))
+        self.data_dir = os.path.join(backend_dir, "data")
         self.journey_routes_file = os.path.join(self.data_dir, "journey_routes.json")
         self.biblical_locations_file = os.path.join(self.data_dir, "biblical_locations.json")
     
     async def _load_json_file(self, file_path: str) -> list:
         """Load data from JSON file"""
         try:
+            print(f"[DEBUG] Attempting to load file: {file_path}")
             with open(file_path, 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except (FileNotFoundError, json.JSONDecodeError):
+                data = json.load(f)
+            print(f"[DEBUG] Successfully loaded {file_path}")
+            return data
+        except (FileNotFoundError, json.JSONDecodeError) as e:
+            print(f"[DEBUG] Error loading {file_path}: {str(e)}")
             return []
     
     async def get_all_routes(self) -> List[JourneyRoute]:
@@ -36,8 +43,8 @@ class JourneyService:
         relevant_routes = []
         
         for route in routes:
-            for related_chapter in route.related_chapters:
-                if related_chapter.book_id == book_id and chapter in related_chapter.chapters:
+            for related_chapter in route.relatedChapters:
+                if related_chapter.bookId == book_id and chapter in related_chapter.chapters:
                     relevant_routes.append(route)
                     break
         

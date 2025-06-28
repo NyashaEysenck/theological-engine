@@ -7,7 +7,10 @@ from app.core.security import get_password_hash, verify_password, create_access_
 
 class AuthService:
     def __init__(self):
-        self.users_file = "backend/data/users.json"
+        # Get the absolute path to the data directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        backend_dir = os.path.dirname(os.path.dirname(current_dir))
+        self.users_file = os.path.join(backend_dir, "data", "users.json")
         self._ensure_data_file()
     
     def _ensure_data_file(self):

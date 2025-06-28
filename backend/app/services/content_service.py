@@ -5,7 +5,10 @@ from app.models.content import Myth, Doctrine, BibleConcept, ScriptureVerse
 
 class ContentService:
     def __init__(self):
-        self.data_dir = "backend/data"
+        # Get the absolute path to the data directory
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+        backend_dir = os.path.dirname(os.path.dirname(current_dir))
+        self.data_dir = os.path.join(backend_dir, "data")
         self.myths_file = os.path.join(self.data_dir, "myths.json")
         self.doctrines_file = os.path.join(self.data_dir, "doctrines.json")
         self.bible_concepts_file = os.path.join(self.data_dir, "bible_concepts.json")
@@ -14,6 +17,8 @@ class ContentService:
     async def _load_json_file(self, file_path: str) -> list:
         """Load data from JSON file"""
         try:
+            print(f"[DEBUG] Attempting to load file: {file_path}")
+            print(f"[DEBUG] File exists: {os.path.exists(file_path)}")
             with open(file_path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 print(f"[DEBUG] Loaded data from {file_path}")
@@ -42,6 +47,12 @@ class ContentService:
                        search_lower in myth.popularPerception.lower()
                 ]
                 print(f"[DEBUG] Found {len(myths)} myths matching search term")
+            
+            print(f"[DEBUG] Returning {len(myths)} myths with search term: {search_term}")
+            if myths:
+                print(f"[DEBUG] First myth sample: {myths[0].dict()}")
+            else:
+                print(f"[DEBUG] No myths found")
             
             return myths
         except Exception as e:
