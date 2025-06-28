@@ -25,6 +25,6 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 async def root():
     return {"message": "Welcome to Micaiah's Stand API"}
 
-@app.get("api/v1/health")
+@app.get("/api/v1/health")
 async def health_check():
     return {"status": "healthy"}
