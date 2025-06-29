@@ -9,7 +9,7 @@ const LandingNav = () => {
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
             <Book className="h-6 w-6 text-white" />
-            <span className="font-heading font-semibold text-xl text-white">Micaiah's Stand</span>
+            <span className="font-heading font-semibold text-xl text-white">It Is Written</span>
           </Link>
           
           <div className="flex items-center space-x-4">

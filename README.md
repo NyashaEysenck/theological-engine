@@ -1,4 +1,4 @@
-# Micaiah's Stand - Biblical Truth Explorer
+# It Is Written - Biblical Truth Explorer
 
 A modern web application built with React and TypeScript for exploring biblical truth, understanding common Christian myths, and tracking Bible reading progress.
 

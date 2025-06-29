@@ -36,7 +36,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <div className="p-2 bg-primary-600 rounded-lg">
               <Book className="h-6 w-6 text-white" />
             </div>
-            <span className="font-heading font-semibold text-xl text-primary-900">Micaiah's Stand</span>
+            <span className="font-heading font-semibold text-xl text-primary-900">It Is Written</span>
           </Link>
           {location.pathname === '/' && (
             <div className="flex items-center space-x-4">
@@ -59,7 +59,7 @@ const Header = ({ isScrolled, isAuthPage }: HeaderProps) => {
             <div className="p-2 bg-primary-600 rounded-lg">
               <Book className="h-6 w-6 text-white" />
             </div>
-            <span className="font-heading font-semibold text-xl text-primary-900">Micaiah's Stand</span>
+            <span className="font-heading font-semibold text-xl text-primary-900">It Is Written</span>
           </Link>
 
           {/* Desktop Navigation */}

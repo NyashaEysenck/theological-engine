@@ -1,6 +1,6 @@
-# Micaiah's Stand API Backend
+# It Is Written API Backend
 
-A comprehensive FastAPI backend for the Micaiah's Stand biblical education platform.
+A comprehensive FastAPI backend for the It Is Written biblical education platform.
 
 ## Features
 

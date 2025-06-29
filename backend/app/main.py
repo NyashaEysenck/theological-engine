@@ -4,7 +4,7 @@ from app.api.v1.api import api_router
 from app.core.config import settings
 
 app = FastAPI(
-    title="Micaiah's Stand API",
+    title="It Is Written API",
     description="A comprehensive API for biblical content, user progress, and educational resources",
     version="1.0.0",
     openapi_url=f"{settings.API_V1_STR}/openapi.json"
@@ -23,7 +23,7 @@ app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to Micaiah's Stand API"}
+    return {"message": "Welcome to It Is Written API"}
 
 @app.get("/api/v1/health")
 async def health_check():

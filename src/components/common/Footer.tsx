@@ -13,7 +13,7 @@ const Footer = () => {
               <div className="p-2 bg-primary-600 rounded-lg">
                 <Book className="h-6 w-6 text-white" />
               </div>
-              <span className="font-heading font-semibold text-xl">Micaiah's Stand</span>
+              <span className="font-heading font-semibold text-xl">It Is Written</span>
             </Link>
             <p className="text-neutral-400 mb-6 max-w-md leading-relaxed">
               An interactive theological discernment engine designed to help Christians identify and correct common myths and misinterpretations through careful study of Scripture.
@@ -87,7 +87,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 mb-4 md:mb-0">
               <p className="text-sm text-neutral-500">
-                &copy; {currentYear} Micaiah's Stand. All rights reserved.
+                &copy; {currentYear} It Is Written. All rights reserved.
               </p>
               <div className="flex items-center space-x-4 text-xs text-neutral-500">
                 <a href="#" className="hover:text-neutral-300 transition-colors">Privacy Policy</a>

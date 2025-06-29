@@ -51,13 +51,13 @@ const LandingPage = () => {
               </div>
             </div>
             <h1 className="text-5xl lg:text-7xl font-heading font-bold mb-8 leading-tight tracking-tight">
-              Micaiah's Stand
+              It Is Written
               <span className="block text-3xl lg:text-4xl font-normal text-parchment-200 mt-4">
                 A Foundation in Truth
               </span>
             </h1>
             <p className="text-xl lg:text-2xl text-primary-100 mb-12 leading-relaxed max-w-3xl mx-auto">
-              Inspired by the prophet who dared to speak God's unwelcome truth, 
+              Inspired by the words Jesus used to counter temptation and declare truth, 
               we invite seekers of all backgrounds to discover authentic biblical understanding.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
@@ -321,8 +321,8 @@ const LandingPage = () => {
                 A Common Journey
               </h3>
               <p className="text-lg lg:text-xl text-neutral-700 mb-8 leading-relaxed max-w-4xl mx-auto">
-                Just as Micaiah stood firm to deliver God's true message amidst a chorus of deceptive voices, 
-                we invite you to join us in discovering and understanding the authentic Word of God.
+                Just as Jesus responded to temptation with "It is written," we invite you to join us in discovering 
+                and understanding the authentic Word of God that stands firm against every challenge.
               </p>
               <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <blockquote className="text-neutral-700 italic bg-parchment-50 p-6 rounded-xl border border-parchment-200">
@@ -477,7 +477,7 @@ const LandingPage = () => {
                 <div className="p-2 bg-primary-600 rounded-lg">
                   <Book className="h-6 w-6 text-white" />
                 </div>
-                <span className="font-heading font-semibold text-xl">Micaiah's Stand</span>
+                <span className="font-heading font-semibold text-xl">It Is Written</span>
               </Link>
               <p className="text-neutral-400 mb-6 max-w-md leading-relaxed">
                 An interactive theological discernment engine designed to help Christians identify and correct common myths and misinterpretations through careful study of Scripture.
@@ -529,7 +529,7 @@ const LandingPage = () => {
           
           <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-sm text-neutral-500 mb-4 md:mb-0">
-              © {new Date().getFullYear()} Micaiah's Stand. All rights reserved.
+              © {new Date().getFullYear()} It Is Written. All rights reserved.
             </p>
             <div className="flex space-x-6">
               <Link to="#" className="text-sm text-neutral-500 hover:text-white transition-colors">
