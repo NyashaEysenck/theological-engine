@@ -6,6 +6,12 @@ import { JourneyRoute, BiblicalLocation, MapViewState } from '../../types/journe
 import { journeyRoutes, getJourneyByBookChapter } from '../../data/journeyData';
 import { mapsService } from '../../services/mapsService';
 import Button from '../common/Button';
+import MapConfigError from './journey/MapConfigError';
+import RouteSelector from './journey/RouteSelector';
+import MapContainer from './journey/MapContainer';
+import LocationDetails from './journey/LocationDetails';
+import RouteDetails from './journey/RouteDetails';
+import AnimationControls from './journey/AnimationControls';
 
 interface JourneyVisualizationProps {
   currentBook?: string;
@@ -417,44 +423,7 @@ const JourneyVisualization = ({
 
   // Show configuration error if maps are not properly set up
   if (!isConfigured || configError) {
-    return (
-      <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
-        <div className="p-6 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-secondary-50">
-          <div className="flex items-center">
-            <div className="p-2 bg-primary-100 rounded-lg mr-3">
-              <Map className="h-6 w-6 text-primary-600" />
-            </div>
-            <div>
-              <h2 className="text-xl font-heading font-semibold text-neutral-900">
-                Journey Maps
-              </h2>
-              <p className="text-sm text-neutral-600">
-                Explore biblical journeys and locations
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="p-6">
-          <div className="flex flex-col items-center justify-center text-center py-12">
-            <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 max-w-md">
-              <AlertCircle className="h-12 w-12 text-amber-500 mx-auto mb-4" />
-              <h3 className="font-medium text-amber-800 text-lg mb-3">Maps Feature Unavailable</h3>
-              <p className="text-amber-700 mb-4">
-                We're unable to load the interactive maps feature at this time. This could be due to a temporary connection issue or configuration setting.
-              </p>
-              <div className="text-sm text-amber-600 bg-amber-100 p-3 rounded-lg">
-                <p className="font-medium mb-2">You can still explore:</p>
-                <ul className="list-disc list-inside space-y-1 text-left">
-                  <li>Scripture reading with verse-by-verse explanations</li>
-                  <li>Historical and geographical context in text format</li>
-                  <li>Community discussions about biblical locations</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    return <MapConfigError />;
   }
 
   return (
@@ -491,250 +460,47 @@ const JourneyVisualization = ({
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 p-6">
         {/* Route Selection Panel */}
         <div className="lg:col-span-1 space-y-4">
-          <div>
-            <h3 className="font-heading font-semibold text-neutral-900 mb-4">
-              Available Journeys
-            </h3>
-            
-            {/* Relevant journeys for current reading */}
-            {relevantJourneys.length > 0 && (
-              <div className="mb-6">
-                <h4 className="text-sm font-medium text-primary-600 mb-3 uppercase tracking-wider">
-                  Related to Current Reading
-                </h4>
-                <div className="space-y-2">
-                  {relevantJourneys.map(journey => (
-                    <button
-                      key={journey.id}
-                      onClick={() => setSelectedRoute(journey)}
-                      className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                        selectedRoute?.id === journey.id
-                          ? 'border-primary-300 bg-primary-50'
-                          : 'border-neutral-200 hover:border-neutral-300 bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center mb-2">
-                        <div 
-                          className="w-3 h-3 rounded-full mr-3"
-                          style={{ backgroundColor: journey.routeColor }}
-                        />
-                        <span className="font-medium text-neutral-900">{journey.name}</span>
-                      </div>
-                      <p className="text-sm text-neutral-600">{journey.character}</p>
-                      <p className="text-xs text-neutral-500 mt-1">{journey.biblicalPeriod}</p>
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* All journeys */}
-            <div>
-              <h4 className="text-sm font-medium text-neutral-600 mb-3 uppercase tracking-wider">
-                All Biblical Journeys
-              </h4>
-              <div className="space-y-2 max-h-64 overflow-y-auto">
-                {journeyRoutes.map(journey => (
-                  <button
-                    key={journey.id}
-                    onClick={() => setSelectedRoute(journey)}
-                    className={`w-full text-left p-3 rounded-lg border transition-all ${
-                      selectedRoute?.id === journey.id
-                        ? 'border-primary-300 bg-primary-50'
-                        : 'border-neutral-200 hover:border-neutral-300 bg-white'
-                    }`}
-                  >
-                    <div className="flex items-center mb-1">
-                      <div 
-                        className="w-2 h-2 rounded-full mr-2"
-                        style={{ backgroundColor: journey.routeColor }}
-                      />
-                      <span className="font-medium text-sm text-neutral-900">{journey.name}</span>
-                    </div>
-                    <p className="text-xs text-neutral-600">{journey.character}</p>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <RouteSelector 
+            relevantJourneys={relevantJourneys}
+            journeyRoutes={journeyRoutes}
+            selectedRoute={selectedRoute}
+            onRouteSelect={setSelectedRoute}
+          />
 
           {/* Animation Controls */}
           {selectedRoute && (
-            <div className="border-t border-neutral-200 pt-4">
-              <h4 className="font-medium text-neutral-900 mb-3">Animation Controls</h4>
-              <div className="space-y-3">
-                <div className="flex space-x-2">
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    onClick={animateRoute}
-                    disabled={isAnimating}
-                    className="flex-1"
-                  >
-                    {isAnimating ? (
-                      <>
-                        <Pause className="h-4 w-4 mr-2" />
-                        Animating...
-                      </>
-                    ) : (
-                      <>
-                        <Play className="h-4 w-4 mr-2" />
-                        Animate Route
-                      </>
-                    )}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={resetAnimation}
-                  >
-                    <RotateCcw className="h-4 w-4" />
-                  </Button>
-                </div>
-                
-                {/* Animation speed control */}
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-neutral-600">
-                    <span>Animation Speed</span>
-                    <span>{mapViewState.animationSpeed}x</span>
-                  </div>
-                  <div className="flex space-x-2">
-                    {[0.5, 1, 2, 4].map(speed => (
-                      <button
-                        key={speed}
-                        onClick={() => handleAnimationSpeedChange(speed)}
-                        className={`flex-1 py-1 px-2 text-xs rounded ${
-                          mapViewState.animationSpeed === speed
-                            ? 'bg-primary-100 text-primary-700 font-medium'
-                            : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
-                        }`}
-                      >
-                        {speed}x
-                      </button>
-                    ))}
-                  </div>
-                </div>
-                
-                {isAnimating && (
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm text-neutral-600">
-                      <span>Progress</span>
-                      <span>{Math.round(animationProgress * 100)}%</span>
-                    </div>
-                    <div className="w-full bg-neutral-200 rounded-full h-2">
-                      <div 
-                        className="bg-primary-500 h-2 rounded-full transition-all duration-300"
-                        style={{ width: `${animationProgress * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+            <AnimationControls
+              isAnimating={isAnimating}
+              animationProgress={animationProgress}
+              animationSpeed={mapViewState.animationSpeed}
+              onAnimate={animateRoute}
+              onReset={resetAnimation}
+              onSpeedChange={handleAnimationSpeedChange}
+            />
           )}
         </div>
 
         {/* Map Container */}
         <div className="lg:col-span-2">
-          <div className="relative">
-            <div 
-              ref={mapRef}
-              className="w-full h-96 lg:h-[500px] rounded-lg border border-neutral-200"
-            />
-            
-            {!isLoaded && isConfigured && (
-              <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 rounded-lg">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto mb-4"></div>
-                  <p className="text-neutral-600">Loading map...</p>
-                </div>
-              </div>
-            )}
-          </div>
+          <MapContainer 
+            mapRef={mapRef}
+            isLoaded={isLoaded}
+            isConfigured={isConfigured}
+          />
 
           {/* Selected Location Info */}
           <AnimatePresence>
             {selectedLocation && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="mt-4 p-4 bg-parchment-50 rounded-lg border border-parchment-200"
-              >
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center mb-2">
-                      <MapPin className="h-5 w-5 text-primary-600 mr-2" />
-                      <h4 className="font-heading font-semibold text-neutral-900">
-                        {selectedLocation.name}
-                      </h4>
-                    </div>
-                    {selectedLocation.modernName && (
-                      <p className="text-sm text-neutral-600 mb-2">
-                        Modern location: {selectedLocation.modernName}
-                      </p>
-                    )}
-                    <p className="text-sm text-neutral-700 mb-3">
-                      {selectedLocation.description}
-                    </p>
-                    <div className="space-y-2">
-                      <div>
-                        <span className="text-xs font-medium text-neutral-600 uppercase tracking-wider">
-                          Biblical References:
-                        </span>
-                        <p className="text-sm text-neutral-700">
-                          {selectedLocation.biblicalReferences.join(', ')}
-                        </p>
-                      </div>
-                      <div>
-                        <span className="text-xs font-medium text-neutral-600 uppercase tracking-wider">
-                          Significance:
-                        </span>
-                        <p className="text-sm text-neutral-700">
-                          {selectedLocation.significance}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setSelectedLocation(null)}
-                    className="text-neutral-400 hover:text-neutral-600 ml-4"
-                  >
-                    <Info className="h-5 w-5" />
-                  </button>
-                </div>
-              </motion.div>
+              <LocationDetails 
+                location={selectedLocation} 
+                onClose={() => setSelectedLocation(null)} 
+              />
             )}
           </AnimatePresence>
 
           {/* Route Information */}
           {selectedRoute && (
-            <div className="mt-4 p-4 bg-sage-50 rounded-lg border border-sage-200">
-              <div className="flex items-center mb-3">
-                <div 
-                  className="w-4 h-4 rounded-full mr-3"
-                  style={{ backgroundColor: selectedRoute.routeColor }}
-                />
-                <h4 className="font-heading font-semibold text-neutral-900">
-                  {selectedRoute.name}
-                </h4>
-              </div>
-              <p className="text-sm text-neutral-700 mb-3">{selectedRoute.description}</p>
-              <div className="grid grid-cols-2 gap-4 text-sm">
-                <div>
-                  <span className="font-medium text-neutral-600">Duration:</span>
-                  <p className="text-neutral-700">{selectedRoute.estimatedDuration}</p>
-                </div>
-                <div>
-                  <span className="font-medium text-neutral-600">Period:</span>
-                  <p className="text-neutral-700">{selectedRoute.biblicalPeriod}</p>
-                </div>
-              </div>
-              <div className="mt-3">
-                <span className="font-medium text-neutral-600">Historical Context:</span>
-                <p className="text-sm text-neutral-700 mt-1">{selectedRoute.historicalContext}</p>
-              </div>
-            </div>
+            <RouteDetails route={selectedRoute} />
           )}
         </div>
       </div>
