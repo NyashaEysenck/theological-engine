@@ -22,6 +22,7 @@ const JourneyVisualization = ({
   const googleMapRef = useRef<google.maps.Map | null>(null);
   const markersRef = useRef<google.maps.Marker[]>([]);
   const polylinesRef = useRef<google.maps.Polyline[]>([]);
+  const animationRef = useRef<number | null>(null);
   
   const [isLoaded, setIsLoaded] = useState(false);
   const [isConfigured, setIsConfigured] = useState(false);
@@ -126,6 +127,15 @@ const JourneyVisualization = ({
     }
   }, [selectedRoute, isLoaded, mapViewState.showAllRoutes]);
 
+  // Cleanup animation on unmount
+  useEffect(() => {
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
   const clearMapElements = () => {
     markersRef.current.forEach(marker => marker.setMap(null));
     polylinesRef.current.forEach(polyline => polyline.setMap(null));
@@ -139,26 +149,37 @@ const JourneyVisualization = ({
     const map = googleMapRef.current;
     const bounds = new google.maps.LatLngBounds();
 
-    // Add waypoint markers
+    // Add waypoint markers with labels
     route.waypoints.forEach((location, index) => {
+      // Create a custom marker with the location name
       const marker = new google.maps.Marker({
         position: location.coordinates,
         map: map,
         title: location.name,
+        label: {
+          text: (index + 1).toString(),
+          color: '#ffffff',
+          fontWeight: 'bold',
+          fontSize: '14px'
+        },
         icon: {
           path: google.maps.SymbolPath.CIRCLE,
-          scale: 8,
+          scale: 10,
           fillColor: route.routeColor,
           fillOpacity: 0.8,
           strokeColor: '#ffffff',
           strokeWeight: 2
-        },
-        label: {
-          text: (index + 1).toString(),
-          color: '#ffffff',
-          fontWeight: 'bold'
         }
       });
+
+      // Add a custom info window with the location name
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<div style="font-weight: bold; color: #333;">${location.name}</div>`,
+        pixelOffset: new google.maps.Size(0, -10)
+      });
+      
+      // Show the info window by default
+      infoWindow.open(map, marker);
 
       marker.addListener('click', () => {
         setSelectedLocation(location);
@@ -182,8 +203,8 @@ const JourneyVisualization = ({
     polyline.setMap(map);
     polylinesRef.current.push(polyline);
 
-    // Fit map to route bounds
-    map.fitBounds(bounds);
+    // Fit map to route bounds with padding
+    map.fitBounds(bounds, 50); // 50px padding
   };
 
   const displayAllRoutes = () => {
@@ -205,43 +226,193 @@ const JourneyVisualization = ({
       polyline.setMap(map);
       polylinesRef.current.push(polyline);
 
-      route.waypoints.forEach(wp => bounds.extend(wp.coordinates));
+      // Add markers for each waypoint with labels
+      route.waypoints.forEach((location) => {
+        const marker = new google.maps.Marker({
+          position: location.coordinates,
+          map: map,
+          title: location.name,
+          icon: {
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 6,
+            fillColor: route.routeColor,
+            fillOpacity: 0.8,
+            strokeColor: '#ffffff',
+            strokeWeight: 1
+          }
+        });
+
+        // Add a custom info window with the location name
+        const infoWindow = new google.maps.InfoWindow({
+          content: `<div style="font-weight: bold; color: #333;">${location.name}</div>`,
+          pixelOffset: new google.maps.Size(0, -8)
+        });
+        
+        // Show the info window by default
+        infoWindow.open(map, marker);
+
+        marker.addListener('click', () => {
+          setSelectedLocation(location);
+          onLocationSelect?.(location);
+        });
+
+        markersRef.current.push(marker);
+        bounds.extend(location.coordinates);
+      });
     });
 
-    map.fitBounds(bounds);
+    map.fitBounds(bounds, 50);
   };
 
-  const animateRoute = async () => {
+  const animateRoute = () => {
     if (!selectedRoute || !googleMapRef.current) return;
+    
+    // Stop any existing animation
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+    }
 
     setIsAnimating(true);
     setAnimationProgress(0);
-
-    const route = selectedRoute;
-    const totalWaypoints = route.waypoints.length;
     
-    for (let i = 0; i < totalWaypoints; i++) {
-      const progress = (i + 1) / totalWaypoints;
+    const route = selectedRoute;
+    const waypoints = route.waypoints;
+    const totalWaypoints = waypoints.length;
+    
+    // Create a new polyline for animation
+    clearMapElements();
+    
+    const map = googleMapRef.current;
+    const bounds = new google.maps.LatLngBounds();
+    
+    // Add all waypoint markers but make them initially invisible
+    const markers: google.maps.Marker[] = [];
+    const infoWindows: google.maps.InfoWindow[] = [];
+    
+    waypoints.forEach((location, index) => {
+      const marker = new google.maps.Marker({
+        position: location.coordinates,
+        map: map,
+        title: location.name,
+        visible: false,
+        label: {
+          text: (index + 1).toString(),
+          color: '#ffffff',
+          fontWeight: 'bold',
+          fontSize: '14px'
+        },
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE,
+          scale: 10,
+          fillColor: route.routeColor,
+          fillOpacity: 0.8,
+          strokeColor: '#ffffff',
+          strokeWeight: 2
+        }
+      });
+      
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<div style="font-weight: bold; color: #333;">${location.name}</div>`,
+        pixelOffset: new google.maps.Size(0, -10)
+      });
+      
+      marker.addListener('click', () => {
+        setSelectedLocation(location);
+        onLocationSelect?.(location);
+      });
+      
+      markers.push(marker);
+      infoWindows.push(infoWindow);
+      markersRef.current.push(marker);
+      bounds.extend(location.coordinates);
+    });
+    
+    // Create the polyline with no points initially
+    const polyline = new google.maps.Polyline({
+      path: [],
+      geodesic: true,
+      strokeColor: route.routeColor,
+      strokeOpacity: 1.0,
+      strokeWeight: 4
+    });
+    
+    polyline.setMap(map);
+    polylinesRef.current.push(polyline);
+    
+    // Fit map to route bounds
+    map.fitBounds(bounds, 50);
+    
+    // Animation variables
+    let currentStep = 0;
+    const animationDuration = 5000 / mapViewState.animationSpeed; // 5 seconds total
+    const startTime = performance.now();
+    
+    // Animation function
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / animationDuration, 1);
       setAnimationProgress(progress);
       
-      // Highlight current waypoint
-      const currentLocation = route.waypoints[i];
-      setSelectedLocation(currentLocation);
+      // Calculate how many waypoints should be visible
+      const waypointIndex = Math.min(
+        Math.floor(progress * totalWaypoints),
+        totalWaypoints - 1
+      );
       
-      // Pan to current location
-      googleMapRef.current.panTo(currentLocation.coordinates);
+      // Update polyline path
+      const currentPath = waypoints.slice(0, waypointIndex + 1).map(wp => wp.coordinates);
+      polyline.setPath(currentPath);
       
-      // Wait for animation step
-      await new Promise(resolve => setTimeout(resolve, 2000 / mapViewState.animationSpeed));
-    }
-
-    setIsAnimating(false);
+      // Show markers up to current waypoint
+      for (let i = 0; i <= waypointIndex; i++) {
+        if (!markers[i].getVisible()) {
+          markers[i].setVisible(true);
+          infoWindows[i].open(map, markers[i]);
+          
+          // Highlight current location
+          if (i === waypointIndex) {
+            setSelectedLocation(waypoints[i]);
+            map.panTo(waypoints[i].coordinates);
+            map.setZoom(8); // Zoom in a bit to see details
+          }
+        }
+      }
+      
+      if (progress < 1) {
+        animationRef.current = requestAnimationFrame(animate);
+      } else {
+        // Animation complete
+        setIsAnimating(false);
+        animationRef.current = null;
+      }
+    };
+    
+    // Start animation
+    animationRef.current = requestAnimationFrame(animate);
   };
 
   const resetAnimation = () => {
+    if (animationRef.current) {
+      cancelAnimationFrame(animationRef.current);
+      animationRef.current = null;
+    }
+    
     setIsAnimating(false);
     setAnimationProgress(0);
     setSelectedLocation(null);
+    
+    // Redisplay the route normally
+    if (selectedRoute) {
+      clearMapElements();
+      displayRoute(selectedRoute);
+    }
+  };
+
+  const handleAnimationSpeedChange = (speed: number) => {
+    setMapViewState(prev => ({
+      ...prev,
+      animationSpeed: speed
+    }));
   };
 
   // Show configuration error if maps are not properly set up
@@ -417,6 +588,29 @@ const JourneyVisualization = ({
                   >
                     <RotateCcw className="h-4 w-4" />
                   </Button>
+                </div>
+                
+                {/* Animation speed control */}
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-neutral-600">
+                    <span>Animation Speed</span>
+                    <span>{mapViewState.animationSpeed}x</span>
+                  </div>
+                  <div className="flex space-x-2">
+                    {[0.5, 1, 2, 4].map(speed => (
+                      <button
+                        key={speed}
+                        onClick={() => handleAnimationSpeedChange(speed)}
+                        className={`flex-1 py-1 px-2 text-xs rounded ${
+                          mapViewState.animationSpeed === speed
+                            ? 'bg-primary-100 text-primary-700 font-medium'
+                            : 'bg-neutral-100 text-neutral-600 hover:bg-neutral-200'
+                        }`}
+                      >
+                        {speed}x
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 
                 {isAnimating && (
