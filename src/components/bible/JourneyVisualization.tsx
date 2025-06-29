@@ -53,7 +53,7 @@ const JourneyVisualization = ({
         const health = await mapsService.checkMapsHealth();
         
         if (!health.configured) {
-          setConfigError('Google Maps API key not configured on backend');
+          setConfigError('Google Maps API key not configured');
           setIsConfigured(false);
           return;
         }
@@ -421,33 +421,35 @@ const JourneyVisualization = ({
       <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
         <div className="p-6 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-secondary-50">
           <div className="flex items-center">
-            <div className="p-2 bg-red-100 rounded-lg mr-3">
-              <AlertCircle className="h-6 w-6 text-red-600" />
+            <div className="p-2 bg-primary-100 rounded-lg mr-3">
+              <Map className="h-6 w-6 text-primary-600" />
             </div>
             <div>
               <h2 className="text-xl font-heading font-semibold text-neutral-900">
-                Maps Configuration Required
+                Journey Maps
               </h2>
               <p className="text-sm text-neutral-600">
-                Google Maps API needs to be configured in the backend
+                Explore biblical journeys and locations
               </p>
             </div>
           </div>
         </div>
         <div className="p-6">
-          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-            <h3 className="font-medium text-red-800 mb-2">Configuration Error</h3>
-            <p className="text-red-700 text-sm mb-4">
-              {configError || 'Google Maps API key not configured'}
-            </p>
-            <div className="text-sm text-red-600">
-              <p className="font-medium mb-2">To enable maps:</p>
-              <ol className="list-decimal list-inside space-y-1">
-                <li>Get a Google Maps API key from the Google Cloud Console</li>
-                <li>Add it to your backend environment variables as GOOGLE_MAPS_API_KEY</li>
-                <li>Restart the backend server</li>
-                <li>Refresh this page</li>
-              </ol>
+          <div className="flex flex-col items-center justify-center text-center py-12">
+            <div className="bg-amber-50 border border-amber-200 rounded-lg p-6 max-w-md">
+              <AlertCircle className="h-12 w-12 text-amber-500 mx-auto mb-4" />
+              <h3 className="font-medium text-amber-800 text-lg mb-3">Maps Feature Unavailable</h3>
+              <p className="text-amber-700 mb-4">
+                We're unable to load the interactive maps feature at this time. This could be due to a temporary connection issue or configuration setting.
+              </p>
+              <div className="text-sm text-amber-600 bg-amber-100 p-3 rounded-lg">
+                <p className="font-medium mb-2">You can still explore:</p>
+                <ul className="list-disc list-inside space-y-1 text-left">
+                  <li>Scripture reading with verse-by-verse explanations</li>
+                  <li>Historical and geographical context in text format</li>
+                  <li>Community discussions about biblical locations</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
