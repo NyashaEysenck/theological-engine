@@ -58,6 +58,11 @@ export const API_ENDPOINTS = {
     READING_STREAK: (userId: string) => `/progress/users/${userId}/reading-streak`,
     UNLOCKED_FEATURES: (userId: string) => `/progress/users/${userId}/unlocked-features`,
   },
+  // Maps endpoints
+  MAPS: {
+    CONFIG: '/maps/config',
+    HEALTH: '/maps/health',
+  },
 };
 
 // Build full API URL

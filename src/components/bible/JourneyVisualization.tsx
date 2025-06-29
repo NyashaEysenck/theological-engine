@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Map, Navigation, Play, Pause, RotateCcw, Info, MapPin, Route } from 'lucide-react';
+import { Map, Navigation, Play, Pause, RotateCcw, Info, MapPin, Route, AlertCircle } from 'lucide-react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { JourneyRoute, BiblicalLocation, MapViewState } from '../../types/journey';
 import { journeyRoutes, getJourneyByBookChapter } from '../../data/journeyData';
+import { mapsService } from '../../services/mapsService';
 import Button from '../common/Button';
 
 interface JourneyVisualizationProps {
@@ -23,6 +24,8 @@ const JourneyVisualization = ({
   const polylinesRef = useRef<google.maps.Polyline[]>([]);
   
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isConfigured, setIsConfigured] = useState(false);
+  const [configError, setConfigError] = useState<string | null>(null);
   const [selectedRoute, setSelectedRoute] = useState<JourneyRoute | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<BiblicalLocation | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -41,47 +44,73 @@ const JourneyVisualization = ({
     ? getJourneyByBookChapter(currentBook, currentChapter)
     : [];
 
-  // Initialize Google Maps
+  // Check maps configuration and initialize
   useEffect(() => {
-    const initMap = async () => {
-      const loader = new Loader({
-        apiKey: 'YOUR_GOOGLE_MAPS_API_KEY', // Replace with your actual API key
-        version: 'weekly',
-        libraries: ['geometry']
-      });
-
+    const initializeMaps = async () => {
       try {
-        await loader.load();
+        // Check if maps service is configured
+        const health = await mapsService.checkMapsHealth();
         
-        if (mapRef.current) {
-          const map = new google.maps.Map(mapRef.current, {
-            center: mapViewState.center,
-            zoom: mapViewState.zoom,
-            mapTypeId: google.maps.MapTypeId.TERRAIN,
-            styles: [
-              {
-                featureType: 'water',
-                elementType: 'geometry',
-                stylers: [{ color: '#4A90E2' }]
-              },
-              {
-                featureType: 'landscape',
-                elementType: 'geometry',
-                stylers: [{ color: '#F5E6D3' }]
-              }
-            ]
-          });
-
-          googleMapRef.current = map;
-          setIsLoaded(true);
+        if (!health.configured) {
+          setConfigError('Google Maps API key not configured on backend');
+          setIsConfigured(false);
+          return;
         }
+
+        // Get maps configuration from backend
+        const config = await mapsService.getMapsConfig();
+        setIsConfigured(true);
+        setConfigError(null);
+
+        // Initialize Google Maps with backend configuration
+        await initMap(config);
       } catch (error) {
-        console.error('Error loading Google Maps:', error);
+        console.error('Error initializing maps:', error);
+        setConfigError('Failed to load maps configuration');
+        setIsConfigured(false);
       }
     };
 
-    initMap();
+    initializeMaps();
   }, []);
+
+  const initMap = async (config: { apiKey: string; libraries: string[]; version: string }) => {
+    const loader = new Loader({
+      apiKey: config.apiKey,
+      version: config.version,
+      libraries: config.libraries
+    });
+
+    try {
+      await loader.load();
+      
+      if (mapRef.current) {
+        const map = new google.maps.Map(mapRef.current, {
+          center: mapViewState.center,
+          zoom: mapViewState.zoom,
+          mapTypeId: google.maps.MapTypeId.TERRAIN,
+          styles: [
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{ color: '#4A90E2' }]
+            },
+            {
+              featureType: 'landscape',
+              elementType: 'geometry',
+              stylers: [{ color: '#F5E6D3' }]
+            }
+          ]
+        });
+
+        googleMapRef.current = map;
+        setIsLoaded(true);
+      }
+    } catch (error) {
+      console.error('Error loading Google Maps:', error);
+      setConfigError('Failed to load Google Maps');
+    }
+  };
 
   // Update map when route selection changes
   useEffect(() => {
@@ -214,6 +243,46 @@ const JourneyVisualization = ({
     setAnimationProgress(0);
     setSelectedLocation(null);
   };
+
+  // Show configuration error if maps are not properly set up
+  if (!isConfigured || configError) {
+    return (
+      <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
+        <div className="p-6 border-b border-neutral-200 bg-gradient-to-r from-primary-50 to-secondary-50">
+          <div className="flex items-center">
+            <div className="p-2 bg-red-100 rounded-lg mr-3">
+              <AlertCircle className="h-6 w-6 text-red-600" />
+            </div>
+            <div>
+              <h2 className="text-xl font-heading font-semibold text-neutral-900">
+                Maps Configuration Required
+              </h2>
+              <p className="text-sm text-neutral-600">
+                Google Maps API needs to be configured in the backend
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="p-6">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+            <h3 className="font-medium text-red-800 mb-2">Configuration Error</h3>
+            <p className="text-red-700 text-sm mb-4">
+              {configError || 'Google Maps API key not configured'}
+            </p>
+            <div className="text-sm text-red-600">
+              <p className="font-medium mb-2">To enable maps:</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li>Get a Google Maps API key from the Google Cloud Console</li>
+                <li>Add it to your backend environment variables as GOOGLE_MAPS_API_KEY</li>
+                <li>Restart the backend server</li>
+                <li>Refresh this page</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-white rounded-xl shadow-soft border border-neutral-200 overflow-hidden">
@@ -377,7 +446,7 @@ const JourneyVisualization = ({
               className="w-full h-96 lg:h-[500px] rounded-lg border border-neutral-200"
             />
             
-            {!isLoaded && (
+            {!isLoaded && isConfigured && (
               <div className="absolute inset-0 flex items-center justify-center bg-neutral-100 rounded-lg">
                 <div className="text-center">
                   <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto mb-4"></div>
@@ -435,7 +504,7 @@ const JourneyVisualization = ({
                     onClick={() => setSelectedLocation(null)}
                     className="text-neutral-400 hover:text-neutral-600 ml-4"
                   >
-                    <X className="h-5 w-5" />
+                    <Info className="h-5 w-5" />
                   </button>
                 </div>
               </motion.div>

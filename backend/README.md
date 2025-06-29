@@ -11,6 +11,7 @@ A comprehensive FastAPI backend for the Micaiah's Stand biblical education platf
 - **Content Management** for myths, doctrines, bible concepts, and scripture context
 - **Journey Visualization** data for biblical routes and locations
 - **Bible Reading Services** with chapters, verses, and contextual information
+- **Google Maps Integration** for journey visualization
 
 ## Project Structure
 
@@ -69,6 +70,10 @@ backend/
 - `POST /api/v1/progress/users/{user_id}/favorite-myths/{myth_id}` - Toggle favorite myth
 - `POST /api/v1/progress/users/{user_id}/favorite-doctrines/{doctrine_id}` - Toggle favorite doctrine
 
+### Maps
+- `GET /api/v1/maps/config` - Get Google Maps configuration
+- `GET /api/v1/maps/health` - Check maps availability
+
 ## Setup Instructions
 
 1. **Create Virtual Environment**
@@ -89,7 +94,17 @@ backend/
    # Edit .env with your configuration
    ```
 
-4. **Run Development Server**
+4. **Google Maps Setup**
+   - Get a Google Maps API key from [Google Cloud Console](https://developers.google.com/maps/documentation/javascript/get-api-key)
+   - Add it to your `.env` file:
+     ```
+     GOOGLE_MAPS_API_KEY=your-api-key-here
+     ```
+   - Enable the following APIs in Google Cloud Console:
+     - Maps JavaScript API
+     - Geocoding API (optional, for future features)
+
+5. **Run Development Server**
    ```bash
    python run.py
    ```
@@ -99,9 +114,20 @@ backend/
    uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
    ```
 
-5. **Access API Documentation**
+6. **Access API Documentation**
    - Swagger UI: http://localhost:8000/docs
    - ReDoc: http://localhost:8000/redoc
+
+## Environment Variables
+
+### Required
+- `SECRET_KEY` - Secret key for JWT token signing
+- `GOOGLE_MAPS_API_KEY` - Google Maps API key for journey visualization
+
+### Optional
+- `ALGORITHM` - JWT algorithm (default: HS256)
+- `ACCESS_TOKEN_EXPIRE_MINUTES` - Token expiration time (default: 30)
+- `BACKEND_CORS_ORIGINS` - Allowed CORS origins (default: localhost:3000,localhost:5173)
 
 ## Data Management
 
@@ -118,12 +144,22 @@ All data is stored in JSON files in the `data/` directory:
 2. Follow the existing data structure
 3. Restart the server to load new data
 
+## Google Maps Integration
+
+The backend manages Google Maps configuration and API keys:
+
+- Maps configuration is served through `/api/v1/maps/config`
+- API key is securely stored in backend environment variables
+- Frontend requests maps config from backend instead of using hardcoded keys
+- Health check endpoint at `/api/v1/maps/health` verifies configuration
+
 ## Security Features
 
 - **JWT Authentication** with configurable expiration
 - **Password Hashing** using bcrypt
 - **CORS Configuration** for frontend integration
 - **Input Validation** using Pydantic models
+- **Secure API Key Management** for external services
 
 ## Development Features
 
@@ -138,6 +174,7 @@ All data is stored in JSON files in the `data/` directory:
 1. **Environment Variables**
    ```bash
    export SECRET_KEY="your-production-secret-key"
+   export GOOGLE_MAPS_API_KEY="your-production-maps-key"
    export ALGORITHM="HS256"
    export ACCESS_TOKEN_EXPIRE_MINUTES=30
    ```
@@ -165,8 +202,11 @@ curl -X POST "http://localhost:8000/api/v1/auth/register" \
 # Get myths
 curl "http://localhost:8000/api/v1/content/myths"
 
-# Search bible concepts
-curl "http://localhost:8000/api/v1/content/bible-concepts?query=faith"
+# Get maps configuration
+curl "http://localhost:8000/api/v1/maps/config"
+
+# Check maps health
+curl "http://localhost:8000/api/v1/maps/health"
 ```
 
 ## Contributing

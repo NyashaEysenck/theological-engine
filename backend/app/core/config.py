@@ -13,6 +13,11 @@ class Settings(BaseSettings):
         default_factory=lambda: int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
     )
     
+    # Google Maps API Configuration
+    GOOGLE_MAPS_API_KEY: str = Field(
+        default_factory=lambda: os.getenv("GOOGLE_MAPS_API_KEY", "")
+    )
+    
     # CORS
     BACKEND_CORS_ORIGINS: List[str] = Field(
         default_factory=lambda: ["http://localhost:3000", "http://localhost:5173"]
