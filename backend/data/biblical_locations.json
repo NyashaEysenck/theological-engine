@@ -7,10 +7,12 @@
       "lat": 30.8,
       "lng": 31.3
     },
-    "description": "The land where the Israelites lived in Egypt before the Exodus",
-    "biblicalReferences": ["Genesis 45:10", "Genesis 47:1-6", "Exodus 8:22"],
-    "historicalPeriod": "Patriarchal/Exodus Period",
-    "significance": "Starting point of the Exodus journey; place of both blessing and bondage"
+    "description": "The fertile land in the eastern Nile Delta where the Israelites lived during their 430-year sojourn in Egypt. Initially a place of blessing and prosperity, it later became a place of bondage and oppression.",
+    "biblicalReferences": ["Genesis 45:10", "Genesis 47:1-6", "Genesis 47:27", "Exodus 8:22", "Exodus 9:26"],
+    "historicalPeriod": "Patriarchal/Exodus Period (c. 1876-1446 BC)",
+    "significance": "Starting point of the Exodus journey; place of both blessing and bondage where Israel grew from 70 people to over 2 million",
+    "archaeologicalNotes": "The eastern Nile Delta region, known for its fertile grazing land suitable for shepherds",
+    "modernRelevance": "Represents God's providence in preserving His people even in foreign lands"
   },
   {
     "id": "red_sea",
@@ -20,23 +22,27 @@
       "lat": 29.5,
       "lng": 32.8
     },
-    "description": "The miraculous crossing point where God parted the waters",
-    "biblicalReferences": ["Exodus 14:21-31", "Psalm 106:9-12"],
-    "historicalPeriod": "Exodus Period",
-    "significance": "Site of God's great deliverance and Pharaoh's defeat"
+    "description": "The miraculous crossing point where God parted the waters for Israel's escape from Pharaoh's army. The exact location is debated, but the miracle demonstrates God's power over nature.",
+    "biblicalReferences": ["Exodus 14:21-31", "Exodus 15:1-21", "Psalm 106:9-12", "1 Corinthians 10:1-2"],
+    "historicalPeriod": "Exodus Period (c. 1446 BC)",
+    "significance": "Site of God's great deliverance and Pharaoh's defeat; symbolic of salvation and God's power",
+    "archaeologicalNotes": "Various theories place the crossing at different points along the Red Sea or its northern extensions",
+    "modernRelevance": "Symbol of God's ability to make a way where there seems to be no way"
   },
   {
     "id": "mount_sinai",
-    "name": "Mount Sinai",
-    "modernName": "Jebel Musa, Egypt",
+    "name": "Mount Sinai (Horeb)",
+    "modernName": "Jebel Musa, Egypt (traditional)",
     "coordinates": {
       "lat": 28.5,
       "lng": 33.9
     },
-    "description": "The mountain where Moses received the Ten Commandments",
-    "biblicalReferences": ["Exodus 19-20", "Exodus 24:12-18", "Deuteronomy 4:10-15"],
-    "historicalPeriod": "Exodus Period",
-    "significance": "Place of covenant-making and law-giving"
+    "description": "The sacred mountain where Moses received the Ten Commandments and the Law. Also called Horeb, it was the place of God's covenant-making with Israel.",
+    "biblicalReferences": ["Exodus 19-20", "Exodus 24:12-18", "Deuteronomy 4:10-15", "1 Kings 19:8-18"],
+    "historicalPeriod": "Exodus Period (c. 1446-1445 BC)",
+    "significance": "Place of covenant-making and law-giving; where God revealed His holiness and requirements",
+    "archaeologicalNotes": "Traditional site is Jebel Musa in the Sinai Peninsula, though some scholars propose other locations",
+    "modernRelevance": "Represents the importance of God's law and the seriousness of approaching a holy God"
   },
   {
     "id": "kadesh_barnea",
@@ -46,10 +52,12 @@
       "lat": 30.7,
       "lng": 34.4
     },
-    "description": "Oasis where Israel spent much of their wilderness wandering",
-    "biblicalReferences": ["Numbers 13:26", "Numbers 20:1", "Deuteronomy 1:46"],
-    "historicalPeriod": "Wilderness Period",
-    "significance": "Place of rebellion and judgment; turning point in wilderness journey"
+    "description": "The oasis in the wilderness where Israel spent much of their 40-year wandering. It was here that the spies were sent to scout the Promised Land and where Israel's unbelief led to judgment.",
+    "biblicalReferences": ["Numbers 13:26", "Numbers 20:1", "Numbers 32:8", "Deuteronomy 1:46", "Deuteronomy 9:23"],
+    "historicalPeriod": "Wilderness Period (c. 1445-1406 BC)",
+    "significance": "Place of rebellion and judgment; turning point in wilderness journey where a generation was condemned to die",
+    "archaeologicalNotes": "Identified with Ein el-Qudeirat, the largest oasis in the northern Sinai",
+    "modernRelevance": "Warning against unbelief and the consequences of rejecting God's promises"
   },
   {
     "id": "jericho",
@@ -59,127 +67,12 @@
       "lat": 31.9,
       "lng": 35.4
     },
-    "description": "First city conquered in the Promised Land",
-    "biblicalReferences": ["Joshua 6:1-27", "Joshua 2:1-24"],
-    "historicalPeriod": "Conquest Period",
-    "significance": "Symbol of God's power and faithfulness in conquest"
-  },
-  {
-    "id": "antioch_syria",
-    "name": "Antioch",
-    "modernName": "Antakya, Turkey",
-    "coordinates": {
-      "lat": 36.2,
-      "lng": 36.2
-    },
-    "description": "Base of operations for Paul's missionary journeys",
-    "biblicalReferences": ["Acts 11:19-26", "Acts 13:1-3", "Acts 14:26-28"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "First place believers were called Christians; missionary sending center"
-  },
-  {
-    "id": "cyprus_salamis",
-    "name": "Salamis, Cyprus",
-    "modernName": "Near Famagusta, Cyprus",
-    "coordinates": {
-      "lat": 35.2,
-      "lng": 33.9
-    },
-    "description": "First stop on Paul's first missionary journey",
-    "biblicalReferences": ["Acts 13:4-5"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "Beginning of systematic Gentile evangelization"
-  },
-  {
-    "id": "lystra",
-    "name": "Lystra",
-    "modernName": "Hatunsaray, Turkey",
-    "coordinates": {
-      "lat": 37.6,
-      "lng": 32.5
-    },
-    "description": "City where Paul was stoned and left for dead",
-    "biblicalReferences": ["Acts 14:6-20", "Acts 16:1-3"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "Place of suffering and Timothy's hometown"
-  },
-  {
-    "id": "philippi",
-    "name": "Philippi",
-    "modernName": "Filippoi, Greece",
-    "coordinates": {
-      "lat": 41.0,
-      "lng": 24.3
-    },
-    "description": "First European city evangelized by Paul",
-    "biblicalReferences": ["Acts 16:11-40", "Philippians 1:1"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "Gateway to Europe; Lydia's conversion; Paul and Silas imprisoned"
-  },
-  {
-    "id": "athens",
-    "name": "Athens",
-    "modernName": "Athens, Greece",
-    "coordinates": {
-      "lat": 37.9,
-      "lng": 23.7
-    },
-    "description": "Intellectual center where Paul preached at the Areopagus",
-    "biblicalReferences": ["Acts 17:16-34"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "Philosophical engagement with Greek culture"
-  },
-  {
-    "id": "corinth",
-    "name": "Corinth",
-    "modernName": "Korinthos, Greece",
-    "coordinates": {
-      "lat": 37.9,
-      "lng": 22.9
-    },
-    "description": "Major commercial city where Paul spent 18 months",
-    "biblicalReferences": ["Acts 18:1-18", "1 Corinthians 1:2", "2 Corinthians 1:1"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "Strategic ministry center; recipient of two major epistles"
-  },
-  {
-    "id": "ephesus",
-    "name": "Ephesus",
-    "modernName": "Selçuk, Turkey",
-    "coordinates": {
-      "lat": 37.9,
-      "lng": 27.3
-    },
-    "description": "Major city where Paul ministered for three years",
-    "biblicalReferences": ["Acts 19:1-41", "Ephesians 1:1", "Revelation 2:1-7"],
-    "historicalPeriod": "Apostolic Period",
-    "significance": "Center of Asian ministry; site of great revival and opposition"
-  },
-  {
-    "id": "nazareth",
-    "name": "Nazareth",
-    "modernName": "Nazareth, Israel",
-    "coordinates": {
-      "lat": 32.7,
-      "lng": 35.3
-    },
-    "description": "Jesus's hometown where He grew up",
-    "biblicalReferences": ["Luke 1:26-38", "Luke 4:16-30", "Matthew 2:23"],
-    "historicalPeriod": "Gospel Period",
-    "significance": "Place of Jesus's upbringing and early rejection"
-  },
-  {
-    "id": "capernaum",
-    "name": "Capernaum",
-    "modernName": "Kfar Nahum, Israel",
-    "coordinates": {
-      "lat": 32.9,
-      "lng": 35.6
-    },
-    "description": "Jesus's ministry headquarters by the Sea of Galilee",
-    "biblicalReferences": ["Matthew 4:13", "Mark 2:1", "Luke 4:31"],
-    "historicalPeriod": "Gospel Period",
-    "significance": "Center of Galilean ministry; many miracles performed here"
+    "description": "The first city conquered in the Promised Land, whose walls fell down after Israel marched around it for seven days. Known as the 'City of Palms.'",
+    "biblicalReferences": ["Joshua 6:1-27", "Joshua 2:1-24", "2 Kings 2:4-5", "Luke 19:1-10"],
+    "historicalPeriod": "Conquest Period (c. 1406 BC)",
+    "significance": "Symbol of God's power and faithfulness in conquest; demonstration that victory comes through obedience, not military might",
+    "archaeologicalNotes": "One of the world's oldest continuously inhabited cities, with extensive archaeological remains",
+    "modernRelevance": "Represents God's ability to bring down seemingly impossible obstacles"
   },
   {
     "id": "jerusalem",
@@ -189,9 +82,221 @@
       "lat": 31.8,
       "lng": 35.2
     },
-    "description": "Holy city; site of Jesus's crucifixion and resurrection",
-    "biblicalReferences": ["Luke 2:22-38", "John 2:13-25", "Luke 23-24"],
+    "description": "The holy city, chosen by God as the place for His temple. Site of Jesus's crucifixion, resurrection, and the center of early Christianity.",
+    "biblicalReferences": ["2 Samuel 5:6-10", "1 Kings 8:1-66", "Psalm 122:1-9", "Luke 23-24", "Acts 2:1-47"],
+    "historicalPeriod": "All Periods (from David onward)",
+    "significance": "Center of Jewish worship; site of salvation accomplished; future center of Christ's kingdom",
+    "archaeologicalNotes": "Extensive archaeological evidence from all biblical periods, including Temple Mount remains",
+    "modernRelevance": "Central to God's plan of salvation and future kingdom; symbol of God's presence among His people"
+  },
+  {
+    "id": "bethlehem",
+    "name": "Bethlehem",
+    "modernName": "Bethlehem, Palestine",
+    "coordinates": {
+      "lat": 31.7,
+      "lng": 35.2
+    },
+    "description": "The birthplace of King David and Jesus Christ. Known as the 'City of David' and prophesied as the Messiah's birthplace.",
+    "biblicalReferences": ["Ruth 1:1-2", "1 Samuel 16:1-13", "Micah 5:2", "Matthew 2:1-12", "Luke 2:1-20"],
     "historicalPeriod": "All Periods",
-    "significance": "Center of Jewish worship; site of salvation accomplished"
+    "significance": "Birthplace of the Messiah; fulfillment of prophecy; symbol of God's humble beginnings",
+    "archaeologicalNotes": "Small town south of Jerusalem with remains from biblical periods",
+    "modernRelevance": "Reminds us that God often works through small and humble circumstances"
+  },
+  {
+    "id": "nazareth",
+    "name": "Nazareth",
+    "modernName": "Nazareth, Israel",
+    "coordinates": {
+      "lat": 32.7,
+      "lng": 35.3
+    },
+    "description": "Jesus's hometown where He grew up and began His ministry. A small, insignificant town in Galilee that became famous through Christ.",
+    "biblicalReferences": ["Luke 1:26-38", "Luke 4:16-30", "Matthew 2:23", "Mark 6:1-6"],
+    "historicalPeriod": "Gospel Period (1st century AD)",
+    "significance": "Place of Jesus's upbringing and early rejection; demonstrates that God uses the humble and despised",
+    "archaeologicalNotes": "Small village in Lower Galilee with first-century remains",
+    "modernRelevance": "Shows that God can use anyone from anywhere for His purposes"
+  },
+  {
+    "id": "capernaum",
+    "name": "Capernaum",
+    "modernName": "Kfar Nahum, Israel",
+    "coordinates": {
+      "lat": 32.9,
+      "lng": 35.6
+    },
+    "description": "Jesus's ministry headquarters by the Sea of Galilee, where He performed many miracles and taught in the synagogue.",
+    "biblicalReferences": ["Matthew 4:13", "Mark 2:1", "Luke 4:31", "John 6:59"],
+    "historicalPeriod": "Gospel Period (1st century AD)",
+    "significance": "Center of Galilean ministry; many miracles performed here; Jesus's adopted hometown",
+    "archaeologicalNotes": "Well-preserved ruins including a synagogue and Peter's house",
+    "modernRelevance": "Represents the importance of having a base for ministry and the power of Jesus's presence"
+  },
+  {
+    "id": "antioch_syria",
+    "name": "Antioch",
+    "modernName": "Antakya, Turkey",
+    "coordinates": {
+      "lat": 36.2,
+      "lng": 36.2
+    },
+    "description": "The third largest city in the Roman Empire and base of operations for Paul's missionary journeys. First place believers were called 'Christians.'",
+    "biblicalReferences": ["Acts 11:19-26", "Acts 13:1-3", "Acts 14:26-28", "Acts 15:22-35"],
+    "historicalPeriod": "Apostolic Period (1st century AD)",
+    "significance": "First place believers were called Christians; missionary sending center; bridge between Jewish and Gentile Christianity",
+    "archaeologicalNotes": "Major Hellenistic city with extensive remains, though much is under modern Antakya",
+    "modernRelevance": "Model for missionary-minded churches and cross-cultural ministry"
+  },
+  {
+    "id": "cyprus_salamis",
+    "name": "Salamis, Cyprus",
+    "modernName": "Near Famagusta, Cyprus",
+    "coordinates": {
+      "lat": 35.2,
+      "lng": 33.9
+    },
+    "description": "The first stop on Paul's first missionary journey, where he and Barnabas preached in the Jewish synagogues.",
+    "biblicalReferences": ["Acts 13:4-5"],
+    "historicalPeriod": "Apostolic Period (c. 47 AD)",
+    "significance": "Beginning of systematic Gentile evangelization; Barnabas's homeland",
+    "archaeologicalNotes": "Extensive ruins of the ancient city including gymnasium, theater, and basilicas",
+    "modernRelevance": "Represents the beginning of the church's mission to the Gentile world"
+  },
+  {
+    "id": "lystra",
+    "name": "Lystra",
+    "modernName": "Hatunsaray, Turkey",
+    "coordinates": {
+      "lat": 37.6,
+      "lng": 32.5
+    },
+    "description": "City in Lycaonia where Paul was stoned and left for dead, but miraculously recovered. Timothy's hometown.",
+    "biblicalReferences": ["Acts 14:6-20", "Acts 16:1-3", "2 Timothy 3:11"],
+    "historicalPeriod": "Apostolic Period (c. 47-49 AD)",
+    "significance": "Place of suffering and miraculous recovery; Timothy's hometown; example of persecution and perseverance",
+    "archaeologicalNotes": "Roman colony with limited archaeological remains",
+    "modernRelevance": "Demonstrates that suffering for the gospel is normal and that God can raise up faithful disciples anywhere"
+  },
+  {
+    "id": "philippi",
+    "name": "Philippi",
+    "modernName": "Filippoi, Greece",
+    "coordinates": {
+      "lat": 41.0,
+      "lng": 24.3
+    },
+    "description": "The first European city evangelized by Paul, where Lydia was converted and Paul and Silas were imprisoned.",
+    "biblicalReferences": ["Acts 16:11-40", "Philippians 1:1", "1 Thessalonians 2:2"],
+    "historicalPeriod": "Apostolic Period (c. 50 AD)",
+    "significance": "Gateway to Europe; Lydia's conversion; Paul and Silas imprisoned; first European church",
+    "archaeologicalNotes": "Well-preserved Roman city with forum, theater, and basilicas",
+    "modernRelevance": "Represents the gospel's expansion into new continents and cultures"
+  },
+  {
+    "id": "athens",
+    "name": "Athens",
+    "modernName": "Athens, Greece",
+    "coordinates": {
+      "lat": 37.9,
+      "lng": 23.7
+    },
+    "description": "The intellectual center of the ancient world where Paul preached at the Areopagus to philosophers and intellectuals.",
+    "biblicalReferences": ["Acts 17:16-34", "1 Thessalonians 3:1"],
+    "historicalPeriod": "Apostolic Period (c. 51 AD)",
+    "significance": "Philosophical engagement with Greek culture; model for intellectual apologetics",
+    "archaeologicalNotes": "Ancient Agora and Areopagus (Mars Hill) still visible today",
+    "modernRelevance": "Example of how to engage intellectual culture with the gospel"
+  },
+  {
+    "id": "corinth",
+    "name": "Corinth",
+    "modernName": "Korinthos, Greece",
+    "coordinates": {
+      "lat": 37.9,
+      "lng": 22.9
+    },
+    "description": "Major commercial city where Paul spent 18 months establishing a church. Known for its immorality and commercial prosperity.",
+    "biblicalReferences": ["Acts 18:1-18", "1 Corinthians 1:2", "2 Corinthians 1:1"],
+    "historicalPeriod": "Apostolic Period (c. 51-52 AD)",
+    "significance": "Strategic ministry center; recipient of two major epistles; example of ministry in a corrupt culture",
+    "archaeologicalNotes": "Extensive ruins including the bema (judgment seat) where Paul appeared before Gallio",
+    "modernRelevance": "Shows how the gospel can transform even the most corrupt societies"
+  },
+  {
+    "id": "ephesus",
+    "name": "Ephesus",
+    "modernName": "Selçuk, Turkey",
+    "coordinates": {
+      "lat": 37.9,
+      "lng": 27.3
+    },
+    "description": "Major city where Paul ministered for three years, site of great revival and opposition. Home to the temple of Artemis.",
+    "biblicalReferences": ["Acts 19:1-41", "Ephesians 1:1", "1 Timothy 1:3", "Revelation 2:1-7"],
+    "historicalPeriod": "Apostolic Period (c. 53-56 AD)",
+    "significance": "Center of Asian ministry; site of great revival and opposition; one of the seven churches of Revelation",
+    "archaeologicalNotes": "One of the best-preserved ancient cities with theater, library, and temple remains",
+    "modernRelevance": "Example of how the gospel can impact entire regions and challenge false religions"
+  },
+  {
+    "id": "rome",
+    "name": "Rome",
+    "modernName": "Rome, Italy",
+    "coordinates": {
+      "lat": 41.9,
+      "lng": 12.5
+    },
+    "description": "The capital of the Roman Empire where Paul was imprisoned and wrote several epistles. Center of the ancient world.",
+    "biblicalReferences": ["Acts 28:16-31", "Romans 1:7", "2 Timothy 1:17"],
+    "historicalPeriod": "Apostolic Period (c. 60-62 AD)",
+    "significance": "Capital of the empire; Paul's imprisonment; center for spreading the gospel throughout the world",
+    "archaeologicalNotes": "Extensive remains of imperial Rome including the Forum, Colosseum, and early Christian sites",
+    "modernRelevance": "Represents the gospel's reach to the centers of power and influence"
+  },
+  {
+    "id": "babylon",
+    "name": "Babylon",
+    "modernName": "Hillah, Iraq",
+    "coordinates": {
+      "lat": 32.5,
+      "lng": 44.4
+    },
+    "description": "The great city and empire that conquered Judah and took the Jews into exile. Symbol of worldly power opposed to God.",
+    "biblicalReferences": ["2 Kings 25:1-21", "Daniel 1:1-7", "Jeremiah 29:1-14", "Revelation 17-18"],
+    "historicalPeriod": "Exile Period (c. 605-539 BC)",
+    "significance": "Place of exile and testing; where Daniel and his friends remained faithful; symbol of worldly opposition to God",
+    "archaeologicalNotes": "Extensive ruins including the Ishtar Gate and Hanging Gardens site",
+    "modernRelevance": "Represents the temporary nature of worldly power and the importance of faithfulness in hostile environments"
+  },
+  {
+    "id": "damascus",
+    "name": "Damascus",
+    "modernName": "Damascus, Syria",
+    "coordinates": {
+      "lat": 33.5,
+      "lng": 36.3
+    },
+    "description": "Ancient city where Paul was converted on the road from Jerusalem. One of the world's oldest continuously inhabited cities.",
+    "biblicalReferences": ["Acts 9:1-25", "Acts 22:5-16", "2 Corinthians 11:32-33", "Galatians 1:17"],
+    "historicalPeriod": "Apostolic Period (c. 34 AD)",
+    "significance": "Site of Paul's dramatic conversion; beginning of his ministry to the Gentiles",
+    "archaeologicalNotes": "Ancient city with remains from biblical periods, including the street called Straight",
+    "modernRelevance": "Demonstrates God's power to transform even His greatest enemies into His greatest servants"
+  },
+  {
+    "id": "caesarea_maritima",
+    "name": "Caesarea Maritima",
+    "modernName": "Caesarea, Israel",
+    "coordinates": {
+      "lat": 32.5,
+      "lng": 34.9
+    },
+    "description": "Roman administrative capital of Judea, where Paul was imprisoned for two years and where Cornelius was converted.",
+    "biblicalReferences": ["Acts 10:1-48", "Acts 23:23-26:32"],
+    "historicalPeriod": "Apostolic Period (1st century AD)",
+    "significance": "First Gentile conversion (Cornelius); Paul's imprisonment; Roman administrative center",
+    "archaeologicalNotes": "Extensive remains including Herod's palace, theater, and harbor",
+    "modernRelevance": "Represents the gospel's acceptance by Gentiles and God's plan for all nations"
   }
 ]

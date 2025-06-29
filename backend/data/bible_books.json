@@ -5,40 +5,55 @@
       "name": "Genesis",
       "chapters": 50,
       "genre": "Law",
-      "period": "Creation to Patriarchs",
-      "author": "Moses"
+      "period": "Creation to Patriarchs (c. 4000-1800 BC)",
+      "author": "Moses",
+      "description": "The book of beginnings - creation, fall, flood, and the patriarchal narratives of Abraham, Isaac, Jacob, and Joseph.",
+      "keyThemes": ["Creation", "Fall", "Covenant", "Providence", "Election"],
+      "historicalSetting": "From creation through Israel's descent into Egypt during the famine"
     },
     {
       "id": "exodus",
       "name": "Exodus",
       "chapters": 40,
       "genre": "Law",
-      "period": "Egyptian Bondage to Sinai",
-      "author": "Moses"
+      "period": "Egyptian Bondage to Sinai (c. 1446-1445 BC)",
+      "author": "Moses",
+      "description": "God's deliverance of Israel from Egyptian slavery, the giving of the Law at Sinai, and instructions for the tabernacle.",
+      "keyThemes": ["Redemption", "Law", "Covenant", "Worship", "God's Presence"],
+      "historicalSetting": "Israel's 430-year bondage in Egypt and their miraculous exodus under Moses' leadership"
     },
     {
       "id": "leviticus",
       "name": "Leviticus",
       "chapters": 27,
       "genre": "Law",
-      "period": "Sinai",
-      "author": "Moses"
+      "period": "Sinai Legislation (c. 1445 BC)",
+      "author": "Moses",
+      "description": "Detailed instructions for worship, sacrifices, priestly duties, and holy living for the covenant community.",
+      "keyThemes": ["Holiness", "Sacrifice", "Priesthood", "Purity", "Atonement"],
+      "historicalSetting": "Israel encamped at Mount Sinai receiving detailed ceremonial and moral laws"
     },
     {
       "id": "numbers",
       "name": "Numbers",
       "chapters": 36,
       "genre": "Law",
-      "period": "Wilderness Wandering",
-      "author": "Moses"
+      "period": "Wilderness Wandering (c. 1445-1406 BC)",
+      "author": "Moses",
+      "description": "Israel's 40-year wilderness journey, including censuses, rebellions, and preparation for entering Canaan.",
+      "keyThemes": ["Faithfulness", "Rebellion", "God's Patience", "Consequences", "Preparation"],
+      "historicalSetting": "The wilderness wanderings from Sinai to the plains of Moab, east of the Jordan River"
     },
     {
       "id": "deuteronomy",
       "name": "Deuteronomy",
       "chapters": 34,
       "genre": "Law",
-      "period": "End of Wilderness",
-      "author": "Moses"
+      "period": "End of Wilderness (c. 1406 BC)",
+      "author": "Moses",
+      "description": "Moses' farewell addresses to Israel, reviewing the law and preparing them for life in the Promised Land.",
+      "keyThemes": ["Covenant Renewal", "Obedience", "Love for God", "Blessing and Curse", "Leadership Transition"],
+      "historicalSetting": "The plains of Moab, just before Israel's entry into Canaan under Joshua's leadership"
     }
   ],
   "history": [
@@ -47,40 +62,77 @@
       "name": "Joshua",
       "chapters": 24,
       "genre": "History",
-      "period": "Conquest of Canaan",
-      "author": "Joshua/Samuel"
+      "period": "Conquest of Canaan (c. 1406-1380 BC)",
+      "author": "Joshua/Samuel",
+      "description": "The conquest and division of the Promised Land under Joshua's leadership.",
+      "keyThemes": ["God's Faithfulness", "Conquest", "Inheritance", "Covenant Renewal", "Leadership"],
+      "historicalSetting": "Israel's military campaigns to conquer Canaan and the subsequent division of the land among the twelve tribes"
     },
     {
       "id": "judges",
       "name": "Judges",
       "chapters": 21,
       "genre": "History",
-      "period": "Period of Judges",
-      "author": "Samuel"
+      "period": "Period of Judges (c. 1380-1050 BC)",
+      "author": "Samuel",
+      "description": "The cyclical pattern of Israel's apostasy, oppression, repentance, and deliverance through various judges.",
+      "keyThemes": ["Apostasy", "Deliverance", "Cycles of Sin", "God's Mercy", "Need for Godly Leadership"],
+      "historicalSetting": "The chaotic period between the conquest and the monarchy, characterized by moral and spiritual decline"
     },
     {
       "id": "ruth",
       "name": "Ruth",
       "chapters": 4,
       "genre": "History",
-      "period": "Period of Judges",
-      "author": "Samuel"
+      "period": "Period of Judges (c. 1100 BC)",
+      "author": "Samuel",
+      "description": "A beautiful story of loyalty, redemption, and God's providence in the life of a Moabite woman.",
+      "keyThemes": ["Loyalty", "Redemption", "Providence", "Kindness", "Inclusion of Gentiles"],
+      "historicalSetting": "During the time of the judges, showing God's grace working through ordinary people"
     },
     {
       "id": "1samuel",
       "name": "1 Samuel",
       "chapters": 31,
       "genre": "History",
-      "period": "United Kingdom",
-      "author": "Samuel/Nathan/Gad"
+      "period": "Transition to Monarchy (c. 1100-1010 BC)",
+      "author": "Samuel/Nathan/Gad",
+      "description": "The transition from judges to kings, featuring Samuel, Saul, and the rise of David.",
+      "keyThemes": ["Theocracy vs. Monarchy", "God's Choice", "Obedience", "Heart vs. Appearance", "Divine Anointing"],
+      "historicalSetting": "Israel's demand for a king and the establishment of the monarchy under Saul"
     },
     {
       "id": "2samuel",
       "name": "2 Samuel",
       "chapters": 24,
       "genre": "History",
-      "period": "David's Reign",
-      "author": "Nathan/Gad"
+      "period": "David's Reign (c. 1010-970 BC)",
+      "author": "Nathan/Gad",
+      "description": "David's reign as king, including his triumphs, failures, and God's covenant promises.",
+      "keyThemes": ["Davidic Covenant", "Leadership", "Sin and Consequences", "Forgiveness", "Messianic Promise"],
+      "historicalSetting": "David's 40-year reign over Israel, establishing Jerusalem as the capital and expanding the kingdom"
+    },
+    {
+      "id": "1kings",
+      "name": "1 Kings",
+      "chapters": 22,
+      "genre": "History",
+      "period": "United and Divided Kingdom (c. 970-850 BC)",
+      "author": "Unknown (possibly Jeremiah)",
+      "description": "Solomon's reign, the building of the temple, and the division of the kingdom.",
+      "keyThemes": ["Wisdom", "Temple", "Division", "Apostasy", "Prophetic Ministry"],
+      "historicalSetting": "From Solomon's glorious reign through the kingdom's division into Israel (north) and Judah (south)"
+    },
+    {
+      "id": "2kings",
+      "name": "2 Kings",
+      "chapters": 25,
+      "genre": "History",
+      "period": "Divided Kingdom to Exile (c. 850-586 BC)",
+      "author": "Unknown (possibly Jeremiah)",
+      "description": "The decline and fall of both kingdoms, ending with the Babylonian exile.",
+      "keyThemes": ["Judgment", "Exile", "Prophetic Warnings", "God's Patience", "Covenant Consequences"],
+      "historicalSetting": "The final centuries of the divided kingdom, culminating in the Assyrian conquest of Israel and Babylonian conquest of Judah"
     }
   ],
   "wisdom": [
@@ -89,40 +141,55 @@
       "name": "Job",
       "chapters": 42,
       "genre": "Wisdom",
-      "period": "Patriarchal",
-      "author": "Unknown"
+      "period": "Patriarchal Era (c. 2000-1800 BC)",
+      "author": "Unknown (possibly Moses)",
+      "description": "The testing of a righteous man and the question of why the godly suffer.",
+      "keyThemes": ["Suffering", "God's Sovereignty", "Faith", "Patience", "Divine Wisdom"],
+      "historicalSetting": "Likely during the patriarchal period, in the land of Uz (possibly Edom)"
     },
     {
       "id": "psalms",
       "name": "Psalms",
       "chapters": 150,
       "genre": "Wisdom",
-      "period": "Various",
-      "author": "David and others"
+      "period": "Various (c. 1400-400 BC)",
+      "author": "David and others",
+      "description": "A collection of songs, prayers, and poems expressing the full range of human emotion in worship.",
+      "keyThemes": ["Worship", "Prayer", "God's Character", "Messianic Hope", "Human Experience"],
+      "historicalSetting": "Spanning from Moses to the post-exilic period, reflecting Israel's worship and spiritual life"
     },
     {
       "id": "proverbs",
       "name": "Proverbs",
       "chapters": 31,
       "genre": "Wisdom",
-      "period": "Solomon's Reign",
-      "author": "Solomon and others"
+      "period": "Solomon's Reign (c. 970-930 BC)",
+      "author": "Solomon and others",
+      "description": "Practical wisdom for daily living, emphasizing the fear of the Lord as the beginning of wisdom.",
+      "keyThemes": ["Wisdom", "Fear of the Lord", "Practical Living", "Character", "Relationships"],
+      "historicalSetting": "Primarily from Solomon's reign, with additional material from other wise men"
     },
     {
       "id": "ecclesiastes",
       "name": "Ecclesiastes",
       "chapters": 12,
       "genre": "Wisdom",
-      "period": "Solomon's Reign",
-      "author": "Solomon"
+      "period": "Solomon's Later Years (c. 935 BC)",
+      "author": "Solomon",
+      "description": "A philosophical reflection on the meaning of life and the vanity of earthly pursuits.",
+      "keyThemes": ["Vanity", "Meaning", "Eternity", "God's Sovereignty", "Contentment"],
+      "historicalSetting": "Solomon's reflections in his later years, possibly after his spiritual decline and restoration"
     },
     {
       "id": "songofsolomon",
       "name": "Song of Solomon",
       "chapters": 8,
       "genre": "Wisdom",
-      "period": "Solomon's Reign",
-      "author": "Solomon"
+      "period": "Solomon's Reign (c. 965 BC)",
+      "author": "Solomon",
+      "description": "A celebration of love and marriage, often interpreted as an allegory of God's love for His people.",
+      "keyThemes": ["Love", "Marriage", "Beauty", "Devotion", "Covenant Relationship"],
+      "historicalSetting": "Solomon's court, celebrating the beauty and sanctity of marital love"
     }
   ],
   "prophets": [
@@ -131,32 +198,55 @@
       "name": "Isaiah",
       "chapters": 66,
       "genre": "Prophets",
-      "period": "8th-6th Century BC",
-      "author": "Isaiah"
+      "period": "8th-6th Century BC (c. 740-680 BC)",
+      "author": "Isaiah",
+      "description": "Prophecies of judgment and salvation, with extensive messianic predictions and visions of God's glory.",
+      "keyThemes": ["Holiness of God", "Messianic Hope", "Judgment", "Salvation", "Servant Songs"],
+      "historicalSetting": "Judah during the reigns of Uzziah, Jotham, Ahaz, and Hezekiah, facing Assyrian threats"
     },
     {
       "id": "jeremiah",
       "name": "Jeremiah",
       "chapters": 52,
       "genre": "Prophets",
-      "period": "7th-6th Century BC",
-      "author": "Jeremiah"
+      "period": "7th-6th Century BC (c. 627-580 BC)",
+      "author": "Jeremiah",
+      "description": "The weeping prophet's calls to repentance and prophecies of Babylonian exile and restoration.",
+      "keyThemes": ["Judgment", "Repentance", "New Covenant", "God's Faithfulness", "Restoration"],
+      "historicalSetting": "Judah's final decades before the Babylonian exile, during the reigns of Josiah through Zedekiah"
+    },
+    {
+      "id": "lamentations",
+      "name": "Lamentations",
+      "chapters": 5,
+      "genre": "Prophets",
+      "period": "Babylonian Exile (c. 586 BC)",
+      "author": "Jeremiah",
+      "description": "Poetic laments over the destruction of Jerusalem and the temple.",
+      "keyThemes": ["Grief", "God's Faithfulness", "Hope", "Consequences of Sin", "Divine Mercy"],
+      "historicalSetting": "The immediate aftermath of Jerusalem's destruction by the Babylonians"
     },
     {
       "id": "ezekiel",
       "name": "Ezekiel",
       "chapters": 48,
       "genre": "Prophets",
-      "period": "6th Century BC",
-      "author": "Ezekiel"
+      "period": "Babylonian Exile (c. 593-571 BC)",
+      "author": "Ezekiel",
+      "description": "Visions of God's glory, prophecies of judgment and restoration, and the vision of a new temple.",
+      "keyThemes": ["God's Glory", "Individual Responsibility", "Restoration", "New Heart", "Millennial Temple"],
+      "historicalSetting": "Among the Jewish exiles in Babylon, before and after Jerusalem's destruction"
     },
     {
       "id": "daniel",
       "name": "Daniel",
       "chapters": 12,
       "genre": "Prophets",
-      "period": "6th Century BC",
-      "author": "Daniel"
+      "period": "Babylonian/Persian Period (c. 605-536 BC)",
+      "author": "Daniel",
+      "description": "Stories of faithfulness in exile and apocalyptic visions of future kingdoms and the end times.",
+      "keyThemes": ["God's Sovereignty", "Faithfulness", "Future Kingdoms", "Resurrection", "End Times"],
+      "historicalSetting": "The Babylonian and Persian courts, spanning from Nebuchadnezzar to Cyrus"
     }
   ],
   "gospels": [
@@ -165,32 +255,44 @@
       "name": "Matthew",
       "chapters": 28,
       "genre": "Gospels",
-      "period": "1st Century AD",
-      "author": "Matthew"
+      "period": "1st Century AD (c. 60-70 AD)",
+      "author": "Matthew",
+      "description": "Jesus presented as the promised Messiah and King, with emphasis on His teachings and fulfillment of prophecy.",
+      "keyThemes": ["Jesus as Messiah", "Kingdom of Heaven", "Fulfillment of Prophecy", "Discipleship", "Great Commission"],
+      "historicalSetting": "Written primarily for Jewish Christians, demonstrating Jesus as the fulfillment of Old Testament promises"
     },
     {
       "id": "mark",
       "name": "Mark",
       "chapters": 16,
       "genre": "Gospels",
-      "period": "1st Century AD",
-      "author": "Mark"
+      "period": "1st Century AD (c. 55-65 AD)",
+      "author": "Mark",
+      "description": "A fast-paced account of Jesus as the suffering Servant, emphasizing His actions and sacrifice.",
+      "keyThemes": ["Jesus as Servant", "Suffering", "Discipleship", "Faith", "Cross"],
+      "historicalSetting": "Written for Roman Christians, emphasizing Jesus' power and authority through His deeds"
     },
     {
       "id": "luke",
       "name": "Luke",
       "chapters": 24,
       "genre": "Gospels",
-      "period": "1st Century AD",
-      "author": "Luke"
+      "period": "1st Century AD (c. 60-62 AD)",
+      "author": "Luke",
+      "description": "A careful historical account presenting Jesus as the perfect Son of Man, emphasizing His compassion for all people.",
+      "keyThemes": ["Jesus as Son of Man", "Compassion", "Prayer", "Holy Spirit", "Universal Salvation"],
+      "historicalSetting": "Written for Gentile Christians, particularly Theophilus, emphasizing Jesus' humanity and universal appeal"
     },
     {
       "id": "john",
       "name": "John",
       "chapters": 21,
       "genre": "Gospels",
-      "period": "1st Century AD",
-      "author": "John"
+      "period": "1st Century AD (c. 85-95 AD)",
+      "author": "John",
+      "description": "A theological presentation of Jesus as the Son of God, focusing on His divine nature and eternal life.",
+      "keyThemes": ["Jesus as Son of God", "Eternal Life", "Belief", "Love", "Light vs. Darkness"],
+      "historicalSetting": "Written later than the synoptic gospels, addressing the full deity of Christ against early heresies"
     }
   ],
   "letters": [
@@ -199,32 +301,66 @@
       "name": "Romans",
       "chapters": 16,
       "genre": "Letters",
-      "period": "1st Century AD",
-      "author": "Paul"
+      "period": "1st Century AD (c. 57 AD)",
+      "author": "Paul",
+      "description": "Paul's systematic presentation of the gospel, covering sin, salvation, sanctification, and God's plan for Israel.",
+      "keyThemes": ["Justification by Faith", "Sin", "Grace", "Sanctification", "God's Sovereignty"],
+      "historicalSetting": "Written from Corinth to the Roman church Paul had not yet visited, laying theological groundwork"
     },
     {
       "id": "1corinthians",
       "name": "1 Corinthians",
       "chapters": 16,
       "genre": "Letters",
-      "period": "1st Century AD",
-      "author": "Paul"
+      "period": "1st Century AD (c. 55 AD)",
+      "author": "Paul",
+      "description": "Addressing divisions and moral issues in the Corinthian church, with teachings on love, gifts, and resurrection.",
+      "keyThemes": ["Church Unity", "Spiritual Gifts", "Love", "Resurrection", "Christian Conduct"],
+      "historicalSetting": "Written from Ephesus to address serious problems in the cosmopolitan Corinthian church"
     },
     {
       "id": "2corinthians",
       "name": "2 Corinthians",
       "chapters": 13,
       "genre": "Letters",
-      "period": "1st Century AD",
-      "author": "Paul"
+      "period": "1st Century AD (c. 56 AD)",
+      "author": "Paul",
+      "description": "Paul's defense of his apostolic ministry and teachings on suffering, giving, and reconciliation.",
+      "keyThemes": ["Apostolic Authority", "Suffering", "Comfort", "Giving", "Reconciliation"],
+      "historicalSetting": "Written after a painful visit to Corinth, defending Paul's ministry against false apostles"
     },
     {
       "id": "galatians",
       "name": "Galatians",
       "chapters": 6,
       "genre": "Letters",
-      "period": "1st Century AD",
-      "author": "Paul"
+      "period": "1st Century AD (c. 49-55 AD)",
+      "author": "Paul",
+      "description": "A passionate defense of justification by faith alone against the Judaizers who taught salvation by works.",
+      "keyThemes": ["Justification by Faith", "Freedom in Christ", "Law vs. Grace", "Fruit of the Spirit", "Christian Liberty"],
+      "historicalSetting": "Written to churches in Galatia being influenced by Judaizers who taught circumcision was necessary for salvation"
+    },
+    {
+      "id": "ephesians",
+      "name": "Ephesians",
+      "chapters": 6,
+      "genre": "Letters",
+      "period": "1st Century AD (c. 60-62 AD)",
+      "author": "Paul",
+      "description": "The church as the body of Christ, emphasizing spiritual blessings, unity, and spiritual warfare.",
+      "keyThemes": ["Church as Body of Christ", "Spiritual Blessings", "Unity", "Spiritual Warfare", "Christian Walk"],
+      "historicalSetting": "Written during Paul's Roman imprisonment, possibly as a circular letter to churches in Asia Minor"
+    },
+    {
+      "id": "philippians",
+      "name": "Philippians",
+      "chapters": 4,
+      "genre": "Letters",
+      "period": "1st Century AD (c. 61 AD)",
+      "author": "Paul",
+      "description": "A joyful letter emphasizing contentment, humility, and pressing toward the goal in Christ.",
+      "keyThemes": ["Joy", "Contentment", "Humility", "Partnership in Gospel", "Pressing Forward"],
+      "historicalSetting": "Written from Roman prison to thank the Philippians for their support and encourage their faithfulness"
     }
   ]
 }
